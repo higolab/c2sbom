@@ -1,5 +1,5 @@
 # Standard modules
-import dataclasses, json, re, sys
+import dataclasses, json, re, sys, uuid
 
 
 @dataclasses.dataclass
@@ -74,11 +74,28 @@ class LicenseManager:
                 i += 1
                 continue
 
+            # Check for 'and/or' at a boundary
+            if expr.startswith("and/or", i):
+                end_idx = i + 6
+                # Verify boundary before/after 'and'
+                if (i == 0 or expr[i - 1].isspace() or expr[i - 1] == ",") and (
+                    end_idx == length or expr[end_idx].isspace() or expr[end_idx] == ","
+                ):
+                    if prepare_paren:
+                        prepare_paren = False
+                        tokens.insert(0, "(")
+                        tokens.append(")")
+                    tokens.append("AND")  # It is safer to assume that "and/or" is "and"
+                    i = end_idx
+                    continue
+
             # Check for 'and' at a boundary
             if expr.startswith("and", i):
                 end_idx = i + 3
-                # Verify boundary after 'and'
-                if end_idx == length or expr[end_idx].isspace() or expr[end_idx] == ",":
+                # Verify boundary before/after 'and'
+                if (i == 0 or expr[i - 1].isspace() or expr[i - 1] == ",") and (
+                    end_idx == length or expr[end_idx].isspace() or expr[end_idx] == ","
+                ):
                     if prepare_paren:
                         prepare_paren = False
                         tokens.insert(0, "(")
@@ -90,8 +107,10 @@ class LicenseManager:
             # Check for 'or' at a boundary
             if expr.startswith("or", i):
                 end_idx = i + 2
-                # Verify boundary after 'or'
-                if end_idx == length or expr[end_idx].isspace() or expr[end_idx] == ",":
+                # Verify boundary before/after 'or'
+                if (i == 0 or expr[i - 1].isspace() or expr[i - 1] == ",") and (
+                    end_idx == length or expr[end_idx].isspace() or expr[end_idx] == ","
+                ):
                     if prepare_paren:
                         prepare_paren = False
                         tokens.insert(0, "(")
@@ -108,12 +127,16 @@ class LicenseManager:
             while i < length:
                 if expr[i] == ",":
                     break
-                if expr.startswith("and", i) and (
-                    i + 3 == length or expr[i + 3].isspace() or expr[i + 3] == ","
+                if (
+                    expr.startswith("and", i)
+                    and (i == 0 or expr[i - 1].isspace() or expr[i - 1] == ",")
+                    and (i + 3 == length or expr[i + 3].isspace() or expr[i + 3] == ",")
                 ):
                     break
-                if expr.startswith("or", i) and (
-                    i + 2 == length or expr[i + 2].isspace() or expr[i + 2] == ","
+                if (
+                    expr.startswith("or", i)
+                    and (i == 0 or expr[i - 1].isspace() or expr[i - 1] == ",")
+                    and (i + 2 == length or expr[i + 2].isspace() or expr[i + 2] == ",")
                 ):
                     break
                 i += 1
@@ -126,9 +149,7 @@ class LicenseManager:
                 tokens.append("Artistic-1.0")
                 tokens.append(")")
             else:
-                token = self._convert_name(token)
                 tokens.append(token)
-                new_licenses.append(token)
 
         # Resolve "natural" commas
         i = 0
@@ -140,11 +161,34 @@ class LicenseManager:
                         tokens[i] = tokens[j]
                         break
                     j += 1
-                else:
-                    print(
-                        f"',' didn't resolve for {expr}, using 'AND'.", file=sys.stderr
-                    )
-                    tokens[i] = "AND"
+                else:  # It was just a license name with commas
+                    j: int = i + 1
+                    new_token: str = tokens[i - 1] + tokens[i]
+                    while (
+                        j < len(tokens)
+                        and tokens[j] != "AND"
+                        and tokens[j] != "OR"
+                        and tokens[j] != "("
+                        and tokens[j] != ")"
+                    ):
+                        new_token += (
+                            tokens[j] if tokens[j] == "," else (" " + tokens[j])
+                        )
+                        j += 1
+                    tokens[i - 1 : j] = [new_token]
+            i += 1
+
+        # Fix license names and register licenses
+        i: int = 0
+        while i < len(tokens):
+            if (
+                tokens[i] != "AND"
+                and tokens[i] != "OR"
+                and tokens[i] != "("
+                and tokens[i] != ")"
+            ):
+                tokens[i] = self._convert_name(tokens[i])
+                new_licenses.append(tokens[i])
             i += 1
 
         # Add the newly constructed expression avoiding a repetition
@@ -153,13 +197,14 @@ class LicenseManager:
 
         return new_licenses
 
-    def add_license_direct(self, text: str, comment: str | None) -> str:
+    def add_license_direct(self, text: str, comment: str | None = None) -> str:
         """
         Add a license text directly and return a `LicenseRef` assigned for it.
 
-        Intended for a Debian `copyright` file that is not in the standard format.
+        Intended for unnamed licenses and Debian `copyright` files that are not
+        in the standard format.
         """
-        license_ref = f"LicenseRef-{self.package}--copyright"
+        license_ref = re.sub(r'[^0-9a-zA-Z\.\-]+', '-', f"LicenseRef-{self.package}--{uuid.uuid4()}")
 
         self.exprs.append(license_ref)
         self.licenses[license_ref] = License(
@@ -179,9 +224,13 @@ class LicenseManager:
         tokens = name.split()
         normalized = tokens[0].lower().replace(".0", "")
 
-        # Debian calls the MIT License as "Expat"
+        # Debian calls the MIT License as "Expat".
         if normalized == "expat":
             tokens[0] = "MIT"
+        
+        # Deprecated as a separate license because it is a match to BSD-2-Clause.
+        if normalized == "bsd-2-clause-netbsd":
+            tokens[0] = "BSD-2-Clause"
 
         # Version number omissions
         elif normalized == "apache":
@@ -310,7 +359,7 @@ class LicenseManager:
                 if no_add:
                     return None
                 else:
-                    license_ref = f"LicenseRef-{self.package}--{re.sub(r'[^0-9a-zA-Z\.\-]+', '-', "-".join(tokens))}"
+                    license_ref = re.sub(r'[^0-9a-zA-Z\.\-]+', '-', f"LicenseRef-{self.package}--{"-".join(tokens)}--{uuid.uuid4()}")
                     self.mapping[full_name.lower()] = license_ref
                     self.licenses[license_ref] = License(full_name)
             return self.mapping[full_name.lower()]
@@ -325,7 +374,7 @@ class LicenseManager:
         elif no_add:
             return None
         else:
-            license_ref = f"LicenseRef-{self.package}--{re.sub(r'[^0-9a-zA-Z\.\-]+', '-', tokens[0])}"
+            license_ref = re.sub(r'[^0-9a-zA-Z\.\-]+', '-', f"LicenseRef-{self.package}--{"-".join(tokens)}--{uuid.uuid4()}")
             self.mapping[tokens[0].lower()] = license_ref
             self.licenses[license_ref] = License(tokens[0])
             return self.mapping[tokens[0].lower()]
@@ -478,11 +527,15 @@ def copyright_header_stanza(
             comment += result
 
         elif lines[index].startswith("License:"):
-            new_licences = license_manager.add_expr(lines[index][8:])
+            license_name = lines[index][8:].strip()
             result, index = read_formatted_text(lines, index + 1)
-            if len(result) > 0:
-                for item in new_licences:
-                    license_manager.add_license_text(item, result)
+            if len(license_name) > 0:
+                new_licences = license_manager.add_expr(license_name)
+                if len(result) > 0:
+                    for item in new_licences:
+                        license_manager.add_license_text(item, result)
+            elif len(result) > 0:
+                license_manager.add_license_direct(result)
 
         elif lines[index].startswith("Copyright:"):
             copyright_text += lines[index][10:].strip() + "\n"
@@ -522,11 +575,15 @@ def copyright_files_stanza(
             comment += result
 
         elif lines[index].startswith("License:"):
-            new_license = license_manager.add_expr(lines[index][8:])
+            license_name = lines[index][8:].strip()
             result, index = read_formatted_text(lines, index + 1)
-            if len(result) > 0:
-                for item in new_license:
-                    license_manager.add_license_text(item, result)
+            if len(license_name) > 0:
+                new_licences = license_manager.add_expr(license_name)
+                if len(result) > 0:
+                    for item in new_licences:
+                        license_manager.add_license_text(item, result)
+            elif len(result) > 0:
+                license_manager.add_license_direct(result)
 
         elif lines[index].startswith("Copyright:"):
             copyright_text += lines[index][10:].strip() + "\n"
@@ -583,7 +640,9 @@ def copyright_license_stanza(
     return license_manager, index
 
 
-def get_license(package_basename: str, arch: str) -> tuple[str, str, LicenseManager]:
+def get_license(
+    package_basename: str, arch: str | None
+) -> tuple[str, str, LicenseManager]:
     """
     Get license information from `/usr/share/doc/<package_basename>/copyright` and
     return the comment, copyright text, and `LicenseManager` in this order.
@@ -596,7 +655,9 @@ def get_license(package_basename: str, arch: str) -> tuple[str, str, LicenseMana
     """
     package_comment: str = ""
     copyright_text: str = ""
-    license_manager = LicenseManager(package_basename + "-" + arch)
+    license_manager = LicenseManager(
+        package_basename if arch is None else package_basename + "-" + arch
+    )
     index: int = 0
 
     try:

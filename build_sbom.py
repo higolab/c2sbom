@@ -116,9 +116,7 @@ parser = argparse.ArgumentParser(
     "This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. "
     "This project is still in the early development stage, and we are not in any way liable for the output or other behaviors of this program."
 )
-parser.add_argument(
-    "-i", "--input", help="Input file. Defaults to stdin."
-)
+parser.add_argument("-i", "--input", help="Input file. Defaults to stdin.")
 parser.add_argument(
     "-o",
     "--output",

@@ -180,10 +180,10 @@ def read_description(lines: list[str], start: int = 0) -> str:
     return result.rstrip()
 
 
-def get_metadata(package: str, arch: str) -> dict:
+def get_metadata(package: str, arch: str | None) -> tuple[dict, dict[str, bool]]:
     """
-    Return an SPDX package information item for the given package
-    in a `dict`.
+    Return an SPDX package information item and metadata collection statistics
+    for the given package in this order.
     """
     package_meta: dict = {
         "name": package,
@@ -205,19 +205,49 @@ def get_metadata(package: str, arch: str) -> dict:
         "comment": "",
     }
 
+    statistics: dict[str, bool] = {
+        "name": True,
+        "SPDXID": True,
+        "versionInfo": False,
+        "packageFileName": False,
+        "downloadLocation": False,
+        "filesAnalyzed": True,
+        "homepage": False,
+        "supplier": False,
+        "originator": False,
+        "summary": False,
+        "description": False,
+        "md5": False,
+        "sha1": False,
+        "sha256": False,
+        "sha512": False,
+        "externalRefs": False,
+        "copyrightText": False,
+        "licenseConcluded": False,
+        "licenseDeclared": False,
+        # "licenseInfoFromFiles": False,
+        "licenseComments": False,
+        "comment": False,
+    }
+
     comment: str = ""
+    whole_package_name: str = package if arch is None else package + ":" + arch
 
     try:
-        version = get_installed_version(package + ":" + arch)
+        version = get_installed_version(whole_package_name)
         package_meta["versionInfo"] = version
+        statistics["versionInfo"] = True
     except RuntimeError as e:
         package_meta["comment"] = f"Error: {e}, not generating metadata."
+        statistics["comment"] = True
         return package_meta
 
     try:
-        filename, url = get_download_url(package + ":" + arch, version)
+        filename, url = get_download_url(whole_package_name, version)
         package_meta["packageFileName"] = filename
+        statistics["packageFileName"] = True
         package_meta["downloadLocation"] = url
+        statistics["downloadLocation"] = True
         # meta_dic["packageVerificationCode"] = {
         #    "packageVerificationCodeValue": hashlib.sha1(
         #        hashlib.sha1(filename.encode("utf-8")).hexdigest().encode("utf-8")
@@ -237,12 +267,13 @@ def get_metadata(package: str, arch: str) -> dict:
                 "referenceLocator": purl,
             }
         ]
+        statistics["externalRefs"] = True
     except RuntimeError as e:
         comment += f"Warning: {e}, not including purl.\n"
 
     # Get many metadata
     apt_show = subprocess.run(
-        f"apt-cache show '{package}:{arch}={version}'",
+        f"apt-cache show '{whole_package_name}={version}'",
         shell=True,
         capture_output=True,
         text=True,
@@ -251,9 +282,11 @@ def get_metadata(package: str, arch: str) -> dict:
         package_meta["comment"] = (
             "Error: 'apt-cache show' failed, not generating metadata."
         )
+        statistics["comment"] = True
         return package_meta
 
     package_meta["comment"] = comment.rstrip()
+    statistics["comment"] = len(package_meta["comment"]) > 0
 
     index = 0
     lines = apt_show.stdout.splitlines()
@@ -262,41 +295,167 @@ def get_metadata(package: str, arch: str) -> dict:
             package_meta["supplier"] = "Organization: " + line[11:].strip().replace(
                 "<", "("
             ).replace(">", ")")
+            statistics["supplier"] = True
         elif line.startswith("Original-Maintainer:"):
             package_meta["originator"] = "Organization: " + line[20:].strip().replace(
                 "<", "("
             ).replace(">", ")")
+            statistics["originator"] = True
         elif line.startswith("Homepage:"):
             package_meta["homepage"] = line[9:].strip()
+            statistics["homepage"] = True
         elif line.startswith("Description-en:"):
             package_meta["summary"] = line[15:].strip()
             package_meta["description"] = read_description(lines, index + 1)
+            statistics["summary"] = True
+            statistics["description"] = True
         elif line.startswith("MD5sum:"):
             package_meta.setdefault("checksums", [])
             package_meta["checksums"].append(
                 {"algorithm": "MD5", "checksumValue": line[7:].strip()}
             )
+            statistics["md5"] = True
         elif line.startswith("SHA1:"):
             sha1 = line[5:].strip()
             package_meta.setdefault("checksums", [])
             package_meta["checksums"].append(
                 {"algorithm": "SHA1", "checksumValue": sha1}
             )
+            statistics["sha1"] = True
             package_meta["SPDXID"] = f"SPDXRef-Package--{sha1}"
         elif line.startswith("SHA256:"):
             package_meta.setdefault("checksums", [])
             package_meta["checksums"].append(
                 {"algorithm": "SHA256", "checksumValue": line[7:].strip()}
             )
+            statistics["sha256"] = True
         elif line.startswith("SHA512:"):
             package_meta.setdefault("checksums", [])
             package_meta["checksums"].append(
                 {"algorithm": "SHA512", "checksumValue": line[7:].strip()}
             )
+            statistics["sha512"] = True
 
         index += 1
 
-    return package_meta
+    return package_meta, statistics
+
+
+def print_stats(
+    packages: list,
+    list_package_stats: list[dict[str, bool]],
+    list_license_stats: list[dict[str, bool]],
+):
+    """Print the generation statistics."""
+    package_stats: dict[str, int] = {
+        "name": 0,
+        "SPDXID": 0,
+        "versionInfo": 0,
+        "packageFileName": 0,
+        "downloadLocation": 0,
+        "filesAnalyzed": 0,
+        "homepage": 0,
+        "supplier": 0,
+        "originator": 0,
+        "summary": 0,
+        "description": 0,
+        "md5": 0,
+        "sha1": 0,
+        "sha256": 0,
+        "sha512": 0,
+        "externalRefs": 0,
+        "copyrightText": 0,
+        "licenseConcluded": 0,
+        "licenseDeclared": 0,
+        # "licenseInfoFromFiles": 0,
+        "licenseComments": 0,
+        "comment": 0,
+    }
+    for item in list_package_stats:
+        package_stats["name"] += item["name"]
+        package_stats["SPDXID"] += item["SPDXID"]
+        package_stats["versionInfo"] += item["versionInfo"]
+        package_stats["packageFileName"] += item["packageFileName"]
+        package_stats["downloadLocation"] += item["downloadLocation"]
+        package_stats["filesAnalyzed"] += item["filesAnalyzed"]
+        package_stats["homepage"] += item["homepage"]
+        package_stats["supplier"] += item["supplier"]
+        package_stats["originator"] += item["originator"]
+        package_stats["summary"] += item["summary"]
+        package_stats["description"] += item["description"]
+        package_stats["md5"] += item["md5"]
+        package_stats["sha1"] += item["sha1"]
+        package_stats["sha256"] += item["sha256"]
+        package_stats["sha512"] += item["sha512"]
+        package_stats["externalRefs"] += item["externalRefs"]
+        package_stats["copyrightText"] += item["copyrightText"]
+        package_stats["licenseConcluded"] += item["licenseConcluded"]
+        package_stats["licenseDeclared"] += item["licenseDeclared"]
+        # package_stats["licenseInfoFromFiles"] += item["licenseInfoFromFiles"]
+        package_stats["licenseComments"] += item["licenseComments"]
+        package_stats["comment"] += item["comment"]
+
+    license_stats: dict[str, int] = {
+        "licenseId": 0,
+        "name": 0,
+        "extractedText": 0,
+        "comment": 0,
+    }
+    for item in list_license_stats:
+        license_stats["licenseId"] += item["licenseId"]
+        license_stats["name"] += item["name"]
+        license_stats["extractedText"] += item["extractedText"]
+        license_stats["comment"] += item["comment"]
+
+    package_stat_str: str = (
+        ""
+        if len(list_package_stats) == 0
+        else f"""- Package metadata
+  - name: {package_stats["name"]} out of {len(list_package_stats)} ({package_stats["name"] / len(list_package_stats) * 100:.2f}%)
+  - SPDXID: {package_stats["SPDXID"]} out of {len(list_package_stats)} ({package_stats["SPDXID"] / len(list_package_stats) * 100:.2f}%)
+  - versionInfo: {package_stats["versionInfo"]} out of {len(list_package_stats)} ({package_stats["versionInfo"] / len(list_package_stats) * 100:.2f}%)
+  - packageFileName: {package_stats["packageFileName"]} out of {len(list_package_stats)} ({package_stats["packageFileName"] / len(list_package_stats) * 100:.2f}%)
+  - downloadLocation: {package_stats["downloadLocation"]} out of {len(list_package_stats)} ({package_stats["downloadLocation"] / len(list_package_stats) * 100:.2f}%)
+  - filesAnalyzed: {package_stats["filesAnalyzed"]} out of {len(list_package_stats)} ({package_stats["filesAnalyzed"] / len(list_package_stats) * 100:.2f}%)
+  - homepage: {package_stats["homepage"]} out of {len(list_package_stats)} ({package_stats["homepage"] / len(list_package_stats) * 100:.2f}%)
+  - supplier: {package_stats["supplier"]} out of {len(list_package_stats)} ({package_stats["supplier"] / len(list_package_stats) * 100:.2f}%)
+  - originator: {package_stats["originator"]} out of {len(list_package_stats)} ({package_stats["originator"] / len(list_package_stats) * 100:.2f}%)
+  - summary: {package_stats["summary"]} out of {len(list_package_stats)} ({package_stats["summary"] / len(list_package_stats) * 100:.2f}%)
+  - description: {package_stats["description"]} out of {len(list_package_stats)} ({package_stats["description"] / len(list_package_stats) * 100:.2f}%)
+  - md5: {package_stats["md5"]} out of {len(list_package_stats)} ({package_stats["md5"] / len(list_package_stats) * 100:.2f}%)
+  - sha1: {package_stats["sha1"]} out of {len(list_package_stats)} ({package_stats["sha1"] / len(list_package_stats) * 100:.2f}%)
+  - sha256: {package_stats["sha256"]} out of {len(list_package_stats)} ({package_stats["sha256"] / len(list_package_stats) * 100:.2f}%)
+  - sha512: {package_stats["sha512"]} out of {len(list_package_stats)} ({package_stats["sha512"] / len(list_package_stats) * 100:.2f}%)
+  - externalRefs: {package_stats["externalRefs"]} out of {len(list_package_stats)} ({package_stats["externalRefs"] / len(list_package_stats) * 100:.2f}%)
+  - copyrightText: {package_stats["copyrightText"]} out of {len(list_package_stats)} ({package_stats["copyrightText"] / len(list_package_stats) * 100:.2f}%)
+  - licenseConcluded: {package_stats["licenseConcluded"]} out of {len(list_package_stats)} ({package_stats["licenseConcluded"] / len(list_package_stats) * 100:.2f}%)
+  - licenseDeclared: {package_stats["licenseDeclared"]} out of {len(list_package_stats)} ({package_stats["licenseDeclared"] / len(list_package_stats) * 100:.2f}%)
+  - licenseComments: {package_stats["licenseComments"]} out of {len(list_package_stats)} ({package_stats["licenseComments"] / len(list_package_stats) * 100:.2f}%)
+  - comment: {package_stats["comment"]} out of {len(list_package_stats)} ({package_stats["comment"] / len(list_package_stats) * 100:.2f}%)"""
+    )
+
+    license_stat_str: str = (
+        ""
+        if len(list_license_stats) == 0
+        else f"""- License metadata
+  - licenseId: {license_stats["licenseId"]} out of {len(list_license_stats)} ({license_stats["licenseId"] / len(list_license_stats) * 100:.2f}%)
+  - name: {license_stats["name"]} out of {len(list_license_stats)} ({license_stats["name"] / len(list_license_stats) * 100:.2f}%)
+  - extractedText: {license_stats["extractedText"]} out of {len(list_license_stats)} ({license_stats["extractedText"] / len(list_license_stats) * 100:.2f}%)
+  - comment: {license_stats["comment"]} out of {len(list_license_stats)} ({license_stats["comment"] / len(list_license_stats) * 100:.2f}%)"""
+    )
+
+    print(
+        f"""=== Results ===
+
+- Processed packages: {len(packages)} out of {len(list_package_stats)}
+{package_stat_str}
+
+---
+
+- Unknown licenses: {len(list_license_stats)}
+{license_stat_str}""",
+        file=sys.stderr,
+    )
 
 
 def make_spdx(
@@ -359,9 +518,14 @@ def make_spdx(
         ],
     }
 
+    list_package_stats: list[dict[str, bool]] = []
+    list_license_stats: list[dict[str, bool]] = []
+
     for package, files in packages:
+        print("Processing", package, file=sys.stderr)
+
         package_basename, arch = divide_package_name(package)
-        package_meta = get_metadata(package_basename, arch)
+        package_meta, package_stats = get_metadata(package_basename, arch)
 
         comment, copyright_text, license_manager = get_copyright.get_license(
             package_basename, arch
@@ -371,13 +535,18 @@ def make_spdx(
 
         if len(copyright_text) > 0:
             package_meta["copyrightText"] = copyright_text
+            package_stats["copyrightText"] = True
         # if len(licenseInfoFromFiles) > 0:
         #    package_meta["licenseInfoFromFiles"] = licenseInfoFromFiles
+        #    package_stats["licenseInfoFromFiles"] = True
         if len(licenseDeclared) > 0:
             package_meta["licenseDeclared"] = licenseDeclared
+            package_stats["licenseDeclared"] = True
             package_meta["licenseConcluded"] = licenseDeclared
+            package_stats["licenseConcluded"] = True
         if len(comment) > 0:
             package_meta["licenseComments"] = comment
+            package_stats["licenseComments"] = True
 
         # for file in sorted(files):
         #    base_index = file.rindex(os.path.sep)
@@ -423,6 +592,7 @@ def make_spdx(
         #    )
 
         spdx["packages"].append(package_meta)
+        list_package_stats.append(package_stats)
 
         spdx["relationships"].append(
             {
@@ -445,9 +615,24 @@ def make_spdx(
                 {
                     "licenseId": license_ref,
                     "name": value.name,
-                    "extractedText": "" if value.text is None else value.text,
+                    "extractedText": (
+                        "No text found for this license."
+                        if value.text is None
+                        else value.text
+                    ),
                     "comment": "" if value.comment is None else value.comment,
                 }
             )
 
+            list_license_stats.append(
+                {
+                    "licenseId": True,
+                    "name": True,
+                    "extractedText": value.text is not None and len(value.text) > 0,
+                    "comment": value.comment is not None and len(value.comment) > 0,
+                }
+            )
+
+    print(file=sys.stderr)
+    print_stats(packages, list_package_stats, list_license_stats)
     return json.dumps(spdx, ensure_ascii=False, indent=2)

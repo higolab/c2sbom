@@ -3,9 +3,9 @@
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
   "name": "curl",
-  "documentNamespace": "https://spdx.org/spdxdocs/c2sbom-curl-a8e290df-be34-42f4-93fa-6a2b9efd3faa",
+  "documentNamespace": "https://spdx.org/spdxdocs/c2sbom-curl-46dd4bde-b97b-40d3-84e2-ac69a6149520",
   "creationInfo": {
-    "created": "2025-01-18T09:42:57Z",
+    "created": "2025-01-18T15:31:35Z",
     "creators": [
       "Organization: Software Engineering Laboratory, Osaka University",
       "Tool: C2SBOM Preview"
@@ -234,8 +234,8 @@
         }
       ],
       "copyrightText": "2014-2022 Tim Ruehsen\n2014-2023 Daniel Kahn Gillmor\n2005, 2008, 2010-2023 Free Software Foundation, Inc.\n2014-2015 The Chromium Authors",
-      "licenseConcluded": "MIT AND LicenseRef-libpsl-dev-amd64--gnulib AND LicenseRef-libpsl-dev-amd64--Chromium",
-      "licenseDeclared": "MIT AND LicenseRef-libpsl-dev-amd64--gnulib AND LicenseRef-libpsl-dev-amd64--Chromium",
+      "licenseConcluded": "MIT AND LicenseRef-libpsl-dev-amd64--gnulib--6a5c929b-3fd7-44d1-bd4e-6e7ac22162e2 AND LicenseRef-libpsl-dev-amd64--Chromium--d5d5e136-0a36-4b98-8ac9-4c59df6e9974",
+      "licenseDeclared": "MIT AND LicenseRef-libpsl-dev-amd64--gnulib--6a5c929b-3fd7-44d1-bd4e-6e7ac22162e2 AND LicenseRef-libpsl-dev-amd64--Chromium--d5d5e136-0a36-4b98-8ac9-4c59df6e9974",
       "licenseComments": "",
       "comment": "",
       "summary": "Library for Public Suffix List (development headers)",
@@ -277,8 +277,8 @@
         }
       ],
       "copyrightText": "2014-2022 Tim Ruehsen\n2014-2023 Daniel Kahn Gillmor\n2005, 2008, 2010-2023 Free Software Foundation, Inc.\n2014-2015 The Chromium Authors",
-      "licenseConcluded": "MIT AND LicenseRef-libpsl5t64-amd64--gnulib AND LicenseRef-libpsl5t64-amd64--Chromium",
-      "licenseDeclared": "MIT AND LicenseRef-libpsl5t64-amd64--gnulib AND LicenseRef-libpsl5t64-amd64--Chromium",
+      "licenseConcluded": "MIT AND LicenseRef-libpsl5t64-amd64--gnulib--d2e84561-240b-4109-931d-21ae8844571b AND LicenseRef-libpsl5t64-amd64--Chromium--703dd29d-08d2-4ad8-86ee-2912d44abfa4",
+      "licenseDeclared": "MIT AND LicenseRef-libpsl5t64-amd64--gnulib--d2e84561-240b-4109-931d-21ae8844571b AND LicenseRef-libpsl5t64-amd64--Chromium--703dd29d-08d2-4ad8-86ee-2912d44abfa4",
       "licenseComments": "",
       "comment": "",
       "summary": "Library for Public Suffix List (shared libraries)",
@@ -440,25 +440,25 @@
       "comment": "Including the content of '/usr/share/doc/libgcc-s1/copyright' as-is, because: Unknown copyright format."
     },
     {
-      "licenseId": "LicenseRef-libpsl-dev-amd64--gnulib",
+      "licenseId": "LicenseRef-libpsl-dev-amd64--gnulib--6a5c929b-3fd7-44d1-bd4e-6e7ac22162e2",
       "name": "gnulib",
       "extractedText": "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.",
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libpsl-dev-amd64--Chromium",
+      "licenseId": "LicenseRef-libpsl-dev-amd64--Chromium--d5d5e136-0a36-4b98-8ac9-4c59df6e9974",
       "name": "Chromium",
       "extractedText": "Redistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are\nmet:\n\n* Redistributions of source code must retain the above copyright\nnotice, this list of conditions and the following disclaimer.\n* Redistributions in binary form must reproduce the above\ncopyright notice, this list of conditions and the following disclaimer\nin the documentation and/or other materials provided with the\ndistribution.\n* Neither the name of Google Inc. nor the names of its\ncontributors may be used to endorse or promote products derived from\nthis software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\nLIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\nA PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\nOWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\nSPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\nLIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\nDATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\nTHEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.",
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libpsl5t64-amd64--gnulib",
+      "licenseId": "LicenseRef-libpsl5t64-amd64--gnulib--d2e84561-240b-4109-931d-21ae8844571b",
       "name": "gnulib",
       "extractedText": "This file is free software; the Free Software Foundation\ngives unlimited permission to copy and/or distribute it,\nwith or without modifications, as long as this notice is preserved.",
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libpsl5t64-amd64--Chromium",
+      "licenseId": "LicenseRef-libpsl5t64-amd64--Chromium--703dd29d-08d2-4ad8-86ee-2912d44abfa4",
       "name": "Chromium",
       "extractedText": "Redistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are\nmet:\n\n* Redistributions of source code must retain the above copyright\nnotice, this list of conditions and the following disclaimer.\n* Redistributions in binary form must reproduce the above\ncopyright notice, this list of conditions and the following disclaimer\nin the documentation and/or other materials provided with the\ndistribution.\n* Neither the name of Google Inc. nor the names of its\ncontributors may be used to endorse or promote products derived from\nthis software without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n\"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\nLIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\nA PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT\nOWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,\nSPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT\nLIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\nDATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\nTHEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.",
       "comment": ""

@@ -1,35 +1,10 @@
 #!/usr/bin/env python3
 
 # Standard modules
-import argparse, subprocess, sys
+import argparse, sys, subprocess
 
 # Internal modules
 import get_package
-
-
-def run_ldd(file: str) -> set[str]:
-    """
-    Extract library files that the target executable depends on
-    using the `ldd` tool.
-
-    Raise `RuntimeError` if the call to `ldd` fails.
-    """
-    ldd = subprocess.run(f"ldd '{file}'", shell=True, capture_output=True, text=True)
-    if ldd.returncode != 0:
-        raise RuntimeError("'ldd' failed for", file)
-
-    files: set[str] = set()
-    for line in ldd.stdout.splitlines():
-        if "linux-vdso" in line or "ld-linux" in line:
-            continue
-
-        line_splitted = line.split()
-        if len(line_splitted) < 3:
-            print("Not resolved:", line_splitted[0], file=sys.stderr)
-
-        files.add(line_splitted[2])
-
-    return files
 
 
 def validate_name(name: str) -> str:
@@ -50,11 +25,10 @@ def process_file_extension(name: str) -> str:
 
 
 parser = argparse.ArgumentParser(
-    description="This script constructs an NTIA conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a executable binaries. "
+    description="This is a test script for evaluation. Just searches for all installed packages and collects metadata. "
     "This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. "
     "This project is still in the early development stage, and we are not in any way liable for the output or other behaviors of this program."
 )
-parser.add_argument("-i", "--input", nargs="+", help="Input files.")
 parser.add_argument(
     "-o",
     "--output",
@@ -87,15 +61,18 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
-libs: set[str] = set()
-for file in args.input:
-    try:
-        libs |= run_ldd(file)
-    except RuntimeError as e:
-        print("Error:", e, file=sys.stderr)
+dpkg = subprocess.run(
+    f"dpkg-query -W", shell=True, capture_output=True, text=True
+)
+if dpkg.returncode != 0:
+    print("'dpkg-query -W' failed.", file=sys.stderr)
+    exit(-1)
 
-libs = get_package.normalize_resolve_path(libs)
-packages = get_package.map_files_to_packages(libs)
+packages: list[tuple[str, set[str]]] = []
+
+for line in dpkg.stdout.splitlines():
+    packages.append((line.split()[0], set()))
+
 spdx = get_package.make_spdx(
     packages,
     args.project,
