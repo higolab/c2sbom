@@ -1,5 +1,5 @@
 # Standard modules
-import dataclasses, json, re, sys, uuid
+import dataclasses, json, os, re, sys
 
 
 @dataclasses.dataclass
@@ -31,10 +31,13 @@ class LicenseManager:
         self.spdx_license_list: dict | None = None
 
         try:
-            with open("licenses.json", encoding="utf-8") as fd:
+            with open(
+                os.path.dirname(__file__) + os.path.sep + "licenses.json",
+                encoding="utf-8",
+            ) as fd:
                 self.spdx_license_list = json.load(fd)
         except OSError as e:
-            print("SPDX License List not available:", e.strerror(), file=sys.stderr)
+            print("SPDX License List not available:", e, file=sys.stderr)
 
     def add_expr(self, expr: str) -> list[str]:
         """
@@ -85,7 +88,7 @@ class LicenseManager:
                         prepare_paren = False
                         tokens.insert(0, "(")
                         tokens.append(")")
-                    tokens.append("AND")  # It is safer to assume that "and/or" is "and"
+                    tokens.append("OR")
                     i = end_idx
                     continue
 
@@ -222,7 +225,7 @@ class LicenseManager:
         license_ref_base = (
             f"LicenseRef-{self.package.lower()}"
             if tokens is None
-            else f"LicenseRef-{self.package.lower()}--{"-".join(tokens).lower()}"
+            else f"LicenseRef-{self.package.lower()}--{'-'.join(tokens).lower()}"
         )
         license_ref_base = re.sub(r"[^0-9a-zA-Z\.\-]+", "-", license_ref_base)
         license_ref = license_ref_base
@@ -234,6 +237,27 @@ class LicenseManager:
 
         return license_ref
 
+    def _normalize_name(self, name: str) -> str:
+        """
+        Return a normalized license name by making it lower case and
+        removing trailing `.0`s.
+        """
+        prev = ""
+        result = name.lower()
+
+        while prev != result:
+            prev = result
+            i = len(result) - 2
+
+            while i >= 0:
+                if result[i : i + 2] == ".0" and (
+                    i + 2 >= len(result) or result[i + 2] != "."
+                ):
+                    result = result[:i] + result[i + 2 :]
+                i -= 1
+
+        return result
+
     def _convert_name(self, name: str, no_add: bool = False) -> str:
         """
         Match a license name appears in Debian `copyright` file into an SPDX license
@@ -243,7 +267,7 @@ class LicenseManager:
         If `no_add` is `True`, then this function doesn't assign a new `LicenseRef`.
         """
         tokens = name.split()
-        normalized = tokens[0].lower().replace(".0", "")
+        normalized = self._normalize_name(tokens[0])
         is_known: bool | None = None
 
         # Debian calls the MIT License as "Expat".
@@ -438,9 +462,9 @@ class LicenseManager:
         if is_known is None and self.spdx_license_list is not None:
             is_known = False
             for item in self.spdx_license_list["licenses"]:
-                if tokens[0].lower().replace(".0", "") == item[
-                    "licenseId"
-                ].lower().replace(".0", ""):
+                if self._normalize_name(tokens[0]) == self._normalize_name(
+                    item["licenseId"]
+                ):
                     tokens[0] = item["licenseId"]
                     is_known = True
                     break
@@ -824,6 +848,7 @@ def get_license(
                 )
             except RuntimeError as e:
                 package_comment += f"{e}\n"
+                index += 1
 
         else:  # Unknown stanza
             while index < len(lines):  # Skip a stanza

@@ -15,6 +15,7 @@ def normalize_resolve_path(files: set[str]) -> set[str]:
       (ex. `libpsl.so` -> `libpsl.so.5` -> `libpsl.so.5.3.4`).
     """
     normalized_files: set[str] = set()
+    ok_count: int = 0
 
     for file in files:
         p = pathlib.Path(file)
@@ -34,7 +35,12 @@ def normalize_resolve_path(files: set[str]) -> set[str]:
                 continue
 
         normalized_files.add(resolved)
+        ok_count += 1
 
+    print(
+        f"{ok_count} out of {len(files)} ({ok_count / len(files) * 100:.2f}%) files are resolved, resulting in {len(normalized_files)} files excluding repetition.",
+        file=sys.stderr,
+    )
     return normalized_files
 
 
@@ -47,6 +53,7 @@ def map_files_to_packages(files: set[str]) -> list[tuple[str, set[str]]]:
     which belong to the package as the second tuple item.
     """
     packages: dict[str, set[str]] = {}
+    ok_count: int = 0
 
     for file in files:
         dpkg = subprocess.run(
@@ -59,7 +66,12 @@ def map_files_to_packages(files: set[str]) -> list[tuple[str, set[str]]]:
 
         packages.setdefault(pkg_name, set())
         packages[pkg_name].add(file)
+        ok_count += 1
 
+    print(
+        f"{ok_count} out of {len(files)} ({ok_count / len(files) * 100:.2f}%) files are mapped to {len(packages)} packages.",
+        file=sys.stderr,
+    )
     return sorted(packages.items())
 
 

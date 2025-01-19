@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Standard modules
-import argparse, sys, subprocess
+import argparse, os, sys, subprocess
 
 # Internal modules
 import get_package
@@ -21,7 +21,14 @@ def validate_name(name: str) -> str:
 
 def process_file_extension(name: str) -> str:
     """Add `.spdx.json` if the given file name doesn't have any extension."""
-    return name if "." in name else name + ".spdx.json"
+    base_index = name.rfind(os.path.sep)
+    if base_index == -1:  # Just basename
+        return name if "." in name else name + ".spdx.json"
+    elif base_index >= len(name) - 1:  # Directory
+        return name
+    else:
+        basename = name[base_index + 1 :]
+        return name if "." in basename else name + ".spdx.json"
 
 
 parser = argparse.ArgumentParser(
