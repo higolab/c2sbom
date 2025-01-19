@@ -27,6 +27,9 @@ class LicenseManager:
         # Maps license names in a `copyright` file to `LicenseRef`s.
         self.mapping: dict[str, str] = {}  # keys are in lower case
 
+        # All license names appeared (for statistics).
+        self.stats_all_licenses: set[str] = set()
+
         # SPDX License List
         self.spdx_license_list: dict | None = None
 
@@ -192,6 +195,7 @@ class LicenseManager:
             ):
                 tokens[i] = self._convert_name(tokens[i])
                 new_licenses.append(tokens[i])
+                self.stats_all_licenses.add(tokens[i])
             i += 1
 
         # Add the newly constructed expression avoiding a repetition
@@ -215,6 +219,7 @@ class LicenseManager:
         self.licenses[license_ref] = License(
             "NOASSERTION", text.strip(), None if comment is None else comment.strip()
         )
+        self.stats_all_licenses.add(license_ref)
 
         return license_ref
 

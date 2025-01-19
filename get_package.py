@@ -217,7 +217,7 @@ def get_metadata(package: str, arch: str | None) -> tuple[dict, dict[str, bool]]
         "comment": "",
     }
 
-    statistics: dict[str, bool | str] = {
+    statistics: dict[str, bool | str | int] = {
         "name": True,
         "SPDXID": True,
         "versionInfo": False,
@@ -241,6 +241,7 @@ def get_metadata(package: str, arch: str | None) -> tuple[dict, dict[str, bool]]
         "licenseComments": False,
         "comment": False,
         "copyright_status": None,
+        "license_count": 0,
     }
 
     comment: str = ""
@@ -403,6 +404,7 @@ def print_stats(
         "copyright_ok": 0,
         "copyright_cannot_open": 0,
         "copyright_unknown_format": 0,
+        "license_count": 0,
     }
     for item in list_package_stats:
         package_stats["name"] += item["name"]
@@ -433,6 +435,7 @@ def print_stats(
             package_stats["copyright_cannot_open"] += 1
         elif item["copyright_status"] == "unknown format":
             package_stats["copyright_unknown_format"] += 1
+        package_stats["license_count"] += item["license_count"]
 
     license_stats: dict[str, int] = {
         "licenseId": 0,
@@ -488,7 +491,7 @@ def print_stats(
         f"""=== Results ===
 - Processed packages: {len(packages)} out of {len(list_package_stats)}
 {package_stat_str}
-- Unknown licenses: {len(list_license_stats)}
+- Unknown licenses: {len(list_license_stats)} out of {package_stats["license_count"]}
 {license_stat_str}""",
         file=sys.stderr,
     )
@@ -569,6 +572,7 @@ def make_spdx(
         # licenseInfoFromFiles = license_manager.all_expr_str
         licenseDeclared = license_manager.all_expr_str_cat
         package_stats["copyright_status"] = tmp_stat
+        package_stats["license_count"] = len(license_manager.stats_all_licenses)
 
         if len(copyright_text) > 0:
             package_meta["copyrightText"] = copyright_text
