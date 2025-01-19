@@ -205,7 +205,7 @@ def get_metadata(package: str, arch: str | None) -> tuple[dict, dict[str, bool]]
         "comment": "",
     }
 
-    statistics: dict[str, bool] = {
+    statistics: dict[str, bool | str] = {
         "name": True,
         "SPDXID": True,
         "versionInfo": False,
@@ -228,6 +228,7 @@ def get_metadata(package: str, arch: str | None) -> tuple[dict, dict[str, bool]]
         # "licenseInfoFromFiles": False,
         "licenseComments": False,
         "comment": False,
+        "copyright_status": None,
     }
 
     comment: str = ""
@@ -292,49 +293,66 @@ def get_metadata(package: str, arch: str | None) -> tuple[dict, dict[str, bool]]
     lines = apt_show.stdout.splitlines()
     for line in lines:
         if line.startswith("Maintainer:"):
-            package_meta["supplier"] = "Organization: " + line[11:].strip().replace(
-                "<", "("
-            ).replace(">", ")")
-            statistics["supplier"] = True
+            value = line[11:].strip()
+            if len(value) > 0:
+                package_meta["supplier"] = "Organization: " + value.replace(
+                    "<", "("
+                ).replace(">", ")")
+                statistics["supplier"] = True
         elif line.startswith("Original-Maintainer:"):
-            package_meta["originator"] = "Organization: " + line[20:].strip().replace(
-                "<", "("
-            ).replace(">", ")")
-            statistics["originator"] = True
+            value = line[20:].strip()
+            if len(value) > 0:
+                package_meta["originator"] = "Organization: " + value.replace(
+                    "<", "("
+                ).replace(">", ")")
+                statistics["originator"] = True
         elif line.startswith("Homepage:"):
-            package_meta["homepage"] = line[9:].strip()
-            statistics["homepage"] = True
+            value = line[9:].strip()
+            if len(value) > 0:
+                package_meta["homepage"] = value
+                statistics["homepage"] = True
         elif line.startswith("Description-en:"):
-            package_meta["summary"] = line[15:].strip()
-            package_meta["description"] = read_description(lines, index + 1)
-            statistics["summary"] = True
-            statistics["description"] = True
+            summary = line[15:].strip()
+            if len(summary) > 0:
+                package_meta["summary"] = summary
+                statistics["summary"] = True
+            description = read_description(lines, index + 1)
+            if len(description) > 0:
+                package_meta["description"] = description
+                statistics["description"] = True
         elif line.startswith("MD5sum:"):
-            package_meta.setdefault("checksums", [])
-            package_meta["checksums"].append(
-                {"algorithm": "MD5", "checksumValue": line[7:].strip()}
-            )
-            statistics["md5"] = True
+            value = line[7:].strip()
+            if len(value) > 0:
+                package_meta.setdefault("checksums", [])
+                package_meta["checksums"].append(
+                    {"algorithm": "MD5", "checksumValue": value}
+                )
+                statistics["md5"] = True
         elif line.startswith("SHA1:"):
-            sha1 = line[5:].strip()
-            package_meta.setdefault("checksums", [])
-            package_meta["checksums"].append(
-                {"algorithm": "SHA1", "checksumValue": sha1}
-            )
-            statistics["sha1"] = True
-            package_meta["SPDXID"] = f"SPDXRef-Package--{sha1}"
+            value = line[5:].strip()
+            if len(value) > 0:
+                package_meta.setdefault("checksums", [])
+                package_meta["checksums"].append(
+                    {"algorithm": "SHA1", "checksumValue": value}
+                )
+                statistics["sha1"] = True
+                package_meta["SPDXID"] = f"SPDXRef-Package--{value}"
         elif line.startswith("SHA256:"):
-            package_meta.setdefault("checksums", [])
-            package_meta["checksums"].append(
-                {"algorithm": "SHA256", "checksumValue": line[7:].strip()}
-            )
-            statistics["sha256"] = True
+            value = line[7:].strip()
+            if len(value) > 0:
+                package_meta.setdefault("checksums", [])
+                package_meta["checksums"].append(
+                    {"algorithm": "SHA256", "checksumValue": value}
+                )
+                statistics["sha256"] = True
         elif line.startswith("SHA512:"):
-            package_meta.setdefault("checksums", [])
-            package_meta["checksums"].append(
-                {"algorithm": "SHA512", "checksumValue": line[7:].strip()}
-            )
-            statistics["sha512"] = True
+            value = line[7:].strip()
+            if len(value) > 0:
+                package_meta.setdefault("checksums", [])
+                package_meta["checksums"].append(
+                    {"algorithm": "SHA512", "checksumValue": value}
+                )
+                statistics["sha512"] = True
 
         index += 1
 
@@ -343,7 +361,7 @@ def get_metadata(package: str, arch: str | None) -> tuple[dict, dict[str, bool]]
 
 def print_stats(
     packages: list,
-    list_package_stats: list[dict[str, bool]],
+    list_package_stats: list[dict[str, bool | str]],
     list_license_stats: list[dict[str, bool]],
 ):
     """Print the generation statistics."""
@@ -370,6 +388,9 @@ def print_stats(
         # "licenseInfoFromFiles": 0,
         "licenseComments": 0,
         "comment": 0,
+        "copyright_ok": 0,
+        "copyright_cannot_open": 0,
+        "copyright_unknown_format": 0,
     }
     for item in list_package_stats:
         package_stats["name"] += item["name"]
@@ -394,6 +415,12 @@ def print_stats(
         # package_stats["licenseInfoFromFiles"] += item["licenseInfoFromFiles"]
         package_stats["licenseComments"] += item["licenseComments"]
         package_stats["comment"] += item["comment"]
+        if item["copyright_status"] == "ok":
+            package_stats["copyright_ok"] += 1
+        elif item["copyright_status"] == "cannot open":
+            package_stats["copyright_cannot_open"] += 1
+        elif item["copyright_status"] == "unknown format":
+            package_stats["copyright_unknown_format"] += 1
 
     license_stats: dict[str, int] = {
         "licenseId": 0,
@@ -431,7 +458,8 @@ def print_stats(
   - licenseConcluded: {package_stats["licenseConcluded"]} out of {len(list_package_stats)} ({package_stats["licenseConcluded"] / len(list_package_stats) * 100:.2f}%)
   - licenseDeclared: {package_stats["licenseDeclared"]} out of {len(list_package_stats)} ({package_stats["licenseDeclared"] / len(list_package_stats) * 100:.2f}%)
   - licenseComments: {package_stats["licenseComments"]} out of {len(list_package_stats)} ({package_stats["licenseComments"] / len(list_package_stats) * 100:.2f}%)
-  - comment: {package_stats["comment"]} out of {len(list_package_stats)} ({package_stats["comment"] / len(list_package_stats) * 100:.2f}%)"""
+  - comment: {package_stats["comment"]} out of {len(list_package_stats)} ({package_stats["comment"] / len(list_package_stats) * 100:.2f}%)
+  - copyright_stats: cannot_open:unknown_format:ok = {package_stats["copyright_cannot_open"]}:{package_stats["copyright_unknown_format"]}:{package_stats["copyright_ok"]} ({package_stats["copyright_cannot_open"] / len(list_package_stats) * 100:.2f}%:{package_stats["copyright_unknown_format"] / len(list_package_stats) * 100:.2f}%:{package_stats["copyright_ok"] / len(list_package_stats) * 100:.2f}%)"""
     )
 
     license_stat_str: str = (
@@ -446,12 +474,8 @@ def print_stats(
 
     print(
         f"""=== Results ===
-
 - Processed packages: {len(packages)} out of {len(list_package_stats)}
 {package_stat_str}
-
----
-
 - Unknown licenses: {len(list_license_stats)}
 {license_stat_str}""",
         file=sys.stderr,
@@ -527,11 +551,12 @@ def make_spdx(
         package_basename, arch = divide_package_name(package)
         package_meta, package_stats = get_metadata(package_basename, arch)
 
-        comment, copyright_text, license_manager = get_copyright.get_license(
+        comment, copyright_text, license_manager, tmp_stat = get_copyright.get_license(
             package_basename, arch
         )
         # licenseInfoFromFiles = license_manager.all_expr_str
         licenseDeclared = license_manager.all_expr_str_cat
+        package_stats["copyright_status"] = tmp_stat
 
         if len(copyright_text) > 0:
             package_meta["copyrightText"] = copyright_text

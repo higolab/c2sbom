@@ -2,9 +2,9 @@
 
 This is an experimental, proof-of-concept version of C2SBOM to automatically generate an SPDX 2.3 Document for a C/C++ project in JSON format. These scripts construct [valid](https://tools.spdx.org/app/validate/) and [NTIA Minimum Elements Conformant](https://tools.spdx.org/app/ntia_checker/) SBOMs. This project comes with two distinct scripts:
 
-- `build_sbom.py`: Reads output from build tools (`gcc`/`g++` and `ld`) and generates an SPDX document.
+- `build_sbom.py`: Reads output from build tools (`gcc`/`g++` and `ld`) and generates an SPDX document of build-time dependencies (i.e., compiled/linked into the resulting binaries).
   - Thus constructs a "Build SBOM" by the [CISA (Cybersecurity and Infrastructure Security Agency) definition](https://www.cisa.gov/sites/default/files/2023-04/sbom-types-document-508c.pdf)
-- `analyzed_sbom.py`: Reads executable binaries and generates an SPDX document.
+- `analyzed_sbom.py`: Reads executable binaries and generates an SPDX document of run-time dependencies.
   - Thus constructs an "Analyzed SBOM" by the [CISA definition](https://www.cisa.gov/sites/default/files/2023-04/sbom-types-document-508c.pdf)
 
 `build_sbom.py` needs output that is made with
@@ -83,12 +83,12 @@ options:
 
 ## Samples
 
-- [Build SBOM for curl 8.10.1](samples/curl-build.spdx.json)
-- [Analyzed SBOM for curl 8.10.1](samples/curl-analyzed.spdx.json)
+- [Build SBOM for curl 8.10.1](samples/curl-build.spdx.json) (Ubuntu 24.04 LTS)
+- [Analyzed SBOM for curl 8.10.1](samples/curl-analyzed.spdx.json) (Ubuntu 24.04 LTS)
 
 ## SPDX License List
 
-This PoC uses SPDX License List JSON to map Debian license notation to SPDX License Identifier. Although the JSON file is included in this PoC, it may be out of date by the time you get one. In that case download the new one from <https://github.com/spdx/license-list-data/blob/main/json/licenses.json> and replace the existing one.
+This PoC uses SPDX License List JSON to map Debian license notation to SPDX License Identifier. Although the JSON file is included in this PoC, it may be out of date by the time you try it. In that case download the new one from <https://github.com/spdx/license-list-data/blob/main/json/licenses.json> and replace the existing one. Be noted that if you use a version of the license list that is newer than the official validators internally reference, they may complain you about unknown license identifiers.
 
 ## License
 

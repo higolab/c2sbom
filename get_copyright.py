@@ -197,19 +197,40 @@ class LicenseManager:
 
         return new_licenses
 
-    def add_license_direct(self, text: str, comment: str | None = None) -> str:
+    def add_license_direct(
+        self, text: str, comment: str | None = None, tokens: list[str] | None = None
+    ) -> str:
         """
         Add a license text directly and return a `LicenseRef` assigned for it.
 
         Intended for unnamed licenses and Debian `copyright` files that are not
         in the standard format.
         """
-        license_ref = re.sub(r'[^0-9a-zA-Z\.\-]+', '-', f"LicenseRef-{self.package}--{uuid.uuid4()}")
+        license_ref = self._gen_license_ref(tokens)
 
         self.exprs.append(license_ref)
         self.licenses[license_ref] = License(
             "NOASSERTION", text.strip(), None if comment is None else comment.strip()
         )
+
+        return license_ref
+
+    def _gen_license_ref(self, tokens: list[str] | None = None) -> str:
+        """
+        Generates a new LicenseRef that does not conflicts with existing ones.
+        """
+        license_ref_base = (
+            f"LicenseRef-{self.package.lower()}"
+            if tokens is None
+            else f"LicenseRef-{self.package.lower()}--{"-".join(tokens).lower()}"
+        )
+        license_ref_base = re.sub(r"[^0-9a-zA-Z\.\-]+", "-", license_ref_base)
+        license_ref = license_ref_base
+
+        i: int = 1
+        while license_ref in self.licenses:
+            license_ref = f"{license_ref_base}-{i}"
+            i += 1
 
         return license_ref
 
@@ -223,127 +244,199 @@ class LicenseManager:
         """
         tokens = name.split()
         normalized = tokens[0].lower().replace(".0", "")
+        is_known: bool | None = None
 
         # Debian calls the MIT License as "Expat".
         if normalized == "expat":
             tokens[0] = "MIT"
-        
-        # Deprecated as a separate license because it is a match to BSD-2-Clause.
-        if normalized == "bsd-2-clause-netbsd":
+            is_known = True
+
+        # Deprecated licenses
+        elif normalized == "bsd-2-clause-netbsd":
             tokens[0] = "BSD-2-Clause"
+            is_known = True
+        elif normalized == "bsd-2-clause-freebsd":
+            tokens[0] = "BSD-2-Clause-Views"
+            is_known = True
+        elif normalized == "bzip2-1.0.5":
+            tokens[0] = "bzip2-1.0.6"
+            is_known = True
+        elif len(tokens) == 1 and normalized == "ecos-2.0":
+            tokens[0] = "GPL-2.0-or-later WITH eCos-exception-2.0"
+            is_known = True
+        elif normalized == "ecos-2.0":
+            is_known = False
+        elif normalized == "nunit":
+            tokens[0] = "MIT-advertising"
+            is_known = True
+        elif normalized == "standardml-nj":
+            tokens[0] = "SMLNJ"
+            is_known = True
+        elif len(tokens) == 1 and normalized == "wxwindows":
+            tokens[0] = "LGPL-2.0-or-later WITH WxWindows-exception-3.1"
+            is_known = True
+        elif normalized == "wxwindows":
+            is_known = False
+        elif normalized == "net-snmp":
+            is_known = False  # Can't reliably modernize
 
         # Version number omissions
         elif normalized == "apache":
             tokens[0] = "Apache-1.0"
+            is_known = True
         elif normalized == "artistic":
             tokens[0] = "Artistic-1.0"
+            is_known = True
         elif normalized == "cc-by":
             tokens[0] = "CC-BY-1.0"
+            is_known = True
         elif normalized == "cc-by-sa":
             tokens[0] = "CC-BY-SA-1.0"
+            is_known = True
         elif normalized == "cc-by-nd":
             tokens[0] = "CC-BY-ND-1.0"
+            is_known = True
         elif normalized == "cc-by-nc":
             tokens[0] = "CC-BY-NC-1.0"
+            is_known = True
         elif normalized == "cc-by-nc-sa":
             tokens[0] = "CC-BY-NC-SA-1.0"
+            is_known = True
         elif normalized == "cc-by-nc-nd":
             tokens[0] = "CC-BY-NC-ND-1.0"
+            is_known = True
         elif normalized == "cc0":
             tokens[0] = "CC0-1.0"
+            is_known = True
         elif normalized == "cddl":
             tokens[0] = "CDDL-1.0"
+            is_known = True
         elif normalized == "cpl":
             tokens[0] = "CPL-1.0"
+            is_known = True
         elif normalized == "efl":
             tokens[0] = "EFL-1.0"
+            is_known = True
         elif normalized == "lppl":
             tokens[0] = "LPPL-1.0"
+            is_known = True
         elif normalized == "mpl":
             # As per https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
             tokens[0] = "MPL-1.1"
+            is_known = True
         elif normalized == "python":
             # As per https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
             tokens[0] = "Python-2.0"
+            is_known = True
         elif normalized == "qpl":
             tokens[0] = "QPL-1.0"
+            is_known = True
         elif normalized == "zope":
             tokens[0] = "Zope-1.1"
+            is_known = True
 
         # Naming mismatches for GPL
         elif normalized.startswith("gpl"):
             if normalized == "gpl" or normalized == "gpl-1":
                 tokens[0] = "GPL-1.0-only"
+                is_known = True
             elif normalized == "gpl+" or normalized == "gpl-1+":
                 tokens[0] = "GPL-1.0-or-later"
+                is_known = True
             elif normalized == "gpl-2":
                 tokens[0] = "GPL-2.0-only"
+                is_known = True
             elif normalized == "gpl-2+":
                 tokens[0] = "GPL-2.0-or-later"
+                is_known = True
             elif normalized == "gpl-3":
                 tokens[0] = "GPL-3.0-only"
+                is_known = True
             elif normalized == "gpl-3+":
                 tokens[0] = "GPL-3.0-or-later"
+                is_known = True
 
         # Naming mismatches for AGPL
         elif normalized.startswith("agpl"):
             if normalized == "agpl" or normalized == "agpl-1":
                 tokens[0] = "AGPL-1.0-only"
+                is_known = True
             elif normalized == "agpl+" or normalized == "agpl-1+":
                 tokens[0] = "AGPL-1.0-or-later"
+                is_known = True
             elif normalized == "agpl-3":
                 tokens[0] = "AGPL-3.0-only"
+                is_known = True
             elif normalized == "agpl-3+":
                 tokens[0] = "AGPL-3.0-or-later"
+                is_known = True
 
         # Naming mismatches for LGPL
         elif normalized.startswith("lgpl"):
             if normalized == "lgpl" or normalized == "lgpl-2":
                 tokens[0] = "LGPL-2.0-only"
+                is_known = True
             elif normalized == "lgpl+" or normalized == "lgpl-2+":
                 tokens[0] = "LGPL-2.0-or-later"
+                is_known = True
             elif normalized == "lgpl-2.1":
                 tokens[0] = "LGPL-2.1-only"
+                is_known = True
             elif normalized == "lgpl-2.1+":
                 tokens[0] = "LGPL-2.1-or-later"
+                is_known = True
             elif normalized == "lgpl-3":
                 tokens[0] = "LGPL-3.0-only"
+                is_known = True
             elif normalized == "lgpl-3+":
                 tokens[0] = "LGPL-3.0-or-later"
+                is_known = True
 
         # Naming mismatches for GFDL no invariants
-        elif "gfdl-niv" in normalized:
+        elif normalized.startswith("gfdl-niv"):
             if normalized == "gfdl-niv" or normalized == "gfdl-niv-1.1":
                 tokens[0] = "GFDL-1.1-no-invariants-only"
+                is_known = True
             elif normalized == "gfdl-niv+" or normalized == "gfdl-niv-1.1+":
                 tokens[0] = "GFDL-1.1-no-invariants-or-later"
+                is_known = True
             elif normalized == "gfdl-niv-1.2":
                 tokens[0] = "GFDL-1.2-no-invariants-only"
+                is_known = True
             elif normalized == "gfdl-niv-1.2+":
                 tokens[0] = "GFDL-1.2-no-invariants-or-later"
+                is_known = True
             elif normalized == "gfdl-niv-1.3":
                 tokens[0] = "GFDL-1.3-no-invariants-only"
+                is_known = True
             elif normalized == "gfdl-niv-1.3+":
                 tokens[0] = "GFDL-1.3-no-invariants-or-later"
+                is_known = True
 
         # Naming mismatches for GFDL invariants
-        elif "gfdl" in normalized:
+        elif normalized.startswith("gfdl"):
             if normalized == "gfdl" or normalized == "gfdl-1.1":
                 tokens[0] = "GFDL-1.1-invariants-only"
+                is_known = True
             elif normalized == "gfdl+" or normalized == "gfdl-1.1+":
                 tokens[0] = "GFDL-1.1-invariants-or-later"
+                is_known = True
             elif normalized == "gfdl-1.2":
                 tokens[0] = "GFDL-1.2-invariants-only"
+                is_known = True
             elif normalized == "gfdl-1.2+":
                 tokens[0] = "GFDL-1.2-invariants-or-later"
+                is_known = True
             elif normalized == "gfdl-1.3":
                 tokens[0] = "GFDL-1.3-invariants-only"
+                is_known = True
             elif normalized == "gfdl-1.3+":
                 tokens[0] = "GFDL-1.3-invariants-or-later"
+                is_known = True
 
         # Check if the license is in the SPDX License List
-        is_known: bool = False
-        if self.spdx_license_list is not None:
+        if is_known is None and self.spdx_license_list is not None:
+            is_known = False
             for item in self.spdx_license_list["licenses"]:
                 if tokens[0].lower().replace(".0", "") == item[
                     "licenseId"
@@ -352,14 +445,14 @@ class LicenseManager:
                     is_known = True
                     break
 
-        # License with exception
+        # License with exception or format violating license name
         if len(tokens) > 1:
             full_name = " ".join(tokens)
             if full_name.lower() not in self.mapping:
                 if no_add:
                     return None
                 else:
-                    license_ref = re.sub(r'[^0-9a-zA-Z\.\-]+', '-', f"LicenseRef-{self.package}--{"-".join(tokens)}--{uuid.uuid4()}")
+                    license_ref = self._gen_license_ref(tokens)
                     self.mapping[full_name.lower()] = license_ref
                     self.licenses[license_ref] = License(full_name)
             return self.mapping[full_name.lower()]
@@ -374,7 +467,7 @@ class LicenseManager:
         elif no_add:
             return None
         else:
-            license_ref = re.sub(r'[^0-9a-zA-Z\.\-]+', '-', f"LicenseRef-{self.package}--{"-".join(tokens)}--{uuid.uuid4()}")
+            license_ref = self._gen_license_ref(tokens)
             self.mapping[tokens[0].lower()] = license_ref
             self.licenses[license_ref] = License(tokens[0])
             return self.mapping[tokens[0].lower()]
@@ -522,9 +615,12 @@ def copyright_header_stanza(
             index += 1
 
         elif lines[index].startswith("Comment:"):
-            comment += lines[index][8:].strip() + "\n"
+            value = lines[index][8:].strip()
+            if len(value) > 0:
+                comment += value + "\n"
             result, index = read_formatted_text(lines, index + 1)
-            comment += result
+            if len(result) > 0:
+                comment += result
 
         elif lines[index].startswith("License:"):
             license_name = lines[index][8:].strip()
@@ -538,9 +634,12 @@ def copyright_header_stanza(
                 license_manager.add_license_direct(result)
 
         elif lines[index].startswith("Copyright:"):
-            copyright_text += lines[index][10:].strip() + "\n"
+            value = lines[index][10:].strip()
+            if len(value) > 0:
+                copyright_text += value + "\n"
             result, index = read_formatted_text(lines, index + 1)
-            copyright_text += result
+            if len(result) > 0:
+                copyright_text += result
 
         elif len(lines[index].strip()) == 0:  # End of stanza
             index += 1
@@ -570,9 +669,12 @@ def copyright_files_stanza(
 
     while index < len(lines):
         if lines[index].startswith("Comment:"):
-            comment += lines[index][8:].strip() + "\n"
+            value = lines[index][8:].strip()
+            if len(value) > 0:
+                comment += value + "\n"
             result, index = read_formatted_text(lines, index + 1)
-            comment += result
+            if len(result) > 0:
+                comment += result
 
         elif lines[index].startswith("License:"):
             license_name = lines[index][8:].strip()
@@ -586,9 +688,12 @@ def copyright_files_stanza(
                 license_manager.add_license_direct(result)
 
         elif lines[index].startswith("Copyright:"):
-            copyright_text += lines[index][10:].strip() + "\n"
+            value = lines[index][10:].strip()
+            if len(value) > 0:
+                copyright_text += value + "\n"
             result, index = read_formatted_text(lines, index + 1)
-            copyright_text += result
+            if len(result) > 0:
+                copyright_text += result
 
         elif len(lines[index].strip()) == 0:  # End of stanza
             index += 1
@@ -615,14 +720,23 @@ def copyright_license_stanza(
 
     while index < len(lines):
         if lines[index].startswith("Comment:"):
-            comment = lines[index][8:].strip() + "\n"
+            value = lines[index][8:].strip()
+            if len(value) > 0:
+                comment = value + "\n"
             result, index = read_formatted_text(lines, index + 1)
-            comment += result
+            if len(result) > 0:
+                if comment is None:
+                    comment = result
+                else:
+                    comment += result
 
         elif lines[index].startswith("License:"):
-            license_name = lines[index][8:].strip()
+            value = lines[index][8:].strip()
             result, index = read_formatted_text(lines, index + 1)
-            license_manager.add_license_text(license_name, result)
+            if len(value) > 0:
+                license_name = value
+                if len(result) > 0:
+                    license_manager.add_license_text(license_name, result)
 
         elif len(lines[index].strip()) == 0:  # End of stanza
             index += 1
@@ -642,7 +756,7 @@ def copyright_license_stanza(
 
 def get_license(
     package_basename: str, arch: str | None
-) -> tuple[str, str, LicenseManager]:
+) -> tuple[str, str, LicenseManager, str]:
     """
     Get license information from `/usr/share/doc/<package_basename>/copyright` and
     return the comment, copyright text, and `LicenseManager` in this order.
@@ -667,7 +781,7 @@ def get_license(
             lines = f_rel.readlines()
     except IOError as e:
         package_comment += f"Cannot open '/usr/share/doc/{package_basename}/copyright': {e.strerror}, not including license information."
-        return package_comment, copyright_text, license_manager
+        return package_comment, copyright_text, license_manager, "cannot open"
 
     while index < len(lines):  # Skip blank lines
         if len(lines[index].strip()) != 0:
@@ -684,8 +798,9 @@ def get_license(
         license_manager.add_license_direct(
             "".join(lines),
             f"Including the content of '/usr/share/doc/{package_basename}/copyright' as-is, because: {e}.",
+            ["copyright"],
         )
-        return package_comment, copyright_text, license_manager
+        return package_comment, copyright_text, license_manager, "unknown format"
 
     while index < len(lines):
         while index < len(lines):  # Skip blank lines
@@ -718,4 +833,4 @@ def get_license(
             else:
                 break
 
-    return package_comment.strip(), copyright_text.strip(), license_manager
+    return package_comment.strip(), copyright_text.strip(), license_manager, "ok"
