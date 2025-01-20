@@ -154,7 +154,7 @@ if args.input is None:
     sys_libs = extract_file_names(sys.stdin)
 else:
     try:
-        with open(args.input, encoding="utf-8") as fd:
+        with open(args.input, encoding="utf-8", errors="ignore") as fd:
             # sys_libs, local_libs = extract_file_names_verbose(fd)
             sys_libs = extract_file_names(fd)
     except OSError as e:

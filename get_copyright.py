@@ -37,6 +37,7 @@ class LicenseManager:
             with open(
                 os.path.dirname(__file__) + os.path.sep + "licenses.json",
                 encoding="utf-8",
+                errors="ignore",
             ) as fd:
                 self.spdx_license_list = json.load(fd)
         except OSError as e:
@@ -805,7 +806,9 @@ def get_license(
 
     try:
         with open(
-            f"/usr/share/doc/{package_basename}/copyright", encoding="utf-8"
+            f"/usr/share/doc/{package_basename}/copyright",
+            encoding="utf-8",
+            errors="ignore",
         ) as f_rel:
             lines = f_rel.readlines()
     except IOError as e:

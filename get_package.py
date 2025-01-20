@@ -140,7 +140,7 @@ def make_purl(package_basename: str, version: str, arch: str | None) -> str:
     distro: str | None = None
 
     try:
-        with open("/etc/os-release", encoding="utf-8") as f_rel:
+        with open("/etc/os-release", encoding="utf-8", errors="ignore") as f_rel:
             for line in f_rel:
                 if line.startswith("ID="):
                     vendor = (
