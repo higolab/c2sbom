@@ -31,8 +31,7 @@ This PoC doesn't have any external dependencies and uses only standard libraries
 $ ./gen_build.py -h
 usage: gen_build.py [-h] [-i INPUT] [-o OUTPUT] -p PROJECT -d DEVELOPER [-l LICENSE] -v VERSION [-c COPYRIGHT] [-u [USER ...]] [--no-license-heuristic] [--verbose-input] [--include-individual-licenses] [--include-files-section]
 
-This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a build process. This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This project is still in the early
-development stage, and we are not in any way liable for the output or other behaviors of this program.
+This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a build process. This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This project is still in the early development stage, and we are not in any way liable for the output or other behaviors of this program.
 
 options:
   -h, --help            show this help message and exit
@@ -65,8 +64,7 @@ options:
 $ ./gen_analyzed.py -h
 usage: gen_analyzed.py [-h] [-i INPUT [INPUT ...]] [-o OUTPUT] -p PROJECT -d DEVELOPER [-l LICENSE] -v VERSION [-c COPYRIGHT] [-u [USER ...]] [--no-license-heuristic] [--include-individual-licenses] [--include-files-section]
 
-This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a executable binaries. This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This project is still in the
-early development stage, and we are not in any way liable for the output or other behaviors of this program.
+This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a executable binaries. This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This project is still in the early development stage, and we are not in any way liable for the output or other behaviors of this program.
 
 options:
   -h, --help            show this help message and exit

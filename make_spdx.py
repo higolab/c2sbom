@@ -152,28 +152,16 @@ def print_stats(
     print("=== Results ===", file=sys.stderr)
 
     print(
-        f"Processed packages: {stat_line(len(packages), len(list_license_stats))}",
+        f"Processed packages: {stat_line(len(packages), len(list_package_stats))}",
         file=sys.stderr,
     )
     if len(list_package_stats) > 0:
         print("Package metadata", file=sys.stderr)
         for item in package_stats.items():
-            if item[0] == "copyright_stats":
-                print(
-                    f"copyright_stats: cannot_open:unknown_format:ok = "
-                    f"{package_stats['copyright_cannot_open']}:"
-                    f"{package_stats['copyright_unknown_format']}:"
-                    f"{package_stats['copyright_ok']} "
-                    f"({package_stats['copyright_cannot_open'] / len(list_package_stats) * 100:.2f}%:"
-                    f"{package_stats['copyright_unknown_format'] / len(list_package_stats) * 100:.2f}%:"
-                    f"{package_stats['copyright_ok'] / len(list_package_stats) * 100:.2f}%)",
-                    file=sys.stderr,
-                )
-            else:
-                print(
-                    f"- {item[0]}: {stat_line(item[1], len(list_package_stats))}",
-                    file=sys.stderr,
-                )
+            print(
+                f"- {item[0]}: {stat_line(item[1], len(list_package_stats))}",
+                file=sys.stderr,
+            )
 
     print(
         f"Unknown licenses: {stat_line(len(list_license_stats), package_stats['license_count'])}",
