@@ -4,7 +4,7 @@
 import argparse, os, sys, typing
 
 # Internal modules
-import get_package
+import make_spdx
 
 
 def extract_file_names(stream: typing.TextIO) -> set[str]:
@@ -12,8 +12,7 @@ def extract_file_names(stream: typing.TextIO) -> set[str]:
     Extract library file names from the `make` console output.
     Only system library files are collected and all local libraries are ignored.
 
-    System library files are files that is in absolute path, and others are
-    considered local library files.
+    System library files are files that is in absolute path, and others are considered local library files.
     """
     sys_libs: set[str] = set()
 
@@ -43,11 +42,10 @@ def extract_file_names(stream: typing.TextIO) -> set[str]:
 
 def extract_file_names_verbose(stream: typing.TextIO) -> tuple[set[str], set[str]]:
     """
-    Extract file names from the linker (`ld`) verbose console output and return
-    sets of system library files and local library files in this order (legacy).
+    Extract file names from the linker (`ld`) verbose console output and
+    return sets of system library files and local library files in this order (legacy).
 
-    System library files are files that is in absolute path, and others are
-    considered local library files.
+    System library files are files that is in absolute path, and others are considered local library files.
     """
     sys_libs: set[str] = set()
     local_libs: set[str] = set()
@@ -96,8 +94,7 @@ def extract_file_names_verbose(stream: typing.TextIO) -> tuple[set[str], set[str
 
 def validate_name(name: str) -> str:
     """
-    Validate if the given name starts with either `Person:` or `Organization:`
-    as specified in SPDX 2.3.
+    Validate if the given name starts with either `Person:` or `Organization:` as specified in SPDX 2.3.
 
     Raise `TypeError` if the validation fails.
     """
@@ -107,14 +104,18 @@ def validate_name(name: str) -> str:
 
 
 def process_file_extension(name: str) -> str:
-    """Add `.spdx.json` if the given file name doesn't have any extension."""
+    """
+    Add `.spdx.json` if the given file name doesn't have any extension.
+    """
     return name if "." in name else name + ".spdx.json"
 
 
 parser = argparse.ArgumentParser(
-    description="This script constructs an NTIA conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a build process. "
+    description="This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) "
+    "of a C/C++ project through analyzing a build process. "
     "This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. "
-    "This project is still in the early development stage, and we are not in any way liable for the output or other behaviors of this program."
+    "This project is still in the early development stage, "
+    "and we are not in any way liable for the output or other behaviors of this program."
 )
 parser.add_argument("-i", "--input", help="Input file. Defaults to stdin.")
 parser.add_argument(
@@ -136,9 +137,7 @@ parser.add_argument(
     "--license",
     help="Target project license in SPDX license expression.",
 )
-parser.add_argument(
-    "-v", "--version", help="Target project version string.", required=True
-)
+parser.add_argument("-v", "--version", help="Target project version string.", required=True)
 parser.add_argument("-c", "--copyright", help="Target project copyright string.")
 parser.add_argument(
     "-u",
@@ -147,27 +146,53 @@ parser.add_argument(
     nargs="*",
     help="SBOM Creator. Must start with either 'Person:' or 'Organization:'.",
 )
+parser.add_argument(
+    "--no-license-heuristic",
+    action="store_true",
+    help="Disable the simple heuristic for license name matching.",
+)
+parser.add_argument(
+    "--verbose-input",
+    action="store_true",
+    help="Use the linker '--verbose' output parser for the input instead of the '-t' output (deprecated).",
+)
+parser.add_argument(
+    "--include-individual-licenses",
+    action="store_true",
+    help="Include 'licenseInfoFromFiles' field (makes the SPDX document not standard conformant).",
+)
+parser.add_argument(
+    "--include-files-section",
+    action="store_true",
+    help="Include incomplete 'files' section (makes the SPDX document not standard conformant).",
+)
 args = parser.parse_args()
 
 if args.input is None:
-    # sys_libs, local_libs = extract_file_names_verbose(sys.stdin)
-    sys_libs = extract_file_names(sys.stdin)
+    if args.verbose_input:
+        sys_libs, local_libs = extract_file_names_verbose(sys.stdin)
+        local_libs = [  # Filter out internal files
+            x for x in make_spdx.normalize_resolve_path(local_libs) if "lib" in x
+        ]
+    else:
+        sys_libs = extract_file_names(sys.stdin)
 else:
     try:
         with open(args.input, encoding="utf-8", errors="ignore") as fd:
-            # sys_libs, local_libs = extract_file_names_verbose(fd)
-            sys_libs = extract_file_names(fd)
+            if args.verbose_input:
+                sys_libs, local_libs = extract_file_names_verbose(fd)
+                local_libs = [  # Filter out internal files
+                    x for x in make_spdx.normalize_resolve_path(local_libs) if "lib" in x
+                ]
+            else:
+                sys_libs = extract_file_names(fd)
     except OSError as e:
         print(f"Cannot open '{args.input}', {e}", file=sys.stderr)
         exit(-1)
 
-sys_libs = get_package.normalize_resolve_path(sys_libs)
-# local_libs = get_package.normalize_resolve_path(local_libs)
-# dep_files = [
-#    x for x in dep_files if x[0] == os.path.sep or "lib" in x
-# ]  # Filter out internal files
-packages = get_package.map_files_to_packages(sys_libs)
-spdx = get_package.make_spdx(
+sys_libs = make_spdx.normalize_resolve_path(sys_libs)
+packages = make_spdx.map_files_to_packages(sys_libs)
+spdx = make_spdx.make_spdx(
     packages,
     args.project,
     args.developer,
@@ -175,6 +200,9 @@ spdx = get_package.make_spdx(
     args.license,
     args.copyright,
     [] if args.user is None else args.user,
+    args.no_license_heuristic,
+    args.include_individual_licenses,
+    args.include_files_section,
 )
 
 if args.output is None:

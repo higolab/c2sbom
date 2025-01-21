@@ -2,12 +2,12 @@
 
 This is an experimental, proof-of-concept version of C2SBOM to automatically generate an SPDX 2.3 Document for a C/C++ project in JSON format. These scripts construct [valid](https://tools.spdx.org/app/validate/) and [NTIA Minimum Elements Conformant](https://tools.spdx.org/app/ntia_checker/) SBOMs. This project comes with two distinct scripts:
 
-- `build_sbom.py`: Reads output from build tools (`gcc`/`g++` and `ld`) and generates an SPDX document of build-time dependencies (i.e., compiled/linked into the resulting binaries).
+- `gen_build.py`: Reads output from build tools (`gcc`/`g++` and `ld`) and generates an SPDX document of build-time dependencies (i.e., compiled/linked into the resulting binaries).
   - Thus constructs a "Build SBOM" by the [CISA (Cybersecurity and Infrastructure Security Agency) definition](https://www.cisa.gov/sites/default/files/2023-04/sbom-types-document-508c.pdf)
-- `analyzed_sbom.py`: Reads executable binaries and generates an SPDX document of run-time dependencies.
+- `gen_analyzed.py`: Reads executable binaries and generates an SPDX document of run-time dependencies.
   - Thus constructs an "Analyzed SBOM" by the [CISA definition](https://www.cisa.gov/sites/default/files/2023-04/sbom-types-document-508c.pdf)
 
-`build_sbom.py` needs output that is made with
+`gen_build.py` needs output that is made with
 
 - `-H` option enabled for `gcc`/`g++`, and
   - Header file dependencies will be excluded without this option
@@ -25,60 +25,72 @@ This PoC doesn't have any external dependencies and uses only standard libraries
 
 ## Usage
 
-`build_sbom.py`:
+`gen_build.py`:
 
 ```
-$ ./build_sbom.py -h
-usage: build_sbom.py [-h] [-i INPUT] [-o OUTPUT] -p PROJECT -d DEVELOPER [-l LICENSE] -v VERSION [-c COPYRIGHT] [-u [USER ...]]
+$ ./gen_build.py -h
+usage: gen_build.py [-h] [-i INPUT] [-o OUTPUT] -p PROJECT -d DEVELOPER [-l LICENSE] -v VERSION [-c COPYRIGHT] [-u [USER ...]] [--no-license-heuristic] [--verbose-input] [--include-individual-licenses] [--include-files-section]
 
-This script constructs an NTIA conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a build process. This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This project is still in the early development stage, and we are not in any way liable for the output or other behaviors of this program.
+This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a build process. This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This project is still in the early
+development stage, and we are not in any way liable for the output or other behaviors of this program.
 
 options:
   -h, --help            show this help message and exit
-  -i INPUT, --input INPUT
-                        Input file. Defaults to stdin.
-  -o OUTPUT, --output OUTPUT
-                        Output file. Defaults to stdout.
-  -p PROJECT, --project PROJECT
+  -i, --input INPUT     Input file. Defaults to stdin.
+  -o, --output OUTPUT   Output file. Defaults to stdout.
+  -p, --project PROJECT
                         Target project name.
-  -d DEVELOPER, --developer DEVELOPER
+  -d, --developer DEVELOPER
                         Target project developer name. Must start with either 'Person:' or 'Organization:'.
-  -l LICENSE, --license LICENSE
+  -l, --license LICENSE
                         Target project license in SPDX license expression.
-  -v VERSION, --version VERSION
+  -v, --version VERSION
                         Target project version string.
-  -c COPYRIGHT, --copyright COPYRIGHT
+  -c, --copyright COPYRIGHT
                         Target project copyright string.
-  -u [USER ...], --user [USER ...]
+  -u, --user [USER ...]
                         SBOM Creator. Must start with either 'Person:' or 'Organization:'.
+  --no-license-heuristic
+                        Disable the simple heuristic for license name matching.
+  --verbose-input       Use the linker '--verbose' output parser for the input instead of the '-t' output (deprecated).
+  --include-individual-licenses
+                        Include 'licenseInfoFromFiles' field (makes the SPDX document not standard conformant).
+  --include-files-section
+                        Include incomplete 'files' section (makes the SPDX document not standard conformant).
 ```
 
-`analyzed_sbom.py`:
+`gen_analyzed.py`:
 
 ```
-$ ./analyzed_sbom.py -h
-usage: analyzed_sbom.py [-h] [-i INPUT [INPUT ...]] [-o OUTPUT] -p PROJECT -d DEVELOPER [-l LICENSE] -v VERSION [-c COPYRIGHT] [-u [USER ...]]
+$ ./gen_analyzed.py -h
+usage: gen_analyzed.py [-h] [-i INPUT [INPUT ...]] [-o OUTPUT] -p PROJECT -d DEVELOPER [-l LICENSE] -v VERSION [-c COPYRIGHT] [-u [USER ...]] [--no-license-heuristic] [--include-individual-licenses] [--include-files-section]
 
-This script constructs an NTIA conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a executable binaries. This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This project is still in the early development stage, and we are not in any way liable for the output or other behaviors of this program.
+This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a executable binaries. This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This project is still in the
+early development stage, and we are not in any way liable for the output or other behaviors of this program.
 
 options:
   -h, --help            show this help message and exit
-  -i INPUT [INPUT ...], --input INPUT [INPUT ...]
+  -i, --input INPUT [INPUT ...]
                         Input files.
-  -o OUTPUT, --output OUTPUT
-                        Output file. Defaults to stdout.
-  -p PROJECT, --project PROJECT
+  -o, --output OUTPUT   Output file. Defaults to stdout.
+  -p, --project PROJECT
                         Target project name.
-  -d DEVELOPER, --developer DEVELOPER
+  -d, --developer DEVELOPER
                         Target project developer name. Must start with either 'Person:' or 'Organization:'.
-  -l LICENSE, --license LICENSE
+  -l, --license LICENSE
                         Target project license in SPDX license expression.
-  -v VERSION, --version VERSION
+  -v, --version VERSION
                         Target project version string.
-  -c COPYRIGHT, --copyright COPYRIGHT
+  -c, --copyright COPYRIGHT
                         Target project copyright string.
-  -u [USER ...], --user [USER ...]
+  -u, --user [USER ...]
                         SBOM Creator. Must start with either 'Person:' or 'Organization:'.
+  --no-license-heuristic
+                        Disable the simple heuristic for license name matching.
+  --include-individual-licenses
+                        Include 'licenseInfoFromFiles' field (makes the SPDX document not standard conformant).
+  --include-files-section
+                        Include incomplete 'files' section (makes the SPDX document not standard conformant).
 ```
 
 ## Samples
