@@ -1,5 +1,5 @@
 # Standard Modules
-import subprocess, urllib.parse, uuid
+import re, subprocess, urllib.parse, uuid
 
 
 def get_installed_version(package: str) -> str:
@@ -178,8 +178,23 @@ def get_metadata(package: str, arch: str | None) -> tuple[dict, dict[str, bool]]
         filename, url = get_download_url(whole_package_name, version)
         package_meta["packageFileName"] = filename
         statistics["packageFileName"] = True
-        package_meta["downloadLocation"] = url
-        statistics["downloadLocation"] = True
+        if (
+            re.fullmatch(
+                r"^(NONE"
+                r"|NOASSERTION"
+                r"|(((git|hg|svn|bzr)\+)?([^:/?#]+://)?"
+                r"[a-z0-9]+([\-\.]{1}[a-z0-9]+){0,100}\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?)"
+                r"|(git\+git@[a-zA-Z0-9\.\-]+:[a-zA-Z0-9/\\.@\-]+)|(bzr\+lp:[a-zA-Z0-9\.\-]+))$",
+                url,
+            )
+            is None
+        ):
+            comment += (
+                f"Warning: Extracted download location '{url}' is invalid in SPDX, not including downloadLocation.\n"
+            )
+        else:
+            package_meta["downloadLocation"] = url
+            statistics["downloadLocation"] = True
     except RuntimeError as e:
         comment += f"Warning: {e}, not including packageFileName and downloadLocation.\n"
 
