@@ -42,13 +42,6 @@ def validate_name(name: str) -> str:
     return name
 
 
-def process_file_extension(name: str) -> str:
-    """
-    Add `.spdx.json` if the given file name doesn't have any extension.
-    """
-    return name if "." in name else name + ".spdx.json"
-
-
 parser = argparse.ArgumentParser(
     description="This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) "
     "of a C/C++ project through analyzing a executable binaries. "
@@ -60,7 +53,6 @@ parser.add_argument("-i", "--input", nargs="+", help="Input files.")
 parser.add_argument(
     "-o",
     "--output",
-    type=process_file_extension,
     help="Output file. Defaults to stdout.",
 )
 parser.add_argument("-p", "--project", help="Target project name.", required=True)

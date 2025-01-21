@@ -158,6 +158,8 @@ def print_stats(
     if len(list_package_stats) > 0:
         print("Package metadata", file=sys.stderr)
         for item in package_stats.items():
+            if item[0] == "license_count":
+                continue
             print(
                 f"- {item[0]}: {stat_line(item[1], len(list_package_stats))}",
                 file=sys.stderr,

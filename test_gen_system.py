@@ -18,18 +18,6 @@ def validate_name(name: str) -> str:
     return name
 
 
-def process_file_extension(name: str) -> str:
-    """Add `.spdx.json` if the given file name doesn't have any extension."""
-    base_index = name.rfind(os.path.sep)
-    if base_index == -1:  # Just basename
-        return name if "." in name else name + ".spdx.json"
-    elif base_index >= len(name) - 1:  # Directory
-        return name
-    else:
-        basename = name[base_index + 1 :]
-        return name if "." in basename else name + ".spdx.json"
-
-
 parser = argparse.ArgumentParser(
     description="This is a test script for evaluation. "
     "Just searches for all installed packages and collects metadata. "
@@ -40,7 +28,6 @@ parser = argparse.ArgumentParser(
 parser.add_argument(
     "-o",
     "--output",
-    type=process_file_extension,
     help="Output file. Defaults to stdout.",
 )
 parser.add_argument("-p", "--project", help="Target project name.", required=True)
