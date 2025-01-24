@@ -91,8 +91,8 @@ def read_description(lines: list[str], start: int = 0) -> str:
     """
     Read an extended description as in the Debian `control` file.
     """
-    index: int = start
-    result: str = ""
+    index = start
+    result = ""
 
     while index < len(lines):
         line_stripped = lines[index].strip()
@@ -160,10 +160,11 @@ def get_metadata(package: str, arch: str | None) -> tuple[dict, dict[str, bool]]
         "comment": False,
         "copyright_status": None,
         "license_count": 0,
+        "license_expr_valid": False,
     }
 
-    comment: str = ""
-    whole_package_name: str = package if arch is None else package + ":" + arch
+    comment = ""
+    whole_package_name = package if arch is None else package + ":" + arch
 
     try:
         version = get_installed_version(whole_package_name)

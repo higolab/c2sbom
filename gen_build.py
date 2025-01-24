@@ -49,7 +49,7 @@ def extract_file_names_verbose(stream: typing.TextIO) -> tuple[set[str], set[str
     """
     sys_libs: set[str] = set()
     local_libs: set[str] = set()
-    current_path: str = os.getcwd()
+    current_path = os.getcwd()
 
     for line in stream:
         # Handle "make[x]: Entering directory '/path/to/xxx'"

@@ -37,6 +37,9 @@ class LicenseManager:
         # All license names appeared (for statistics).
         self.stats_all_licenses: set[str] = set()
 
+        # Syntax error count (for statistics).
+        self.stats_syntax_errors = 0
+
         # SPDX License List
         self.spdx_license_list: dict | None = None
 
@@ -50,145 +53,27 @@ class LicenseManager:
         except OSError as e:
             print("SPDX License List not available:", e, file=sys.stderr)
 
-    def add_expr(self, expr: str) -> list[str]:
+    def add_expr(self, expr: str) -> tuple[list[str], bool]:
         """
         Parse a license expression string found in a Debian `copyright` file and add the result.
 
-        Returns newly found individual license identifiers as a list of strings, not including any operators.
+        Returns newly found individual license identifiers as a list of strings (not including any operators) and
+        its syntax validity.
 
-        This tokenizer splits `expr` into tokens where `and`, `or`, and `,` are separate tokens
-        if they appear atword boundaries. Otherwise, it captures everything including spaces as a single token
-        (license nane) until the next boundary.
-
-        This tokenizer makes `and`/`or` operators upper case. Also, it resolves `,` (comma) operators into
-        `()`s (parentheses) and `AND`/`OR` operators.
+        If the syntax validity is `False`, then this function treats the whole license expression as a single license.
+        Blame package maintainers for not complying with the `copyright` file format specification.
         """
-        tokens: list[str] = []
-        i: int = 0
-        length: int = len(expr)
-        prepare_paren: bool = False
-        new_licenses: list[str] = []
-
-        while i < length:
-            # Skip leading whitespace
-            if expr[i].isspace():
-                i += 1
-                continue
-
-            # Check for ','
-            #
-            # A comma can mean two things;
-            # a) changing the priority of `or`s and `and`s like `A or B, and C`
-            # b) usual English manner like `A, B, and C`
-            if expr[i] == ",":
-                prepare_paren = True
-                i += 1
-                continue
-
-            # Check for 'and/or' at a boundary
-            if expr.startswith("and/or", i):
-                end_idx = i + 6
-                # Verify boundary before/after 'and'
-                if (i == 0 or expr[i - 1].isspace() or expr[i - 1] == ",") and (
-                    end_idx == length or expr[end_idx].isspace() or expr[end_idx] == ","
-                ):
-                    if prepare_paren:
-                        prepare_paren = False
-                        tokens.insert(0, "(")
-                        tokens.append(")")
-                    tokens.append("OR")
-                    i = end_idx
-                    continue
-
-            # Check for 'and' at a boundary
-            if expr.startswith("and", i):
-                end_idx = i + 3
-                # Verify boundary before/after 'and'
-                if (i == 0 or expr[i - 1].isspace() or expr[i - 1] == ",") and (
-                    end_idx == length or expr[end_idx].isspace() or expr[end_idx] == ","
-                ):
-                    if prepare_paren:
-                        prepare_paren = False
-                        tokens.insert(0, "(")
-                        tokens.append(")")
-                    tokens.append("AND")
-                    i = end_idx
-                    continue
-
-            # Check for 'or' at a boundary
-            if expr.startswith("or", i):
-                end_idx = i + 2
-                # Verify boundary before/after 'or'
-                if (i == 0 or expr[i - 1].isspace() or expr[i - 1] == ",") and (
-                    end_idx == length or expr[end_idx].isspace() or expr[end_idx] == ","
-                ):
-                    if prepare_paren:
-                        prepare_paren = False
-                        tokens.insert(0, "(")
-                        tokens.append(")")
-                    tokens.append("OR")
-                    i = end_idx
-                    continue
-
-            # Otherwise, capture everything up to the next boundary (license name)
-            if prepare_paren:
-                prepare_paren = False
-                tokens.append(",")  # Temporal
-            start: int = i
-            while i < length:
-                if expr[i] == ",":
-                    break
-                if (
-                    expr.startswith("and", i)
-                    and (i == 0 or expr[i - 1].isspace() or expr[i - 1] == ",")
-                    and (i + 3 == length or expr[i + 3].isspace() or expr[i + 3] == ",")
-                ):
-                    break
-                if (
-                    expr.startswith("or", i)
-                    and (i == 0 or expr[i - 1].isspace() or expr[i - 1] == ",")
-                    and (i + 2 == length or expr[i + 2].isspace() or expr[i + 2] == ",")
-                ):
-                    break
-                i += 1
-            token = expr[start:i].rstrip()
-            if token.lower() == "perl":
-                # As per https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-                tokens.append("(")
-                tokens.append("GPL-1.0-or-later")
-                tokens.append("OR")
-                tokens.append("Artistic-1.0")
-                tokens.append(")")
-            else:
-                tokens.append(token)
-
-        # Resolve "natural" commas
-        i = 0
-        while i < len(tokens):
-            if tokens[i] == ",":
-                j: int = i + 1
-                while j < len(tokens):
-                    if tokens[j] == "AND" or tokens[j] == "OR":
-                        tokens[i] = tokens[j]
-                        break
-                    j += 1
-                else:  # It was just a license name with commas
-                    j: int = i + 1
-                    new_token: str = tokens[i - 1] + tokens[i]
-                    while (
-                        j < len(tokens)
-                        and tokens[j] != "AND"
-                        and tokens[j] != "OR"
-                        and tokens[j] != "("
-                        and tokens[j] != ")"
-                    ):
-                        new_token += tokens[j] if tokens[j] == "," else (" " + tokens[j])
-                        j += 1
-                    tokens[i - 1 : j] = [new_token]
-            i += 1
+        tokens = self._tokenize(expr)
+        tokens = self._validate(tokens)
+        is_valid = tokens is not None
+        if not is_valid:
+            tokens = [expr]
+            self.stats_syntax_errors += 1
+            print(f"Invalid license expression: '{expr}'.", file=sys.stderr)
 
         # Fix license names and register licenses
-        i: int = 0
+        i = 0
+        new_licenses: list[str] = []
         while i < len(tokens):
             if tokens[i] != "AND" and tokens[i] != "OR" and tokens[i] != "(" and tokens[i] != ")":
                 tokens[i] = self._convert_name(tokens[i])
@@ -200,7 +85,156 @@ class LicenseManager:
         if tokens not in self.exprs:
             self.exprs.append(tokens)
 
-        return new_licenses
+        return new_licenses, is_valid
+
+    def _tokenize(self, expr: str) -> list[str]:
+        """
+        Tokenize the `expr` into tokens where `and`, `or`, and `,` are separate tokens if they appear
+        at word boundaries. Otherwise, it captures everything as a single token until the next boundary.
+
+        This tokenizer makes `and`/`or` operators upper case.
+        """
+        tokens: list[str] = []
+        length = len(expr)
+
+        i = 0
+        while i < length:
+            # Skip leading whitespace
+            if expr[i].isspace():
+                i += 1
+                continue
+
+            # Check for ','
+            if expr[i] == ",":
+                tokens.append(",")
+                i += 1
+                continue
+
+            # Check for 'and/or' at a boundary
+            if expr.startswith("and/or", i):
+                end_idx = i + 6
+                # Verify boundary before/after 'and'
+                if (i == 0 or expr[i - 1].isspace() or expr[i - 1] == ",") and (
+                    end_idx == length or expr[end_idx].isspace() or expr[end_idx] == ","
+                ):
+                    tokens.append("OR")
+                    i = end_idx
+                    continue
+
+            # Check for 'and' at a boundary
+            if expr.startswith("and", i):
+                end_idx = i + 3
+                # Verify boundary before/after 'and'
+                if (i == 0 or expr[i - 1].isspace() or expr[i - 1] == ",") and (
+                    end_idx == length or expr[end_idx].isspace() or expr[end_idx] == ","
+                ):
+                    tokens.append("AND")
+                    i = end_idx
+                    continue
+
+            # Check for 'or' at a boundary
+            if expr.startswith("or", i):
+                end_idx = i + 2
+                # Verify boundary before/after 'or'
+                if (i == 0 or expr[i - 1].isspace() or expr[i - 1] == ",") and (
+                    end_idx == length or expr[end_idx].isspace() or expr[end_idx] == ","
+                ):
+                    tokens.append("OR")
+                    i = end_idx
+                    continue
+
+            # Otherwise, capture everything up to the next boundary (license name)
+            token = ""
+            while i < length and expr[i] != "," and not expr[i].isspace():
+                token += expr[i]
+                i += 1
+            tokens.append(token)
+
+        return tokens
+
+    def _validate(self, tokens: list[str]) -> list[str] | None:
+        """
+        Parse license expression tokens and returns the resulting modified tokens.
+        Return `None` if there are syntax errors.
+
+        This function resolves `,` (comma) operators into `()`s (parentheses) and `AND`/`OR` operators.
+        """
+        result: list[str] = []
+        i = 0
+        state = "after_op"
+
+        # Parse the expression and merges license exceptions
+        while i < len(tokens):
+            if state == "after_op":
+                if tokens[i] == "AND" or tokens[i] == "OR" or tokens[i] == ",":
+                    return None
+
+                elif tokens[i].lower() == "perl" and (i + 1 >= len(tokens) or tokens[i + 1] != "with"):
+                    # As per https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+                    result.append("(")
+                    result.append("GPL-1.0-or-later")
+                    result.append("OR")
+                    result.append("Artistic-1.0")
+                    result.append(")")
+
+                elif i + 1 < len(tokens) and tokens[i + 1] == "with":
+                    # As we have no way to identify the exact license exception,
+                    # just concatenate the with statement to form a single license name.
+                    start = i
+                    i += 2
+                    while i < len(tokens):
+                        if tokens[i] == "exception":
+                            break
+                        i += 1
+                    else:
+                        return None
+                    result.append(" ".join(tokens[start : i + 1]))
+
+                else:
+                    result.append(tokens[i])
+
+                state = "after_name"
+
+            elif state == "after_name":
+                if tokens[i] == "AND" or tokens[i] == "OR":
+                    result.append(tokens[i])
+                    state = "after_op"
+                elif tokens[i] == ",":
+                    state = "after_comma"
+                else:
+                    return None
+
+            elif state == "after_comma":
+                if tokens[i] == "AND" or tokens[i] == "OR":
+                    result.insert(0, "(")
+                    result.append(")")
+                    result.append(tokens[i])
+                    state = "after_op"
+                else:
+                    result.append(",")  # Natural comma; resolved later
+                    state = "after_op"
+                    continue
+
+            i += 1
+
+        if state == "after_op":
+            return None
+
+        # Resolve natural commas
+        i = 0
+        while i < len(result):
+            if result[i] == ",":
+                j = i + 1
+                while j < len(result):
+                    if result[j] == "AND" or result[j] == "OR":
+                        result[i] = result[j]
+                        break
+                    j += 1
+                else:
+                    return None
+            i += 1
+
+        return result
 
     def add_license_direct(self, text: str, comment: str | None = None, tokens: list[str] | None = None) -> str:
         """
@@ -229,7 +263,7 @@ class LicenseManager:
         license_ref_base = re.sub(r"[^0-9a-zA-Z\.\-]+", "-", license_ref_base)
         license_ref = license_ref_base
 
-        i: int = 1
+        i = 1
         while license_ref in self.licenses:
             license_ref = f"{license_ref_base}-{i}"
             i += 1
@@ -504,9 +538,9 @@ class LicenseManager:
         Also, check if the given expression requires parenthesis for concatenating with `AND` clause
         by searching for a "naked" `OR` clause.
         """
-        expr_str: str = ""
-        req_paren: bool = False
-        level: int = 0
+        expr_str = ""
+        req_paren = False
+        level = 0
 
         for token in expr:
             if token == "AND" or token == "OR":
@@ -541,7 +575,7 @@ class LicenseManager:
         """
         Return all license expressions as a concatenated string.
         """
-        result: str = None
+        result: str | None = None
 
         if len(self.exprs) == 0:
             return ""
@@ -554,7 +588,7 @@ class LicenseManager:
         else:
             result = expr_str
 
-        i: int = 1
+        i = 1
         while i < len(self.exprs):
             expr_str, req_paren = self._expr_to_str(self.exprs[i])
             if req_paren:
@@ -597,8 +631,8 @@ def read_formatted_text(lines: list[str], start: int = 0) -> tuple[str, int]:
     Read a formatted text from the second line as in the Debian `copyright` file and
     return the resulting string and the next line index in this order.
     """
-    index: int = start
-    result: str = ""
+    index = start
+    result = ""
 
     while index < len(lines):
         line_stripped = lines[index].strip()
@@ -629,7 +663,7 @@ def copyright_header_stanza(
 
     Raise `RuntimeError` if the file is not in the standard format.
     """
-    index: int = start
+    index = start
 
     is_format_validated = False
     while index < len(lines):
@@ -656,7 +690,9 @@ def copyright_header_stanza(
             license_name = lines[index][8:].strip()
             result, index = read_formatted_text(lines, index + 1)
             if len(license_name) > 0:
-                new_licences = license_manager.add_expr(license_name)
+                new_licences, is_valid = license_manager.add_expr(license_name)
+                if not is_valid:
+                    comment += "Syntax error(s) in the copyright file.\n"
                 if len(result) > 0:
                     for item in new_licences:
                         license_manager.add_license_text(item, result)
@@ -695,7 +731,7 @@ def copyright_files_stanza(
     Parse a Files stanza in a copyright file and return the comment, copyright text, `LicenseManager`,
     and the next line index in this order.
     """
-    index: int = start
+    index = start
 
     while index < len(lines):
         if lines[index].startswith("Comment:"):
@@ -710,7 +746,9 @@ def copyright_files_stanza(
             license_name = lines[index][8:].strip()
             result, index = read_formatted_text(lines, index + 1)
             if len(license_name) > 0:
-                new_licences = license_manager.add_expr(license_name)
+                new_licences, is_valid = license_manager.add_expr(license_name)
+                if not is_valid:
+                    comment += "Syntax error(s) in the copyright file.\n"
                 if len(result) > 0:
                     for item in new_licences:
                         license_manager.add_license_text(item, result)
@@ -744,9 +782,9 @@ def copyright_license_stanza(
 
     Raise `RuntimeError` if no `License:` field is found.
     """
-    index: int = start
-    license_name: str = None
-    comment: str = None
+    index = start
+    license_name: str | None = None
+    comment: str | None = None
 
     while index < len(lines):
         if lines[index].startswith("Comment:"):
@@ -796,13 +834,13 @@ def get_license(
 
     If the file is not available, then this function records a comment indicating it.
     """
-    package_comment: str = ""
-    copyright_text: str = ""
+    package_comment = ""
+    copyright_text = ""
     license_manager = LicenseManager(
         package_basename if arch is None else package_basename + "-" + arch,
         no_license_heuristic,
     )
-    index: int = 0
+    index = 0
 
     try:
         with open(

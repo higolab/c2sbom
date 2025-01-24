@@ -35,7 +35,7 @@ def normalize_resolve_path(files: set[str]) -> set[str]:
     - find actual versioned files (ex. `libpsl.so` -> `libpsl.so.5` -> `libpsl.so.5.3.4`).
     """
     normalized_files: set[str] = set()
-    ok_count: int = 0
+    ok_count = 0
 
     for file in files:
         p = pathlib.Path(file)
@@ -73,7 +73,7 @@ def map_files_to_packages(files: set[str]) -> list[tuple[str, set[str]]]:
     a set of file names which belong to the package as the second tuple item.
     """
     packages: dict[str, set[str]] = {}
-    ok_count: int = 0
+    ok_count = 0
 
     for file in files:
         dpkg = subprocess.run(f"dpkg -S '{file}'", shell=True, capture_output=True, text=True)
@@ -127,6 +127,7 @@ def print_stats(
         "copyright_cannot_open": 0,
         "copyright_unknown_format": 0,
         "license_count": 0,
+        "license_expr_valid": 0,
     }
     for item in list_package_stats:
         for key in item:
@@ -252,6 +253,7 @@ def make_spdx(
         licenseDeclared = license_manager.all_expr_str_cat
         package_stats["copyright_status"] = tmp_stat
         package_stats["license_count"] = len(license_manager.stats_all_licenses)
+        package_stats["license_expr_valid"] = license_manager.stats_syntax_errors == 0
 
         if len(copyright_text) > 0:
             package_meta["copyrightText"] = copyright_text
