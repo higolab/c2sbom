@@ -113,10 +113,7 @@ def print_stats(
         "originator": 0,
         "summary": 0,
         "description": 0,
-        "md5": 0,
-        "sha1": 0,
-        "sha256": 0,
-        "sha512": 0,
+        "checksums": 0,
         "externalRefs": 0,
         "copyrightText": 0,
         "licenseConcluded": 0,
@@ -358,7 +355,7 @@ def make_spdx(
             list_license_stats.append(
                 {
                     "licenseId": True,
-                    "name": True,
+                    "name": value.name != "NOASSERTION",
                     "extractedText": value.text is not None and len(value.text) > 0,
                     "comment": value.comment is not None and len(value.comment) > 0,
                 }

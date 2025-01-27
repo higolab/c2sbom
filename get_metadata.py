@@ -148,10 +148,7 @@ def get_metadata(package: str, arch: str | None) -> tuple[dict, dict[str, bool]]
         "originator": False,
         "summary": False,
         "description": False,
-        "md5": False,
-        "sha1": False,
-        "sha256": False,
-        "sha512": False,
+        "checksums": False,
         "externalRefs": False,
         "copyrightText": False,
         "licenseConcluded": False,
@@ -259,26 +256,26 @@ def get_metadata(package: str, arch: str | None) -> tuple[dict, dict[str, bool]]
             if len(value) > 0:
                 package_meta.setdefault("checksums", [])
                 package_meta["checksums"].append({"algorithm": "MD5", "checksumValue": value})
-                statistics["md5"] = True
+                statistics["checksums"] = True
         elif line.startswith("SHA1:"):
             value = line[5:].strip()
             if len(value) > 0:
                 package_meta.setdefault("checksums", [])
                 package_meta["checksums"].append({"algorithm": "SHA1", "checksumValue": value})
-                statistics["sha1"] = True
+                statistics["checksums"] = True
                 package_meta["SPDXID"] = f"SPDXRef-Package--{value}"
         elif line.startswith("SHA256:"):
             value = line[7:].strip()
             if len(value) > 0:
                 package_meta.setdefault("checksums", [])
                 package_meta["checksums"].append({"algorithm": "SHA256", "checksumValue": value})
-                statistics["sha256"] = True
+                statistics["checksums"] = True
         elif line.startswith("SHA512:"):
             value = line[7:].strip()
             if len(value) > 0:
                 package_meta.setdefault("checksums", [])
                 package_meta["checksums"].append({"algorithm": "SHA512", "checksumValue": value})
-                statistics["sha512"] = True
+                statistics["checksums"] = True
 
         index += 1
 
