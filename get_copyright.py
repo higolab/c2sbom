@@ -163,7 +163,6 @@ class LicenseManager:
         i = 0
         state = "after_op"
 
-        # Parse the expression and merges license exceptions
         while i < len(tokens):
             if state == "after_op":
                 if tokens[i] == "AND" or tokens[i] == "OR" or tokens[i] == ",":
@@ -199,19 +198,40 @@ class LicenseManager:
                 if tokens[i] == "AND" or tokens[i] == "OR":
                     result.append(tokens[i])
                     state = "after_op"
+                
                 elif tokens[i] == ",":
                     state = "after_comma"
+                
                 else:
                     return None
 
             elif state == "after_comma":
-                if tokens[i] == "AND" or tokens[i] == "OR":
-                    result.insert(0, "(")
+                if tokens[i] == "AND":
+                    # Search for the nearest "naked-AND" (or the start of the expession) backward.
+                    j = len(result) - 1
+                    nest = 0
+                    while j > 0:
+                        if result[j] == ")":
+                            nest += 1
+                        elif result[j] == "(":
+                            nest -= 1
+                        elif nest == 0 and result[j] == "AND":
+                            j += 1
+                            break
+                        j -= 1
+                    
+                    # Parenthesize from there.
+                    result.insert(j, "(")
                     result.append(")")
                     result.append(tokens[i])
                     state = "after_op"
+                
+                elif tokens[i] == "OR":  # Meaningless, ignore
+                    result.append(tokens[i])
+                    state = "after_op"
+                
                 else:
-                    result.append(",")  # Natural comma; resolved later
+                    result.append(",")  # Natural comma, resolved later
                     state = "after_op"
                     continue
 
@@ -827,7 +847,7 @@ def get_license(
 ) -> tuple[str, str, LicenseManager, str]:
     """
     Get license information from `/usr/share/doc/<package_basename>/copyright` and
-    return the comment, copyright text, and `LicenseManager` in this order.
+    return the comment, copyright text, `LicenseManager`, and result in this order.
 
     If `copyright` file is not in the standard format,
     then this function assigns a `LicenseRef` to the whole text of the file.
@@ -849,7 +869,7 @@ def get_license(
             errors="ignore",
         ) as f_rel:
             lines = f_rel.readlines()
-    except IOError as e:
+    except OSError as e:
         package_comment += (
             f"Cannot open '/usr/share/doc/{package_basename}/copyright': {e.strerror}, "
             f"not including license information."

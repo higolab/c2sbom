@@ -67,7 +67,7 @@ def normalize_resolve_path(files: set[str]) -> set[str]:
 
 def map_files_to_packages(files: set[str]) -> list[tuple[str, set[str]]]:
     """
-    Map files to their packages using the `dpkg -S` tool.
+    Map files to their packages using the `dpkg-query -S` tool.
 
     Return a list of tuples that contain a package name as the first tuple item and
     a set of file names which belong to the package as the second tuple item.
@@ -76,9 +76,9 @@ def map_files_to_packages(files: set[str]) -> list[tuple[str, set[str]]]:
     ok_count = 0
 
     for file in files:
-        dpkg = subprocess.run(f"dpkg -S '{file}'", shell=True, capture_output=True, text=True)
+        dpkg = subprocess.run(f"dpkg-query -S '{file}'", shell=True, capture_output=True, text=True)
         if dpkg.returncode != 0:
-            print("'dpkg -S' failed for", file, file=sys.stderr)
+            print("'dpkg-query -S' failed for", file, file=sys.stderr)
             continue
         pkg_name = dpkg.stdout.split()[0][:-1]
 
@@ -218,9 +218,9 @@ def make_spdx(
                 "SPDXID": root_package_id,
                 "filesAnalyzed": False,
                 "downloadLocation": "NOASSERTION",
-                "licenseConcluded": ("NOASSERTION" if target_license is None else target_license),
-                "licenseDeclared": ("NOASSERTION" if target_license is None else target_license),
-                "copyrightText": ("NOASSERTION" if target_copyright is None else target_copyright),
+                "licenseConcluded": "NOASSERTION" if target_license is None else target_license,
+                "licenseDeclared": "NOASSERTION" if target_license is None else target_license,
+                "copyrightText": "NOASSERTION" if target_copyright is None else target_copyright,
                 "versionInfo": target_version,
                 "supplier": target_developer,
             }
@@ -247,26 +247,32 @@ def make_spdx(
         package_basename, arch = divide_package_name(package)
         package_meta, package_stats = get_metadata.get_metadata(package_basename, arch)
 
-        comment, copyright_text, license_manager, tmp_stat = get_copyright.get_license(
+        comment, copyright_text, license_manager, copyright_status = get_copyright.get_license(
             package_basename, arch, no_license_heuristic
         )
         licenseDeclared = license_manager.all_expr_str_cat
-        package_stats["copyright_status"] = tmp_stat
+        package_stats["copyright_status"] = copyright_status
         package_stats["license_count"] = len(license_manager.stats_all_licenses)
         package_stats["license_expr_valid"] = license_manager.stats_syntax_errors == 0
 
         if len(copyright_text) > 0:
             package_meta["copyrightText"] = copyright_text
             package_stats["copyrightText"] = True
+        elif copyright_status == "ok":
+            package_meta["copyrightText"] = "NONE"
+            package_stats["copyrightText"] = True
+
         if include_individual_licenses:
             licenseInfoFromFiles = license_manager.all_expr_str
             if len(licenseInfoFromFiles) > 0:
                 package_meta["licenseInfoFromFiles"] = licenseInfoFromFiles
+
         if len(licenseDeclared) > 0:
             package_meta["licenseDeclared"] = licenseDeclared
             package_stats["licenseDeclared"] = True
             package_meta["licenseConcluded"] = licenseDeclared
             package_stats["licenseConcluded"] = True
+
         if len(comment) > 0:
             package_meta["licenseComments"] = comment
             package_stats["licenseComments"] = True
@@ -344,7 +350,7 @@ def make_spdx(
                 {
                     "licenseId": license_ref,
                     "name": value.name,
-                    "extractedText": ("No text found for this license." if value.text is None else value.text),
+                    "extractedText": "No text found for this license." if value.text is None else value.text,
                     "comment": "" if value.comment is None else value.comment,
                 }
             )
