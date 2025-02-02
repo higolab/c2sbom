@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 
 # Standard modules
-import argparse, os, sys, typing
+import argparse, os, pathlib, sys, typing
 
 # Internal modules
 import make_spdx
 
 
-def extract_file_names(stream: typing.TextIO) -> set[str]:
+def extract_file_names(stream: typing.TextIO, exclude_path: str) -> set[str]:
     """
     Extract library file names from the `make` console output.
     Only system library files are collected and all local libraries are ignored.
@@ -18,29 +18,38 @@ def extract_file_names(stream: typing.TextIO) -> set[str]:
 
     for line in stream:
         # Handle ". /path/to/file.h"
-        index = 0
-        done = False
-        while index < len(line):
-            if line[index].isspace():
-                path = line[index + 1 :].strip()
-                if path[0] == os.path.sep:
-                    sys_libs.add(path)
-                done = True
-                break
-            if line[index] != "." and line[index] != "!":
-                break
-            index += 1
-        if done:
-            continue
+        if line[0] == ".":
+            index = 1
+            done = False
+            while index < len(line):
+                if line[index].isspace():
+                    path = line[index + 1 :].strip()
+                    if (
+                        path[0] == os.path.sep
+                        and len(path.split()) == 1
+                        and (exclude_path == os.path.sep or not path.startswith(exclude_path))
+                    ):
+                        sys_libs.add(path)
+                    done = True
+                    break
+                elif line[index] != ".":
+                    break
+                index += 1
+            if done:
+                continue
 
         # Handle "/path/to/file.so"
-        if line[0] == os.path.sep:
+        if (
+            line[0] == os.path.sep
+            and len(line.split()) == 1
+            and (exclude_path == os.path.sep or not line.startswith(exclude_path))
+        ):
             sys_libs.add(line.rstrip())
 
     return sys_libs
 
 
-def extract_file_names_verbose(stream: typing.TextIO) -> tuple[set[str], set[str]]:
+def extract_file_names_verbose(stream: typing.TextIO, exclude_path: str) -> tuple[set[str], set[str]]:
     """
     Extract file names from the linker (`ld`) verbose console output and
     return sets of system library files and local library files in this order (legacy).
@@ -72,7 +81,7 @@ def extract_file_names_verbose(stream: typing.TextIO) -> tuple[set[str], set[str
         # Handle "attempt to open /path/to/xxx succeeded"
         if line.startswith("attempt to open") and line.endswith("succeeded"):
             path = line[16:-10]
-            if path[0] == os.path.sep:
+            if path[0] == os.path.sep and (exclude_path == os.path.sep or not path.startswith(exclude_path)):
                 sys_libs.add(path)
             else:
                 local_libs.add(current_path + path)
@@ -83,7 +92,7 @@ def extract_file_names_verbose(stream: typing.TextIO) -> tuple[set[str], set[str
             for i in range(len(line) - 4):
                 if line[i : i + 4] == " at ":
                     path = line[i + 4 :]
-                    if path[0] == os.path.sep:
+                    if path[0] == os.path.sep and (exclude_path == os.path.sep or not path.startswith(exclude_path)):
                         sys_libs.add(path)
                     else:
                         local_libs.add(current_path + path)
@@ -139,6 +148,12 @@ parser.add_argument(
     help="SBOM Creator. Must start with either 'Person:' or 'Organization:'.",
 )
 parser.add_argument(
+    "-s",
+    "--source-tree",
+    default=".",
+    help="Root path of the target project's source tree. Defaults to the current directory.",
+)
+parser.add_argument(
     "--no-license-heuristic",
     action="store_true",
     help="Disable the simple heuristic for license name matching.",
@@ -160,24 +175,26 @@ parser.add_argument(
 )
 args = parser.parse_args()
 
+source_tree = str(pathlib.Path(args.source_tree).resolve())
+
 if args.input is None:
     if args.verbose_input:
-        sys_libs, local_libs = extract_file_names_verbose(sys.stdin)
+        sys_libs, local_libs = extract_file_names_verbose(sys.stdin, source_tree)
         local_libs = [  # Filter out internal files
             x for x in make_spdx.normalize_resolve_path(local_libs) if "lib" in x
         ]
     else:
-        sys_libs = extract_file_names(sys.stdin)
+        sys_libs = extract_file_names(sys.stdin, source_tree)
 else:
     try:
         with open(args.input, encoding="utf-8", errors="ignore") as fd:
             if args.verbose_input:
-                sys_libs, local_libs = extract_file_names_verbose(fd)
+                sys_libs, local_libs = extract_file_names_verbose(fd, source_tree)
                 local_libs = [  # Filter out internal files
                     x for x in make_spdx.normalize_resolve_path(local_libs) if "lib" in x
                 ]
             else:
-                sys_libs = extract_file_names(fd)
+                sys_libs = extract_file_names(fd, source_tree)
     except OSError as e:
         print(f"Cannot open '{args.input}', {e}", file=sys.stderr)
         exit(-1)

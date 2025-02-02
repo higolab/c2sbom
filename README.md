@@ -29,7 +29,7 @@ This PoC doesn't have any external dependencies and uses only standard libraries
 
 ```
 $ ./gen_build.py -h
-usage: gen_build.py [-h] [-i INPUT] [-o OUTPUT] -p PROJECT -d DEVELOPER [-l LICENSE] -v VERSION [-c COPYRIGHT] [-u [USER ...]] [--no-license-heuristic] [--verbose-input] [--include-individual-licenses] [--include-files-section]
+usage: gen_build.py [-h] [-i INPUT] [-o OUTPUT] -p PROJECT -d DEVELOPER [-l LICENSE] -v VERSION [-c COPYRIGHT] [-u [USER ...]] [-s SOURCE_TREE] [--no-license-heuristic] [--verbose-input] [--include-individual-licenses] [--include-files-section]
 
 This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a build process. This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This project is still in the early development stage, and we are not in any way liable for the output or other behaviors of this program.
 
@@ -49,6 +49,8 @@ options:
                         Target project copyright string.
   -u, --user [USER ...]
                         SBOM Creator. Must start with either 'Person:' or 'Organization:'.
+  -s SOURCE_TREE, --source-tree SOURCE_TREE
+                        Root path of the target project's source tree. Defaults to the current directory.
   --no-license-heuristic
                         Disable the simple heuristic for license name matching.
   --verbose-input       Use the linker '--verbose' output parser for the input instead of the '-t' output (deprecated).
