@@ -62,6 +62,11 @@ parser.add_argument(
     action="store_true",
     help="Include 'licenseInfoFromFiles' field (makes the SPDX document not standard conformant).",
 )
+parser.add_argument(
+    "-q", "--quiet",
+    action="store_true",
+    help="Suppress unimportant console output.",
+)
 args = parser.parse_args()
 
 dpkg = subprocess.run(f"dpkg-query -W", shell=True, capture_output=True, text=True)
@@ -84,6 +89,7 @@ spdx = make_spdx.make_spdx(
     [] if args.user is None else args.user,
     args.no_license_heuristic,
     args.include_individual_licenses,
+    args.quiet,
 )
 
 if args.output is None:

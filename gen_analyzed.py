@@ -92,6 +92,11 @@ parser.add_argument(
     action="store_true",
     help="Include incomplete 'files' section (makes the SPDX document not standard conformant).",
 )
+parser.add_argument(
+    "-q", "--quiet",
+    action="store_true",
+    help="Suppress unimportant console output.",
+)
 args = parser.parse_args()
 
 libs: set[str] = set()
@@ -101,8 +106,8 @@ for file in args.input:
     except RuntimeError as e:
         print("Error:", e, file=sys.stderr)
 
-libs = make_spdx.normalize_resolve_path(libs)
-packages = make_spdx.map_files_to_packages(libs)
+libs = make_spdx.normalize_resolve_path(libs, args.quiet)
+packages = make_spdx.map_files_to_packages(libs, args.quiet)
 spdx = make_spdx.make_spdx(
     packages,
     args.project,
@@ -114,6 +119,7 @@ spdx = make_spdx.make_spdx(
     args.no_license_heuristic,
     args.include_individual_licenses,
     args.include_files_section,
+    args.quiet,
 )
 
 if args.output is None:

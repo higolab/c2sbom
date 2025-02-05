@@ -69,7 +69,6 @@ class LicenseManager:
         if not is_valid:
             tokens = [expr]
             self.stats_syntax_errors += 1
-            print(f"Invalid license expression: '{expr}'.", file=sys.stderr)
 
         # Fix license names and register licenses
         i = 0
@@ -198,10 +197,10 @@ class LicenseManager:
                 if tokens[i] == "AND" or tokens[i] == "OR":
                     result.append(tokens[i])
                     state = "after_op"
-                
+
                 elif tokens[i] == ",":
                     state = "after_comma"
-                
+
                 else:
                     return None
 
@@ -219,17 +218,17 @@ class LicenseManager:
                             j += 1
                             break
                         j -= 1
-                    
+
                     # Parenthesize from there.
                     result.insert(j, "(")
                     result.append(")")
                     result.append(tokens[i])
                     state = "after_op"
-                
+
                 elif tokens[i] == "OR":  # Meaningless, ignore
                     result.append(tokens[i])
                     state = "after_op"
-                
+
                 else:
                     result.append(",")  # Natural comma, resolved later
                     state = "after_op"
@@ -870,6 +869,7 @@ def get_license(
         ) as f_rel:
             lines = f_rel.readlines()
     except OSError as e:
+        print(f"Cannot open '/usr/share/doc/{package_basename}/copyright': {e.strerror}", file=sys.stderr)
         package_comment += (
             f"Cannot open '/usr/share/doc/{package_basename}/copyright': {e.strerror}, "
             f"not including license information."

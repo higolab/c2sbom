@@ -173,6 +173,12 @@ parser.add_argument(
     action="store_true",
     help="Include incomplete 'files' section (makes the SPDX document not standard conformant).",
 )
+parser.add_argument(
+    "-q",
+    "--quiet",
+    action="store_true",
+    help="Suppress unimportant console output.",
+)
 args = parser.parse_args()
 
 source_tree = str(pathlib.Path(args.source_tree).resolve())
@@ -181,7 +187,7 @@ if args.input is None:
     if args.verbose_input:
         sys_libs, local_libs = extract_file_names_verbose(sys.stdin, source_tree)
         local_libs = [  # Filter out internal files
-            x for x in make_spdx.normalize_resolve_path(local_libs) if "lib" in x
+            x for x in make_spdx.normalize_resolve_path(local_libs, args.quiet) if "lib" in x
         ]
     else:
         sys_libs = extract_file_names(sys.stdin, source_tree)
@@ -191,7 +197,7 @@ else:
             if args.verbose_input:
                 sys_libs, local_libs = extract_file_names_verbose(fd, source_tree)
                 local_libs = [  # Filter out internal files
-                    x for x in make_spdx.normalize_resolve_path(local_libs) if "lib" in x
+                    x for x in make_spdx.normalize_resolve_path(local_libs, args.quiet) if "lib" in x
                 ]
             else:
                 sys_libs = extract_file_names(fd, source_tree)
@@ -199,8 +205,8 @@ else:
         print(f"Cannot open '{args.input}', {e}", file=sys.stderr)
         exit(-1)
 
-sys_libs = make_spdx.normalize_resolve_path(sys_libs)
-packages = make_spdx.map_files_to_packages(sys_libs)
+sys_libs = make_spdx.normalize_resolve_path(sys_libs, args.quiet)
+packages = make_spdx.map_files_to_packages(sys_libs, args.quiet)
 spdx = make_spdx.make_spdx(
     packages,
     args.project,
@@ -212,6 +218,7 @@ spdx = make_spdx.make_spdx(
     args.no_license_heuristic,
     args.include_individual_licenses,
     args.include_files_section,
+    args.quiet,
 )
 
 if args.output is None:

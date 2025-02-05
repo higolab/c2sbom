@@ -26,7 +26,7 @@ def stat_line(value: int, size: int) -> str:
     return f"{value} out of {size}" if size == 0 else f"{value} out of {size} ({value / size * 100:.2f}%)"
 
 
-def normalize_resolve_path(files: set[str]) -> set[str]:
+def normalize_resolve_path(files: set[str], quiet: bool = False) -> set[str]:
     """
     For the given set of file pathes,
 
@@ -57,15 +57,17 @@ def normalize_resolve_path(files: set[str]) -> set[str]:
         normalized_files.add(resolved)
         ok_count += 1
 
-    print(
-        f"{stat_line(ok_count, len(files))} files are resolved, "
-        f"resulting in {len(normalized_files)} files excluding repetition.",
-        file=sys.stderr,
-    )
+    if not quiet:
+        print(
+            f"{stat_line(ok_count, len(files))} files are resolved, "
+            f"resulting in {len(normalized_files)} files excluding repetition.",
+            file=sys.stderr,
+        )
+    
     return normalized_files
 
 
-def map_files_to_packages(files: set[str]) -> list[tuple[str, set[str]]]:
+def map_files_to_packages(files: set[str], quiet: bool = False) -> list[tuple[str, set[str]]]:
     """
     Map files to their packages using the `dpkg-query -S` tool.
 
@@ -86,10 +88,12 @@ def map_files_to_packages(files: set[str]) -> list[tuple[str, set[str]]]:
         packages[pkg_name].add(file)
         ok_count += 1
 
-    print(
-        f"{stat_line(ok_count, len(files))} files are mapped to {len(packages)} packages.",
-        file=sys.stderr,
-    )
+    if not quiet:
+        print(
+            f"{stat_line(ok_count, len(files))} files are mapped to {len(packages)} packages.",
+            file=sys.stderr,
+        )
+    
     return sorted(packages.items())
 
 
@@ -187,6 +191,7 @@ def make_spdx(
     no_license_heuristic: bool,
     include_individual_licenses: bool = False,
     include_files_section: bool = False,
+    quiet: bool = False,
 ) -> str:
     """
     Generate a whole SPDX document for given packages in the JSON format.
@@ -239,7 +244,8 @@ def make_spdx(
     list_license_stats: list[dict[str, bool]] = []
 
     for package, files in packages:
-        print(f"Processing '{package}'...", file=sys.stderr)
+        if not quiet:
+            print(f"Processing '{package}'...", file=sys.stderr)
 
         package_basename, arch = divide_package_name(package)
         package_meta, package_stats = get_metadata.get_metadata(package_basename, arch)
@@ -361,6 +367,8 @@ def make_spdx(
                 }
             )
 
-    print(file=sys.stderr)
-    print_stats(packages, list_package_stats, list_license_stats)
+    if not quiet:
+        print(file=sys.stderr)
+        print_stats(packages, list_package_stats, list_license_stats)
+    
     return json.dumps(spdx, ensure_ascii=False, indent=2)

@@ -29,7 +29,7 @@ This PoC doesn't have any external dependencies and uses only standard libraries
 
 ```
 $ ./gen_build.py -h
-usage: gen_build.py [-h] [-i INPUT] [-o OUTPUT] -p PROJECT -d DEVELOPER [-l LICENSE] -v VERSION [-c COPYRIGHT] [-u [USER ...]] [-s SOURCE_TREE] [--no-license-heuristic] [--verbose-input] [--include-individual-licenses] [--include-files-section]
+usage: gen_build.py [-h] [-i INPUT] [-o OUTPUT] -p PROJECT -d DEVELOPER [-l LICENSE] -v VERSION [-c COPYRIGHT] [-u [USER ...]] [-s SOURCE_TREE] [--no-license-heuristic] [--verbose-input] [--include-individual-licenses] [--include-files-section] [-q]
 
 This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a build process. This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This project is still in the early development stage, and we are not in any way liable for the output or other behaviors of this program.
 
@@ -58,13 +58,14 @@ options:
                         Include 'licenseInfoFromFiles' field (makes the SPDX document not standard conformant).
   --include-files-section
                         Include incomplete 'files' section (makes the SPDX document not standard conformant).
+  -q, --quiet           Suppress unimportant console output.
 ```
 
 `gen_analyzed.py`:
 
 ```
 $ ./gen_analyzed.py -h
-usage: gen_analyzed.py [-h] [-i INPUT [INPUT ...]] [-o OUTPUT] -p PROJECT -d DEVELOPER [-l LICENSE] -v VERSION [-c COPYRIGHT] [-u [USER ...]] [--no-license-heuristic] [--include-individual-licenses] [--include-files-section]
+usage: gen_analyzed.py [-h] [-i INPUT [INPUT ...]] [-o OUTPUT] -p PROJECT -d DEVELOPER [-l LICENSE] -v VERSION [-c COPYRIGHT] [-u [USER ...]] [--no-license-heuristic] [--include-individual-licenses] [--include-files-section] [-q]
 
 This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a executable binaries. This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This project is still in the early development stage, and we are not in any way liable for the output or other behaviors of this program.
 
@@ -91,6 +92,7 @@ options:
                         Include 'licenseInfoFromFiles' field (makes the SPDX document not standard conformant).
   --include-files-section
                         Include incomplete 'files' section (makes the SPDX document not standard conformant).
+  -q, --quiet           Suppress unimportant console output.
 ```
 
 ## Samples
