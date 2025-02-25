@@ -97,8 +97,14 @@ options:
 
 ## Samples
 
-- [Build SBOM for curl 8.10.1](samples/curl-build.spdx.json) (Ubuntu 24.04 LTS)
-- [Analyzed SBOM for curl 8.10.1](samples/curl-analyzed.spdx.json) (Ubuntu 24.04 LTS)
+Following sample SBOMs are generated on Ubuntu 24.04 LTS AMD64.
+
+- Build SBOMs
+  - [curl 8.12.1](samples/curl-build.spdx.json)
+  - [Apache HTTP Server 2.4.63](samples/apache-build.spdx.json)
+- Analyzed SBOMs
+  - [curl 8.12.1](samples/curl-analyzed.spdx.json)
+  - [Apache HTTP Server 2.4.63](samples/apache-analyzed.spdx.json)
 
 ## SPDX License List
 

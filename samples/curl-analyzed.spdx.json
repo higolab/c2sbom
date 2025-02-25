@@ -3,9 +3,9 @@
   "dataLicense": "CC0-1.0",
   "SPDXID": "SPDXRef-DOCUMENT",
   "name": "curl",
-  "documentNamespace": "https://spdx.org/spdxdocs/c2sbom-curl-41f0eadf-8e34-4ed7-aeb9-f14330250a3f",
+  "documentNamespace": "https://spdx.org/spdxdocs/c2sbom-curl-0b501ada-8916-46ab-8e47-64c86ee4ab1d",
   "creationInfo": {
-    "created": "2025-01-19T07:01:37Z",
+    "created": "2025-02-25T14:18:42Z",
     "creators": [
       "Organization: Software Engineering Laboratory, Osaka University",
       "Tool: C2SBOM Preview"
@@ -22,9 +22,9 @@
       "downloadLocation": "NOASSERTION",
       "licenseConcluded": "curl",
       "licenseDeclared": "curl",
-      "copyrightText": "Copyright (c) 1996 - 2024, Daniel Stenberg, <daniel@haxx.se>, and many contributors, see the THANKS file.",
-      "versionInfo": "8.10.1",
-      "supplier": "Person: Daniel Stenberg"
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "8.12.1",
+      "supplier": "Organization: curl project"
     },
     {
       "name": "libbrotli1",
@@ -71,10 +71,10 @@
     },
     {
       "name": "libc6",
-      "SPDXID": "SPDXRef-Package--80519fa121e75a6d39e842802f16979246146909",
-      "versionInfo": "2.39-0ubuntu8.3",
-      "packageFileName": "libc6_2.39-0ubuntu8.3_amd64.deb",
-      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/g/glibc/libc6_2.39-0ubuntu8.3_amd64.deb",
+      "SPDXID": "SPDXRef-Package--9b1a8353f8d2cd65a204060f13d14aefa3162830",
+      "versionInfo": "2.39-0ubuntu8.4",
+      "packageFileName": "libc6_2.39-0ubuntu8.4_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/g/glibc/libc6_2.39-0ubuntu8.4_amd64.deb",
       "filesAnalyzed": false,
       "homepage": "https://www.gnu.org/software/libc/libc.html",
       "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
@@ -82,26 +82,26 @@
       "checksums": [
         {
           "algorithm": "MD5",
-          "checksumValue": "065f9414ddd8f8847fad3847fe4dd510"
+          "checksumValue": "4241c3a26c7fef25ef668cf1820ce778"
         },
         {
           "algorithm": "SHA1",
-          "checksumValue": "80519fa121e75a6d39e842802f16979246146909"
+          "checksumValue": "9b1a8353f8d2cd65a204060f13d14aefa3162830"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "84cd7925cb7773471f09810cbebcd796f2fd33a07cb761a64116eeb7b9096a2f"
+          "checksumValue": "b2e8d573f5b9275720640e59276dbbfc31f15400398906fb7b47c461d0b4cef7"
         },
         {
           "algorithm": "SHA512",
-          "checksumValue": "64c1cbeaabdd54653b7fdd511655f8c638836103f201d8538b4368f3b59b58c8f04cd14b5a155e63825e7f16f86cb744cc253f6e3509c5e499e9c1b2e5cd13c7"
+          "checksumValue": "76fdd9480c5522558792beaab1a817563c9754ec6e873354433409a9c8acfd7cdab14252fe566a7ce700e0f867a9067203e00aa10d0cf24758ea73e568c0aba0"
         }
       ],
       "externalRefs": [
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:deb/ubuntu/libc6@2.39-0ubuntu8.3?arch=amd64?distro=noble"
+          "referenceLocator": "pkg:deb/ubuntu/libc6@2.39-0ubuntu8.4?arch=amd64?distro=noble"
         }
       ],
       "copyrightText": "NOASSERTION",
@@ -148,8 +148,8 @@
         }
       ],
       "copyrightText": "1993-2018 Theodore Ts'o <tytso@mit.edu>\n2003-2007 Theodore Ts'o <tytso@mit.edu>\n1997-2003 Yann Dirson <dirson@debian.org>\n2001 Alcove <http://www.alcove.com/>\n1997 Klee Dienes\n1995-1996 Michael Nonweiler <mrn20@cam.ac.uk>\n1995-1999, 2002, 2004-2006 Theodore Ts'o <tytso@mit.edu>\n1992-1994  Remy Card <card@masi.ibp.fr>\nLaboratoire MASI, Institut Blaise Pascal\nUniversite Pierre et Marie Curie (Paris VI)\n2001 Andreas Gruenbacher, <a.gruenbacher@computer.org>\n2007 IBM Corporation\n2010 Red Hat, Inc., Lukas Czerner <lczerner@redhat.com>\n2014 Oracle\n2012 Zheng Liu <wenqing.lz@taobao.com>\n2012 Intel Corporation\n2001  Daniel Phillips\n2002 Theodore Ts'o.\n2002 Andreas Dilger\n2006 Cluster File Systems, Inc.\n2006, 2007 by Andreas Dilger <adilger@clusterfs.com>\n2003,2004 Cluster File Systems, Inc <info@clusterfs.com>\n1995 Theodore Ts'o.\n2003 VMware, Inc.\n2015 Jan Kara\n2018  Collabora Ltd.\n1997 Theodore Ts'o\n1997 Mark Habersack\n2011 Whamcloud, Inc.\n2004 Sam Hocevar <sam@hocevar.net>\n2014 Google Inc.\n1993, 1994, 1995 Theodore Ts'o.\n1998 Andrey Shedel <andreys@ns.cr.cyco.com>\n1999-2005 Andrew Tridgell\n2000-2006 Jeremy Allison\n2000 Paul `Rusty' Russell\n1999-2000 Andrew Tridgell\n2000 Paul `Rusty' Russell\n2000 Jeremy Allison\n2001 Andrew Esh\n1998-2000 Red Hat, Inc\n2014 SGI\n2018 Collabora Ltd.\n2005 Ben Gardner <bgardner@wabtec.com>\nAugust 26, 2011 Darrick J. Wong <djwong at us.ibm.com>\nReuse Bob Pearson's slice-by-8 implementation for e2fsprogs.\n\nJuly 20, 2011 Bob Pearson <rpearson at systemfabricworks.com>\n\nOct 15, 2000 Matt Domsch <Matt_Domsch@dell.com>\n\nOct 12, 2000 Matt Domsch <Matt_Domsch@dell.com>\n1996-1999, 2007 Theodore Ts'o.\n1999 Andreas Dilger <adilger@enel.ucalgary.ca>\n2008 Red Hat, Inc. All rights reserved.\n2003-2005 Silicon Graphics, Inc.\n1994 Ulrich Windl <Ulrich.Windl@rz.uni-regensburg.de>\n2007, 2016 The Android Open Source Project\n1993-2011 Theodore Ts'o\n1999-2000 Red Hat Software\n2000 Red Hat corp\n2001 Red Hat, Inc.\n2000 Stephen C. Tweedie\n2000 Andreas Dilger\n2014 Oracle\n2019 Google LLC\n1985-2015 Free Software Foundation, Inc.\n1995 Gadi Oxman\n2004-2006 Kern Sibbald\n2014 Adam Kropelin\n2010 Red Hat, Inc., Lukas Czerner <lczerner@redhat.com>\n1999, 2001 by Andries Brouwer\n1994-1997, 1999-2004 Theodore Ts'o <tytso@mit.edu>\n2001 Andreas Dilger\n1999, 2000 Andreas Dilger <adilger@turbolinux.com>\n2014 Robert Yang <liezhi.yang@windriver.com>\n2009 Sun Microsystems, Inc.\n2007 IBM Corporation\nAkira Fujita <a-fujita@rs.jp.nec.com>\nTakashi Sato <t-sato@yk.jp.nec.com>\n1999 Andreas Dilger and Theodore Ts'o\n2014 Oracle\n2014 Google, Inc.\n1995-1999 by Theodore Ts'o\n1992-1994  Remy Card <card@masi.ibp.fr>\nLaboratoire MASI, Institut Blaise Pascal\nUniversite Pierre et Marie Curie (Paris VI)\n1999 by David Beattie\nLinus Torvalds <Linus.Torvalds@cs.helsinki.fi>\n1997-2000 by Theodore Ts'o and PowerQuest, Inc.\n2018 Oracle\n2020 Google LLC\n1999  Theodore Ts'o.\n2005, 2006 by Theodore Ts'o.\n1985-2005 by the Massachusetts Institute of Technology.\nAll rights reserved.\n1997 Kaz Kylheku <kaz@ashi.footprints.net>\n1997-2014 Theodore Ts'o\n1985-2006 Free Software Foundation, Inc.",
-      "licenseConcluded": "GPL-2.0-only AND LGPL-2.0-only AND BSD-3-Clause AND Apache-2.0 AND ISC AND (GPL-1.0-only OR LicenseRef-libcom-err2-amd64--mit-us-export) AND Kazlib AND Latex2e AND LicenseRef-libcom-err2-amd64--gpl-2.0-or-later-with-texinfo-exception",
-      "licenseDeclared": "GPL-2.0-only AND LGPL-2.0-only AND BSD-3-Clause AND Apache-2.0 AND ISC AND (GPL-1.0-only OR LicenseRef-libcom-err2-amd64--mit-us-export) AND Kazlib AND Latex2e AND LicenseRef-libcom-err2-amd64--gpl-2.0-or-later-with-texinfo-exception",
+      "licenseConcluded": "GPL-2.0-only AND LGPL-2.0-only AND BSD-3-Clause AND Apache-2.0 AND ISC AND (GPL-1.0-only OR LicenseRef-libcom-err2-amd64--mit-us-export) AND Kazlib AND Latex2e AND LicenseRef-libcom-err2-amd64--gpl-2--with-texinfo-exception",
+      "licenseDeclared": "GPL-2.0-only AND LGPL-2.0-only AND BSD-3-Clause AND Apache-2.0 AND ISC AND (GPL-1.0-only OR LicenseRef-libcom-err2-amd64--mit-us-export) AND Kazlib AND Latex2e AND LicenseRef-libcom-err2-amd64--gpl-2--with-texinfo-exception",
       "licenseComments": "This is the Debian GNU/Linux prepackaged version of the EXT2 file\nsystem utilities (e2fsck, mke2fs, etc.).  The EXT2 utilities were\nwritten by Theodore Ts'o <tytso@mit.edu> and Remy Card <card@masi.ibp.fr>.\nSome files are GPL-2+ licensed or do not carry any license version.\nThey are distributable as GPL-2 and listed as such for simplification.\nSome files in lib/ext2fs claim\n\"This file may be redistributed under the terms of the GNU Public License.\"\nand NOTICE clarifies them to be licensed under LGPL-2.\nOn Debian systems, the complete text of the GNU General\nPublic License can be found in \"/usr/share/common-licenses/GPL\".\nThe work has been modified.",
       "comment": "",
       "summary": "common error description library",
@@ -191,8 +191,8 @@
         }
       ],
       "copyrightText": "1997-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n1999, Leon Breedt <ljb@debian.org>\n2005, Luk Claes <luk@debian.org>\n2005, LaMont Jones <lamont@ubuntu.com>\n2004-2005, Matthias Klose <doko@debian.org>\n2005-2006, Martin Pitt <martin.pitt@ubuntu.com>\n2008, Andreas Schuldei <andreas@debian.org>\n2000-2010, Domenico Andreoli <cavok@debian.org>\n1999-2010, Domenico Andreoli <cavok@debian.org>\n2010-2011, Ramakrishnan Muthukrishnan <rkrishnan@debian.org>\n2007, 2011, 2018, Steve Langasek <vorlon@debian.org>\n2011-2020, Alessandro Ghedini <ghedo@debian.org>\n2021, Bruno Kleinert <fuddl@debian.org>\n2021, Jeremy Bicha <jbicha@debian.org>\n2014-2011, Helmut Grohne <helmutg@debian.org>\n2022, Paul Gevers <elbrus@debian.org>\n2013, 2022, Salvatore Bonaccorso <carnil@debian.org>\n2022, Sergio Durigan Junior <sergiodj@debian.org>\n2021-2022, Samuel Henrique <samueloph@debian.org>\n2023 John Scott <jscott@posteo.net>\n2019 Ryan Tandy <ryan@nardis.ca>\n2023 John Scott <jscott@posteo.net>\n2009-2022, John Malmberg\n2012-2022, Steve Holme, <steve_holme@hotmail.com>\n2011-2022, Daniel Stenberg <daniel@haxx.se>\n1996-2021, Free Software Foundation, Inc.\n2010-2011, Hoi-Ho Chan, <hoiho.chan@gmail.com>\n2012-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n2013-2022, Linus Nielsen Feltzing <linus@haxx.se>\n1992-2022, Free Software Foundation, Inc.\n1996-2022, Internet Software Consortium.\n2000-2020, EdelWeb for EdelKey and OpenEvidence\n2014, 2018, Bill Nagel <wnagel@tycoint.com>, Exacq Technologies\n2018-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n2017, Florin Petriuc, <petriuc.florin@gmail.com>\n2018-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n2012-2016, Linus Nielsen Feltzing, <linus@haxx.se>\n2012-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n2020-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n2020-2022, Marc Hoersken, <info@marc-hoersken.de>\n2012, Mark Salisbury, <mark.salisbury@hp.com>\n2012-2016, Marc Hoersken, <info@marc-hoersken.de>\n2012-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n2011-2012, Markus Moeller, <markus_moeller@compuserve.com>\n2012-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n2012-2017, Nick Zitzmann, <nickzman@gmail.com>.\n2012-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n2014-2019, Steve Holme, <steve_holme@hotmail.com>.\n2015-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n2020-2022, Jacob Hoffman-Andrews,\n2013-2022, Linus Nielsen Feltzing, <linus@haxx.se>\n2022, Max Dymond, <max.dymond@microsoft.com>, et al.\n2019-2022, Michael Forney, <mforney@mforney.org>\n1998-2022, Vijay Panghal, <vpanghal@maginatics.com>, et al.\n1996-2022, Free Software Foundation, Inc.\n1995-1999, Kungliga Tekniska Högskolan\n2004-2022, Daniel Stenberg\n1983, Regents of the University of California.\n2005-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n1996-2022, Free Software Foundation, Inc.\n1994, X Consortium\n2019-2022, Björn Stenberg, <bjorn@haxx.se>\n2019, Björn Stenberg, <bjorn@haxx.se>\n2020-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n2012, Howard Chu, <hyc@highlandsun.com>\n2012-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n2010, Howard Chu, <hyc@openldap.org>\n2011-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n2010, Mandy Wu, <mandy.wu@intel.com>\n2011-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n2012, Marc Hoersken, <info@marc-hoersken.de>, et al.\n2012-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n1998, Vijay Panghal, <vpanghal@maginatics.com>, et al.\n1998-2022, Daniel Stenberg, <daniel@haxx.se>, et al.\n2006-2022, David Shaw <dshaw@jabberwocky.com>\n2016-2022, Evgeny Grin (Karlson2k), <k2k@narod.ru>.\n2010-2022, Howard Chu, <hyc@highlandsun.com>\n2012-2020, Steve Holme, <steve_holme@hotmail.com>.\n2015-2022, Jay Satiro, <raysatiro@yahoo.com>.\n2018-2022, Jeroen Ooms <jeroenooms@gmail.com>\n2021-2022, Max Dymond, <max.dymond@microsoft.com>\n2020-2022, Nicolas Sterchele, <nicolas@sterchelen.net>\n2017-2022, Red Hat, Inc.\n2020-2022, Simon Josefsson, <simon@josefsson.org>, et al.",
-      "licenseConcluded": "curl AND OLDAP-2.8 AND ISC AND LicenseRef-libcurl4t64-amd64--gpl-2.0-or-later-with-autoconf-data-exception AND LicenseRef-libcurl4t64-amd64--gpl-3.0-or-later-with-autoconf-data-exception AND LicenseRef-libcurl4t64-amd64--gpl-2.0-or-later-with-libtool-exception AND BSD-3-Clause AND BSD-4-Clause-UC AND FSFULLR AND X11",
-      "licenseDeclared": "curl AND OLDAP-2.8 AND ISC AND LicenseRef-libcurl4t64-amd64--gpl-2.0-or-later-with-autoconf-data-exception AND LicenseRef-libcurl4t64-amd64--gpl-3.0-or-later-with-autoconf-data-exception AND LicenseRef-libcurl4t64-amd64--gpl-2.0-or-later-with-libtool-exception AND BSD-3-Clause AND BSD-4-Clause-UC AND FSFULLR AND X11",
+      "licenseConcluded": "curl AND OLDAP-2.8 AND ISC AND LicenseRef-libcurl4t64-amd64--gpl-2--with-autoconf-data-exception AND LicenseRef-libcurl4t64-amd64--gpl-3--with-autoconf-data-exception AND LicenseRef-libcurl4t64-amd64--gpl-2--with-libtool-exception AND BSD-3-Clause AND BSD-4-Clause-UC AND FSFULLR AND X11",
+      "licenseDeclared": "curl AND OLDAP-2.8 AND ISC AND LicenseRef-libcurl4t64-amd64--gpl-2--with-autoconf-data-exception AND LicenseRef-libcurl4t64-amd64--gpl-3--with-autoconf-data-exception AND LicenseRef-libcurl4t64-amd64--gpl-2--with-libtool-exception AND BSD-3-Clause AND BSD-4-Clause-UC AND FSFULLR AND X11",
       "licenseComments": "",
       "comment": "",
       "summary": "easy-to-use client-side URL transfer library (OpenSSL flavour)",
@@ -243,10 +243,10 @@
     },
     {
       "name": "libgmp10",
-      "SPDXID": "SPDXRef-Package--77f33810ef6127276dc6307d17b51cbca5cf3af1",
-      "versionInfo": "2:6.3.0+dfsg-2ubuntu6",
-      "packageFileName": "libgmp10_2%3a6.3.0+dfsg-2ubuntu6_amd64.deb",
-      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/g/gmp/libgmp10_6.3.0%2bdfsg-2ubuntu6_amd64.deb",
+      "SPDXID": "SPDXRef-Package--8a35c566dac020b0791e693e37ebbd363537fdba",
+      "versionInfo": "2:6.3.0+dfsg-2ubuntu6.1",
+      "packageFileName": "libgmp10_2%3a6.3.0+dfsg-2ubuntu6.1_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/g/gmp/libgmp10_6.3.0%2bdfsg-2ubuntu6.1_amd64.deb",
       "filesAnalyzed": false,
       "homepage": "https://gmplib.org/",
       "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
@@ -254,31 +254,31 @@
       "checksums": [
         {
           "algorithm": "MD5",
-          "checksumValue": "696ef3ff091a0e8106882248adebfda0"
+          "checksumValue": "c1cebf5d51e183d352a27f529d68dc76"
         },
         {
           "algorithm": "SHA1",
-          "checksumValue": "77f33810ef6127276dc6307d17b51cbca5cf3af1"
+          "checksumValue": "8a35c566dac020b0791e693e37ebbd363537fdba"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "649a5ee5f74f0aa1e1b9c4f169eabbae56a79aa5aac51ef733eb9e18700bd8fc"
+          "checksumValue": "285f8a505dfa8e1b33f357a9d8d3477ad35bf18c0b34771a6df4c25923f3ae0d"
         },
         {
           "algorithm": "SHA512",
-          "checksumValue": "69adb2ad2899c418f55156e35dcc5c9f1930cb1fd0393fc91e41faf07f5239af90263d9908a6e5c210d247718db2088b22ae870f3d84f6bec6dabd4b1b132dd1"
+          "checksumValue": "ff27802aec052df6e05ae77c31aaa5cfeafe092e0cb8a230e2c74deac5ba658469a9516c74de1fb474c2696d11a147b2b4c0e304a305e37d1dd70680abe09fde"
         }
       ],
       "externalRefs": [
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:deb/ubuntu/libgmp10@2%3A6.3.0%2Bdfsg-2ubuntu6?arch=amd64?distro=noble"
+          "referenceLocator": "pkg:deb/ubuntu/libgmp10@2%3A6.3.0%2Bdfsg-2ubuntu6.1?arch=amd64?distro=noble"
         }
       ],
       "copyrightText": "1991, 1996, 1999, 2000, 2007 Free Software Foundation, Inc.\n1995, 1997-2003, 2005, 2006, 2008, 2009, 2012, 2015 Free Software Foundation, Inc.\n(C) 1984, 1989-1990, 2000-2015, 2018-2020 Free Software Foundation, Inc.",
-      "licenseConcluded": "(GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND LicenseRef-libgmp10-amd64--gpl-3.0-or-later-with-bison-exception",
-      "licenseDeclared": "(GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND LicenseRef-libgmp10-amd64--gpl-3.0-or-later-with-bison-exception",
+      "licenseConcluded": "(GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND LicenseRef-libgmp10-amd64--gpl-3--with-bison-exception",
+      "licenseDeclared": "(GPL-2.0-or-later OR LGPL-3.0-or-later) AND GPL-3.0-or-later AND LicenseRef-libgmp10-amd64--gpl-3--with-bison-exception",
       "licenseComments": "This gmp package was built for Debian by\nSteve M. Robbins <smr@debian.org>\nPhilipp Matthias Hahn <pmhahn@debian.org>\n\nThe documentation is released under the GNU Free Documentation License\n(GFDL) and it has cover texts.  As such, it has been determined not to\nmeet the Debian Free Software Guidelines, and is not shipped in the\ndebian packages.\nThis file is part of the GNU MP Library.\n\nThe GNU MP Library is free software; you can redistribute it and/or modify\nit under the terms of either:\n\n* the GNU Lesser General Public License as published by the Free\nSoftware Foundation; either version 3 of the License, or (at your\noption) any later version.\n\nor\n\n* the GNU General Public License as published by the Free Software\nFoundation; either version 2 of the License, or (at your option) any\nlater version.\n\nor both in parallel, as here.\n\nThe GNU MP Library is distributed in the hope that it will be useful, but\nWITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY\nor FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License\nfor more details.\n\nYou should have received copies of the GNU General Public License and the\nGNU Lesser General Public License along with the GNU MP Library.  If not,\nsee https://www.gnu.org/licenses/.",
       "comment": "",
       "summary": "Multiprecision arithmetic library",
@@ -286,10 +286,10 @@
     },
     {
       "name": "libgnutls30t64",
-      "SPDXID": "SPDXRef-Package--3349a37e6c6aca423000967d15b4b48f9c7f68d2",
-      "versionInfo": "3.8.3-1.1ubuntu3.2",
-      "packageFileName": "libgnutls30t64_3.8.3-1.1ubuntu3.2_amd64.deb",
-      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/g/gnutls28/libgnutls30t64_3.8.3-1.1ubuntu3.2_amd64.deb",
+      "SPDXID": "SPDXRef-Package--d1aa0f801145e431d85916e947edff5c1ad9c8d3",
+      "versionInfo": "3.8.3-1.1ubuntu3.3",
+      "packageFileName": "libgnutls30t64_3.8.3-1.1ubuntu3.3_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/g/gnutls28/libgnutls30t64_3.8.3-1.1ubuntu3.3_amd64.deb",
       "filesAnalyzed": false,
       "homepage": "https://www.gnutls.org/",
       "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
@@ -297,26 +297,26 @@
       "checksums": [
         {
           "algorithm": "MD5",
-          "checksumValue": "b92aa90cdfaa086b6195cd090830cf0a"
+          "checksumValue": "cffb9679a2b184dbd91cd6393eabe7c3"
         },
         {
           "algorithm": "SHA1",
-          "checksumValue": "3349a37e6c6aca423000967d15b4b48f9c7f68d2"
+          "checksumValue": "d1aa0f801145e431d85916e947edff5c1ad9c8d3"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "3f760e23d1ff0584d3cb7ea0ba7a3495d89198020a5d459ebc8af3c005284357"
+          "checksumValue": "05ad7013521c78c8d12a7c4142832ceab809557c83a8d0dd1bbac6b364589577"
         },
         {
           "algorithm": "SHA512",
-          "checksumValue": "8b2cb3613ddb66ec80a7ae60c94b536c0b36d942deb55ae296ba68f25c5f4fd123be8ea0d1adf538a98a40a37fc08e80b32a627ee4197d5966d980243fc59619"
+          "checksumValue": "fb3c65e1288936854347bf29c0a6a73c94b28c5b1ddda5f99e79448dbd6a30646bf66c1349b4de500585f7d05c3d08b46cc74745225d4f268d8dd5390e723364"
         }
       ],
       "externalRefs": [
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:deb/ubuntu/libgnutls30t64@3.8.3-1.1ubuntu3.2?arch=amd64?distro=noble"
+          "referenceLocator": "pkg:deb/ubuntu/libgnutls30t64@3.8.3-1.1ubuntu3.3?arch=amd64?distro=noble"
         }
       ],
       "copyrightText": "NOASSERTION",
@@ -329,10 +329,10 @@
     },
     {
       "name": "libgssapi-krb5-2",
-      "SPDXID": "SPDXRef-Package--a6f2d857fbeaa2f1c263d867ca60b471bd2e74c8",
-      "versionInfo": "1.20.1-6ubuntu2.2",
-      "packageFileName": "libgssapi-krb5-2_1.20.1-6ubuntu2.2_amd64.deb",
-      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/k/krb5/libgssapi-krb5-2_1.20.1-6ubuntu2.2_amd64.deb",
+      "SPDXID": "SPDXRef-Package--e915a2ac88f33635c27448bc17101b7239e75cf5",
+      "versionInfo": "1.20.1-6ubuntu2.4",
+      "packageFileName": "libgssapi-krb5-2_1.20.1-6ubuntu2.4_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/k/krb5/libgssapi-krb5-2_1.20.1-6ubuntu2.4_amd64.deb",
       "filesAnalyzed": false,
       "homepage": "https://web.mit.edu/kerberos/",
       "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
@@ -340,26 +340,26 @@
       "checksums": [
         {
           "algorithm": "MD5",
-          "checksumValue": "db93badd596420fb935618bf76ab4230"
+          "checksumValue": "429cc2730a9c3e741308487722763741"
         },
         {
           "algorithm": "SHA1",
-          "checksumValue": "a6f2d857fbeaa2f1c263d867ca60b471bd2e74c8"
+          "checksumValue": "e915a2ac88f33635c27448bc17101b7239e75cf5"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "396ae4f27048708a189cb9a1618771c755ad505c196c2433d4a240533917f803"
+          "checksumValue": "433bb164f015a12c396844511e8e5e2d370216596290e85fb8963f33de044715"
         },
         {
           "algorithm": "SHA512",
-          "checksumValue": "4f8e2c51e3fb6e3989b6adc0c6dbeb732114553c2c81e6da0996d458fb0bf4909af29fabb853ac6a4601f109b997eafb1b6121d9b3a00f29efcfefeb6d48a234"
+          "checksumValue": "da38c2a45d70c95d14455ebac4bc8e7c284a147318c69a09ad86b09294012da24d75347a10599d5d09bf87a5ea382ae5f9faed7322e441e4a7a90554ce773170"
         }
       ],
       "externalRefs": [
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:deb/ubuntu/libgssapi-krb5-2@1.20.1-6ubuntu2.2?arch=amd64?distro=noble"
+          "referenceLocator": "pkg:deb/ubuntu/libgssapi-krb5-2@1.20.1-6ubuntu2.4?arch=amd64?distro=noble"
         }
       ],
       "copyrightText": "NOASSERTION",
@@ -406,8 +406,8 @@
         }
       ],
       "copyrightText": "© 2001-2023 Niels Möller\nSome parts are Copyright © the Free Software Foundation and various\npeople. See below and source code comments for details.\n2001-2023 Niels Möller\n2013, Niels Möller\n2000-2002, Rafael R. Sevilla, Niels Möller\n2001, 2002, 2005 Rafael R. Sevilla, Niels Möller\n2008, 2013 Niels Möller\n2003 Nikos Mavroyanopoulos\n2004 Simon Josefsson\n2004 Free Software Foundation, Inc.\n2002, 2004, 2014 Niels Möller\n2012-2014 Niels Möller\n2004, 2012 Simon Josefsson\n2004, 2012 Simon Josefsson\n2001, 2002, 2004, 2014 Niels Möller\n2020 Niels Möller and Torbjörn Granlund\n2022 Mamone Tarsha\n2020, 2021 Mamone Tarsha\n2020 Niels Möller and Mamone Tarsha\n2021 Michael Weiser\n2002 Dan Egnor, Niels Möller\n2022, Zoltan Fridrich, Red Hat, Inc.\n2015 Amos Jeffries, Niels Möller\n2019 Dmitry Eremin-Solenikov\n2018 Red Hat, Inc.\n2011 Katholieke Universiteit Leuven\n2011, 2013, 2018 Niels Möller\n1998, 2001, 2002, 2003 Free Software Foundation, Inc.\n2010 Simon Josefsson\n1998, 2001 Free Software Foundation, Inc.\n1998, 2001 Ray Dassen\n1998, 2001 Niels Möller\n2006, 2007 NTT (Nippon Telegraph and Telephone Corporation)\n2014 Owen Kirby\n2014 Exegin Technologies Limited\n2015, 2017 Dmitry Eremin-Solenikov\n2001, 2011, 2013, 2014 Niels Möller\n2012 Simon Josefsson\n2013 Joachim Strömbergson\n2012, 2014 Niels Möller\n2017, 2018 Red Hat, Inc.\n2020 Dmitry Baryshkov\n2016-2020 Dmitry Eremin-Solenikov\n2012 Stefan Metzmacher, Michael Adam, Jeremy Allison\n2017 Red Hat Inc.\n2019 Dmitry Eremin-Solenikov\n2015, 2017, 2018 Red Hat, Inc.\n2001, 2002, 2005-2018 Niels Möller\n2017 Red Hat, Inc.\n2017 Daiki Ueno\n2005, 2009, 2014 Niels Möller\n2009 Magnus Holmgren\n© 2002 Dana L. How\n1992 Dana L. How\n1997, 2001 Niels Möller\n2002, 2009, 2014 Niels Möller\n2009 Magnus Holmgren\n2017 Red Hat, Inc.\n2017 Daiki Ueno\n2013, 2014, 2017, 2019 Niels Möller\n2013, 2014, 2019, 2021 Niels Möller\n2019 Wim Lewis\n2006, 2012, Jeronimo Pellegrini, Niels Möller\n2015, 2017, 2018, Red Hat, Inc.\n2001, 2002, 2005-2018, Niels Möller\n2011 Katholieke Universiteit Leuven\n2011, 2013, 2018, 2022 Niels Möller\n2018 Red Hat, Inc.\n2013 Red Hat, Niels Möller\n2019 Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>\n2009-2012 Aleksey Kravchenko <rhash.admin@gmail.com>\n2015, Dmity Eremin-Solenikov\n2013, Niels Möller\n2012, Nikos Mavrogiannopoulos, Niels Möller\n2012, Nikos Mavrogiannopoulos, Niels Möller\n2017, 2020 Daiki Ueno\n2021 Tianjia Zhang\n? Andrew Kuchling\n2003 Andreas Sigfridsson\n2003 Niels Möller\n2003 Marcus Comstedt\n2003 Niels Möller\nColin Plumb, Andrew Kuchling\n2001 Niels Möller\n1991,1993, 1995 Free Software Foundation, Inc.\n2010 Niels Möller\n2011 Daniel Kahn Gillmor\n2021 Nicolas Mora\n2021 Niels Möller\n2012, Simon Josefsson\n2012 Simon Josefsson\n2021 Nicolas Mora\n2014 Niels Möller\n2013 Nikos Mavrogiannopoulos\n2013, Nikos Mavrogiannopoulos\n2013 Niels Möller\n2012, 2013 Andrew M. (floodyberry)\n2013, Nikos Mavrogiannopoulos\n2013, 2014, Niels Möller\n2021 Martin Schwenke & Alastair D´Silva, IBM Corporation\n2021 Amitay Isaacs, IBM Corporation\n2021 Amitay Isaacs & Martin Schwenke, IBM Corporation\n2021 Martin Schwenke, Amitay Isaacs & Alastair D´Silva, IBM Corporation\n1998, 2001, 2002, 2003 Free Software Foundation, Inc.\n2011 Andres Mejia\n2001, 2012, Niels Möller, Nikos Mavrogiannopoulos\n2012, 2013, 2017, 2018, Nikos Mavrogiannopoulos\n2018 Red Hat, Inc\n2018 Niels Möller\n2018, Red Hat, Inc.\n2001, 2012, Niels Möller, Nikos Mavrogiannopoulos\n2018, Red Hat Inc.\n2012, Nikos Mavrogiannopoulos\n2001, 2015, Niels Möller\n2012 Niels Möller\n2021 Mamone Tarsha\n1998 Ross Anderson, Eli Biham, Lars Knudsen\n2003, 2004, 2005 Free Software Foundation, Inc.\n2010, 2011 Simon Josefsson\n2011, 2014 Niels Möller\n2001, 2004 Peter Gutmann, Andrew Kuchling, Niels Möller\n2013, 2014 Joachim Strömbergson\n2001, 2010, 2012, 2014 Niels Möller\n2017 Jia Zhang\n2021 Tianjia Zhang\n2004, 2012 Simon Josefsson\n2001, 2002, 2004, 2014 Niels Möller\n2014 Owen Kirby\n2014 Exegin Technologies Limited\n2013, 2014 Joachim Strömbergson\n2001, 2010, 2012, 2014 Niels Möller\n2017, Red Hat, Inc.\n2017, Daiki Ueno\n2012, 2013, 2017, 2018 Nikos Mavrogiannopoulos\n2022, Red Hat, Inc.\n1999 Ruud de Rooij <ruud@debian.org>\n1999 J.H.M. Dassen (Ray) <jdassen@wi.LeidenUniv.nl>\n2001 Niels Möller\n2005, 2009, 2014 Niels Möller\n2009 Magnus Holmgren\n1987-2001 Free Software Foundation, Inc.\n© 1992-2020 Free Software Foundation, Inc.\nnone\n2002 Timshel Knoll <timshel@debian.org>\n2007 Magnus Holmgren\n2007 Magnus Holmgren",
-      "licenseConcluded": "(LGPL-3.0-or-later OR GPL-2.0-or-later) AND LGPL-2.0-or-later AND MIT AND GPL-2.0-or-later AND LicenseRef-libhogweed6t64-amd64--gpl-3.0-or-later-with-autoconf-exception AND LicenseRef-libhogweed6t64-amd64--public-domain AND GPL-2.0-only AND LicenseRef-libhogweed6t64-amd64--gap",
-      "licenseDeclared": "(LGPL-3.0-or-later OR GPL-2.0-or-later) AND LGPL-2.0-or-later AND MIT AND GPL-2.0-or-later AND LicenseRef-libhogweed6t64-amd64--gpl-3.0-or-later-with-autoconf-exception AND LicenseRef-libhogweed6t64-amd64--public-domain AND GPL-2.0-only AND LicenseRef-libhogweed6t64-amd64--gap",
+      "licenseConcluded": "(LGPL-3.0-or-later OR GPL-2.0-or-later) AND LGPL-2.0-or-later AND MIT AND GPL-2.0-or-later AND LicenseRef-libhogweed6t64-amd64--gpl-3--with-autoconf-exception AND LicenseRef-libhogweed6t64-amd64--public-domain AND GPL-2.0-only AND LicenseRef-libhogweed6t64-amd64--gap",
+      "licenseDeclared": "(LGPL-3.0-or-later OR GPL-2.0-or-later) AND LGPL-2.0-or-later AND MIT AND GPL-2.0-or-later AND LicenseRef-libhogweed6t64-amd64--gpl-3--with-autoconf-exception AND LicenseRef-libhogweed6t64-amd64--public-domain AND GPL-2.0-only AND LicenseRef-libhogweed6t64-amd64--gap",
       "licenseComments": "Nettle is dual licenced under the GNU General Public License version\n2 or later, and the GNU Lesser General Public License version 3 or\nlater.  When using Nettle, you must comply fully with all conditions\nof at least one of these licenses. A few of the individual files are\nlicensed under more permissive terms, or in the public domain. To\nfind the current status of particular files, you have to read the\ncopyright notices at the top of the files.\n\n8X--------- AUTHORS file -----------------------------------------\nAuthors of GNU Nettle\n\nThe oldest code in Nettle was copied into precursors of the Nettle\nlibrary from other public domain or LGPLv2 sources.\n\nSteve Reid\t\tOriginal CAST128 implementation\nDana L. How\t\tOriginal DES implementation,\nColin Plumb\t\tOriginal MD5 implementation\nPeter Gutmann\t\tOriginal SHA1 implementation\nAndrew Kuchling\t\tOriginal MD2 implementation\n\nFree Software Foundation\nHolds copyrights on code ported from\nlibgcrypt, written by Werner Koch and others.\n\nJ.H.M. Dassen\t\tOriginal port of blowfish to GNU lsh, later\nsplit off into Nettle. (This blowfish\nimplementation was replaced later).\nTwofish tests.\n\nRuud de Rooij\t\tTwofish implementation for GNU lsh, later split off into Nettle.\n\nRafael Sevilla\t\tAES C and x86 implementation, original port of\nSerpent, for GNU lsh, later split off into Nettle.\n\nAuthors of Nettle (in roughly chronological order of initial contribution)\n\nNiels Möller\t\tMain author.\n\nDan Egnor\t\tBase64 conversion.\n\nAndreas Sigfridsson\tPort of MD2, from Andrew Kuchling's python\ncryptography toolkit.\n\nMarcus Comstedt\t\tImplemented MD4.\n\nD. J. Bernstein\t\tSalsa20 public domain reference implementation.\n\nSimon Josefsson\t\tPort of Arctwo, from GnuTLS and libgcrypt. New\nports of LGPL Serpent and Blowfish code, from\nlibgcrypt. Port of Salsa20, based on djb's\nreference. Implementation of PBKDF2 (RFC\n2898).\n\nHenrik Grubbström\tAES assembly for Sparc64.\n\nMagnus Holmgren\t\tConversion of DSA keys from DER format to SEXP\nformat.\n\nDaniel Kahn Gillmor\tAdded the lists for nettle_get_ciphers,\nnettle_get_hashes and nettle_get_armors. Test\nvectors for hashes and hmac.\n\nNippon Telegraph and Telephone Corporation\nLGPL:ed reference implementation of the\nCamellia cipher.\n\nAndrew M. (floodyberry)\nThe poly1305 code nettle's C implementation is\nderived from.\n\nAleksey Kravchenko\tThe gosthash94 implementation in rhash library.\n\nStefan Metzmacher, Jeremy Allison, Michael Adam\nContributed to the CMAC code, which was added\nto Nettle by Nikos Mavroyanopoulos.\n\nNikos Mavroyanopoulos\tGCM implementation, RSA blinding code,\ninterface for general rsa-pkcs1 signatures.\nPort of gosthash94 implementation from rhash. Port of\npoly1305. Salsa20r12 variant. HKDF (RFC 5869)\nimplementation. CMAC and SIV-CMAV\nimplementation. CTR and GCM optimizations.\nImplementation of versioned symbols. Setup of\n.gitlab-ci.yml. Large number of smaller fixes.\n\nAndres Mejia\t\tPorted Ripemd160 from libgcrypt.\n\nMartin Storsjö\t\tImplemented m4 macrology to make x86_64\nassembly files work with the windows ABI.\nSeveral other portability improvements.\n\nJeronimo Pellegrini\tDocumentation for base16 and base64 functions.\n\nTim Ruehsen\t\tSeveral smaller cleanups and bugfixes.\n\nFredrik Thulin\t\tTest vectors for pbkdf2-hmac-sha512.\n\nJoachim Strömbergson\tChacha implementation. Support for sha512_224\nand sha512_256.\n\nOwen Kirby\t\tImplementation of CCM mode.\n\nAmos Jeffries\t\tImplementation of base64url encoding.\n\nDaiki Ueno\t\tImplementation of RSA-PSS signatures,\ncurve448, shake256, ed448-shake256 signatures,\nchacha functions for 32-bit nonce, struct\nnettle_mac interface, siv-gcm.\n\nDmitry Baryshkov\tCFB and CFB8 modes, CMAC64. gosthash94cp and\nStreebog hash functions, GOST DSA signatures\nand curves GC256B and GC512A. Various bug\nfixes and cleanups.\n\nSimo Sorce\t\tSide-channel silent RSA functions. XTS\nimplementation.\n\nH.J. Lu\t\t\tAssembly annotations for Intel \"Control-flow\nEnforcement Technology\".\n\nStephen R. van den Berg\nPort of bcrypt.\n\nMamone Tarsha Kurdi\tPowerpc64 assembly and fat build setup,\nincluding AES and GCM. Arm64 assembly and fat\nbuild setup, including AES, Chacha, GCM, SHA1,\nSHA256. S390x assembly and fat build setup,\nincluding AES, Chacha, memxor, memxor3, SHA1,\nSHA256, SHA512, SHA3.\n\nNicolas Mora\t\tRFC 3394 keywrap.\n\nTianjia Zhang\t\tSM3 hash function, SM4 block cipher..\n\nAmitay Isaacs\t\tPowerpc64 assembly for secp192r1, secp224r1\nand secp256r1.\n\nMartin Schwenke\t\tPowerpc64 assembly for secp384r1, secp521r1,\ncurve25519 and curve448.\n\nZoltan Fridrich\t\tBallon password hashing.\n8X--------- end of AUTHORS file ------------------------------------\nThis manpage was copied from the lsh-utils package. Timshel didn't\nexplicitly select a license for his packaging work, but I think that\nit can be considered released under the same license as LSH itself.",
       "comment": "",
       "summary": "low level cryptographic library (public-key cryptos)",
@@ -415,10 +415,10 @@
     },
     {
       "name": "libidn2-0",
-      "SPDXID": "SPDXRef-Package--776b7876fa5c0f053ff151af349f16c14b839273",
-      "versionInfo": "2.3.7-2build1",
-      "packageFileName": "libidn2-0_2.3.7-2build1_amd64.deb",
-      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/libi/libidn2/libidn2-0_2.3.7-2build1_amd64.deb",
+      "SPDXID": "SPDXRef-Package--347e9cc902fd4d65fb15e436ab26e39240ed2c11",
+      "versionInfo": "2.3.7-2build1.1",
+      "packageFileName": "libidn2-0_2.3.7-2build1.1_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/libi/libidn2/libidn2-0_2.3.7-2build1.1_amd64.deb",
       "filesAnalyzed": false,
       "homepage": "https://www.gnu.org/software/libidn/#libidn2",
       "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
@@ -426,26 +426,26 @@
       "checksums": [
         {
           "algorithm": "MD5",
-          "checksumValue": "08ec001fad4d1dd07edbe37a6fe78a13"
+          "checksumValue": "d438e53c64cef8b39f2b213c81e4794f"
         },
         {
           "algorithm": "SHA1",
-          "checksumValue": "776b7876fa5c0f053ff151af349f16c14b839273"
+          "checksumValue": "347e9cc902fd4d65fb15e436ab26e39240ed2c11"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "f1be32391a2fabf06c27618a2000ae8f9a26c30fad1b482a007049ae8156d19c"
+          "checksumValue": "46bfd10df095a23b65f58115de47a547c9a2d14627749bd0423ae78c14be77d3"
         },
         {
           "algorithm": "SHA512",
-          "checksumValue": "38049df6a8350c21bb8df05bd5ae837b87c6149228788e2adf851739de1dd45e60ce299d8b4e65734ebe7592af82c10e1e8427dabc1b1e6ff3e8da5b4f4032d0"
+          "checksumValue": "b419ab91f986392c517b44f568147e3958b8dad5b5bdfea2e7df1657cbad744c6d7c16ab2344a680c686ba3d135f5cd9b0500a287599a02d6ce51fea557d149d"
         }
       ],
       "externalRefs": [
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:deb/ubuntu/libidn2-0@2.3.7-2build1?arch=amd64?distro=noble"
+          "referenceLocator": "pkg:deb/ubuntu/libidn2-0@2.3.7-2build1.1?arch=amd64?distro=noble"
         }
       ],
       "copyrightText": "Copyright (C) 2011-2014 Simon Josefsson\nCopyright (C) 2011-2014 Simon Josefsson\nCopyright (C) 2001-2011 Free Software Foundation, Inc.\nCopyright (c) 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011 Simon Josefsson\nCopyright (c) 2001, 2002 Nikos Mavrogiannopoulos\nCopyright (c) 1998 Michael Zucchi\nCopyright (c) 1991-2010 Unicode, Inc.",
@@ -458,10 +458,10 @@
     },
     {
       "name": "libk5crypto3",
-      "SPDXID": "SPDXRef-Package--2848c93edb93e8409fbb95e3645b1977b1399516",
-      "versionInfo": "1.20.1-6ubuntu2.2",
-      "packageFileName": "libk5crypto3_1.20.1-6ubuntu2.2_amd64.deb",
-      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/k/krb5/libk5crypto3_1.20.1-6ubuntu2.2_amd64.deb",
+      "SPDXID": "SPDXRef-Package--890f81916914be3056db899391c736d9a3d673e7",
+      "versionInfo": "1.20.1-6ubuntu2.4",
+      "packageFileName": "libk5crypto3_1.20.1-6ubuntu2.4_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/k/krb5/libk5crypto3_1.20.1-6ubuntu2.4_amd64.deb",
       "filesAnalyzed": false,
       "homepage": "https://web.mit.edu/kerberos/",
       "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
@@ -469,26 +469,26 @@
       "checksums": [
         {
           "algorithm": "MD5",
-          "checksumValue": "5850fa7d797da405b4e78c3b73d452ce"
+          "checksumValue": "e0ce80302bd73d047827d1acac02b190"
         },
         {
           "algorithm": "SHA1",
-          "checksumValue": "2848c93edb93e8409fbb95e3645b1977b1399516"
+          "checksumValue": "890f81916914be3056db899391c736d9a3d673e7"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "6035c28f9a80c8837456445342655ba42e4f2c9ceb22a201fae0135c6e75ce20"
+          "checksumValue": "e3194dd32a63131d799433c325f64a20e21880b0aca5456a55dcdc48ff737f6d"
         },
         {
           "algorithm": "SHA512",
-          "checksumValue": "671849bd5ca1e9bfa56b5a02949e3287779a2b40c488bb3a98e1e564db9f1ae48930d54cc33ff7da30090f4dbbcd3472e6ba12cad864734ad4bb774a1c5fe49c"
+          "checksumValue": "f431ca8f4efe17dbac3a03edd10bff685e11cf49581dbab3717d7ec2ab00650c5d987c8a40ad249fca360a911e493eb2ed27a331d01d6d3b677e8e042289427a"
         }
       ],
       "externalRefs": [
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:deb/ubuntu/libk5crypto3@1.20.1-6ubuntu2.2?arch=amd64?distro=noble"
+          "referenceLocator": "pkg:deb/ubuntu/libk5crypto3@1.20.1-6ubuntu2.4?arch=amd64?distro=noble"
         }
       ],
       "copyrightText": "NOASSERTION",
@@ -544,10 +544,10 @@
     },
     {
       "name": "libkrb5-3",
-      "SPDXID": "SPDXRef-Package--1bb2dd270922cf47c449a6d468b865e196d20f68",
-      "versionInfo": "1.20.1-6ubuntu2.2",
-      "packageFileName": "libkrb5-3_1.20.1-6ubuntu2.2_amd64.deb",
-      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/k/krb5/libkrb5-3_1.20.1-6ubuntu2.2_amd64.deb",
+      "SPDXID": "SPDXRef-Package--528d151e1df12aba8a04f5a826996e89c98ac9db",
+      "versionInfo": "1.20.1-6ubuntu2.4",
+      "packageFileName": "libkrb5-3_1.20.1-6ubuntu2.4_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/k/krb5/libkrb5-3_1.20.1-6ubuntu2.4_amd64.deb",
       "filesAnalyzed": false,
       "homepage": "https://web.mit.edu/kerberos/",
       "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
@@ -555,26 +555,26 @@
       "checksums": [
         {
           "algorithm": "MD5",
-          "checksumValue": "c2e9dfc6e350dfc27946d337facc9624"
+          "checksumValue": "4bb82d7f83e4f402adeb6cbda1bebf3e"
         },
         {
           "algorithm": "SHA1",
-          "checksumValue": "1bb2dd270922cf47c449a6d468b865e196d20f68"
+          "checksumValue": "528d151e1df12aba8a04f5a826996e89c98ac9db"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "cb3074cee1183b180cf123c31712b31ba879f36fc12aa2269e5ff866ea049429"
+          "checksumValue": "3f59b9e53e7dfd408bac897524f3e38178f59f6e5252b4afc70ba066893b257f"
         },
         {
           "algorithm": "SHA512",
-          "checksumValue": "a0d581393d6275ad92e459b10906d8050e36e75d90273504419bfba42ed351cef18b45aeaadce1127c1b9d77caa4ad3eb4937c9b89c82b765a8cb4506017c160"
+          "checksumValue": "884c14d498e7d819b5ada48e228658c091c1cab9eb1038cd8d70432577d7be809c319eec585bb581ec1e207985982cca19466d43c7cfdb6ccd24b28c60dfdd42"
         }
       ],
       "externalRefs": [
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:deb/ubuntu/libkrb5-3@1.20.1-6ubuntu2.2?arch=amd64?distro=noble"
+          "referenceLocator": "pkg:deb/ubuntu/libkrb5-3@1.20.1-6ubuntu2.4?arch=amd64?distro=noble"
         }
       ],
       "copyrightText": "NOASSERTION",
@@ -587,10 +587,10 @@
     },
     {
       "name": "libkrb5support0",
-      "SPDXID": "SPDXRef-Package--5a7484e116fa8dfa2daf62a8848a32181f66e037",
-      "versionInfo": "1.20.1-6ubuntu2.2",
-      "packageFileName": "libkrb5support0_1.20.1-6ubuntu2.2_amd64.deb",
-      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/k/krb5/libkrb5support0_1.20.1-6ubuntu2.2_amd64.deb",
+      "SPDXID": "SPDXRef-Package--3e55dd34d7f4b09897c9bf772c9b703acfd8ae84",
+      "versionInfo": "1.20.1-6ubuntu2.4",
+      "packageFileName": "libkrb5support0_1.20.1-6ubuntu2.4_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/k/krb5/libkrb5support0_1.20.1-6ubuntu2.4_amd64.deb",
       "filesAnalyzed": false,
       "homepage": "https://web.mit.edu/kerberos/",
       "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
@@ -598,26 +598,26 @@
       "checksums": [
         {
           "algorithm": "MD5",
-          "checksumValue": "8647b485eb1865a1b67be37d26a59cc6"
+          "checksumValue": "ab35938d714161c7a5f43b7d2db64c0a"
         },
         {
           "algorithm": "SHA1",
-          "checksumValue": "5a7484e116fa8dfa2daf62a8848a32181f66e037"
+          "checksumValue": "3e55dd34d7f4b09897c9bf772c9b703acfd8ae84"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "151813db57af106e85b312b972529e25b910726164125a9ab322643c80b167c7"
+          "checksumValue": "33413b71eaf9d3afc89427e55cbcba68ca1ad371742ccfd3a741dc1da35da2d3"
         },
         {
           "algorithm": "SHA512",
-          "checksumValue": "cce0d538a2e6796e49fc3dc5bea33959c99ec0bc22596f7cff8f9445aa23adf732c3ffec6a9da7789a39ca07ef64ebd17dce72917c97a5e6eb66e9e98d3e58b5"
+          "checksumValue": "d153b8b5fb2530bd39e5f68c1e3fad10e0918e56c257fb3fccb8e5d2d0c3ebb8fa75183ff9caccb3dce9d8a86f171e117383c504afd2c4fcc1d7f0bb355cfd3b"
         }
       ],
       "externalRefs": [
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:deb/ubuntu/libkrb5support0@1.20.1-6ubuntu2.2?arch=amd64?distro=noble"
+          "referenceLocator": "pkg:deb/ubuntu/libkrb5support0@1.20.1-6ubuntu2.4?arch=amd64?distro=noble"
         }
       ],
       "copyrightText": "NOASSERTION",
@@ -630,10 +630,10 @@
     },
     {
       "name": "libldap2",
-      "SPDXID": "SPDXRef-Package--095ed992b240a7b5c4ec5655e4de635cf029c223",
-      "versionInfo": "2.6.7+dfsg-1~exp1ubuntu8.1",
-      "packageFileName": "libldap2_2.6.7+dfsg-1~exp1ubuntu8.1_amd64.deb",
-      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/o/openldap/libldap2_2.6.7%2bdfsg-1%7eexp1ubuntu8.1_amd64.deb",
+      "SPDXID": "SPDXRef-Package--d5c4bee5cbd17aa75ea991c526c522a6673e9d71",
+      "versionInfo": "2.6.7+dfsg-1~exp1ubuntu8.2",
+      "packageFileName": "libldap2_2.6.7+dfsg-1~exp1ubuntu8.2_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/o/openldap/libldap2_2.6.7%2bdfsg-1%7eexp1ubuntu8.2_amd64.deb",
       "filesAnalyzed": false,
       "homepage": "https://www.openldap.org/",
       "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
@@ -641,31 +641,31 @@
       "checksums": [
         {
           "algorithm": "MD5",
-          "checksumValue": "097cea50f8bcc62151685f5bd8051dc1"
+          "checksumValue": "e70490db01b8971cd82427744cca3558"
         },
         {
           "algorithm": "SHA1",
-          "checksumValue": "095ed992b240a7b5c4ec5655e4de635cf029c223"
+          "checksumValue": "d5c4bee5cbd17aa75ea991c526c522a6673e9d71"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "127d5e97cda47613637653256ae2bbbc8749cd5080b863ef54ba35c4da5a8474"
+          "checksumValue": "17000967a1fae30c8dbb92b2183ec6e245c6d802aacf2c2945a20ee89298b8e9"
         },
         {
           "algorithm": "SHA512",
-          "checksumValue": "3ba3d614a3002e19660307dd2119cb237e44d1d6dc640c1d5542bee03203c5164d7762c80ee7288370e6f60e9ec3272edf8c153dd9b19bd03458e83df5ddfb28"
+          "checksumValue": "8622bf6a9f5973edafca72fa060ca1a7b1afcacac6d051933aff29c53c90daffb7c62fbbe6371611dc2797427b465fb983ab5545b5913cddc525b5a15859171b"
         }
       ],
       "externalRefs": [
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:deb/ubuntu/libldap2@2.6.7%2Bdfsg-1~exp1ubuntu8.1?arch=amd64?distro=noble"
+          "referenceLocator": "pkg:deb/ubuntu/libldap2@2.6.7%2Bdfsg-1~exp1ubuntu8.2?arch=amd64?distro=noble"
         }
       ],
       "copyrightText": "Copyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1998-2013 Kurt D. Zeilenga.\nPortions Copyright 1998-2006 Net Boolean Incorporated.\nPortions Copyright 2001-2006 IBM Corporation.\nPortions Copyright 1999-2008 Howard Y.H. Chu.\nPortions Copyright 1999-2008 Symas Corporation.\nPortions Copyright 1998-2003 Hallvard B. Furuseth.\nPortions Copyright 2007-2011 Gavin Henry.\nPortions Copyright 2007-2011 Suretec Systems Ltd.\nPortions Copyright (c) 1992-1996 Regents of the University of Michigan.\nCopyright 1998-2022 The OpenLDAP Foundation.\nAll rights reserved.\nCopyright (C) 1996-2018 Free Software Foundation, Inc.\nCopyright © 2004 Scott James Remnant <scott@netsplit.com>.\nCopyright © 2012-2015 Dan Nicholson <dbn.lists@gmail.com>\nCopyright 2000-2022 The OpenLDAP Foundation.\nCopyright 1992-2020 Free Software Foundation, Inc.\nCopyright (C) 1996-2001, 2003-2015 Free Software Foundation, Inc.\nCopyright (C) 1996-2015 Free Software Foundation, Inc.\nCopyright (C) 2004-2015 Free Software Foundation, Inc.\nCopyright (C) 2010-2015 Free Software Foundation, Inc.\nCopyright (C) 2004-2005, 2007, 2009, 2011-2015 Free Software Foundation, Inc.\nCopyright (C) 1996-2014 Free Software Foundation, Inc.\nCopyright (c) 1994-2008 Ralf S. Engelschall <rse@engelschall.com>\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2003 Kurt D. Zeilenga.\nPortions Copyright 2003 IBM Corporation.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1998-2003 Kurt D. Zeilenga.\nPortions Copyright 1998-2001 Net Boolean Incorporated.\nPortions Copyright (c) 1992-1996 Regents of the University of Michigan.\nPortions Copyright 2002, F5 Networks, Inc, All rights reserved.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1998-2003 Kurt D. Zeilenga.\nPortions Copyright (c) 1992-1996 Regents of the University of Michigan.\nCopyright 2005-2022 The OpenLDAP Foundation.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2006 Howard Chu.\nPortions Copyright 1998-2003 Kurt D. Zeilenga.\nPortions Copyright 1998-2001 Net Boolean Incorporated.\nPortions Copyright 2001-2003 IBM Corporation.\nPortions Copyright (c) 1992-1996 Regents of the University of Michigan.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1998-2003 Kurt D. Zeilenga.\nPortions Copyright 1998-2001 Net Boolean Incorporated.\nPortions Copyright 2001-2003 IBM Corporation.\nPortions Copyright 1999, Juan C. Gomez.\nPortions Copyright (c) 1992-1996 Regents of the University of Michigan.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1998-2003 Kurt D. Zeilenga.\nPortions Copyright 1998-2001 Net Boolean Incorporated.\nPortions Copyright 2001-2003 IBM Corporation.\nPortions Copyright (c) 1992-1996 Regents of the University of Michigan.\nCopyright 2008-2022 The OpenLDAP Foundation.\nPortions Copyright 2008 Pierangelo Masarati, SysNet\nPortions Copyright (c) 1992-1996 Regents of the University of Michigan.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2010 Kurt D. Zeilenga.\nPortions Copyright (c) 1992-1996 Regents of the University of Michigan.\nCopyright 1998-2022 The OpenLDAP Foundation.\nCopyright (C) 1992-1996, 1998-2012 Free Software Foundation, Inc.\nCopyright (C) 2012 Free Software Foundation, Inc.\nCopyright (C) 2014 Free Software Foundation, Inc.\nCopyright (C) 1996-2017 Free Software Foundation, Inc.\nCopyright (C) 1996-2001, 2003-2015 Free Software Foundation, Inc.\nCopyright (C) 2014 Free Software Foundation, Inc.\nCopyright 2000-2022 The OpenLDAP Foundation.\nCopyright (C) 1992-1996, 1998-2012 Free Software Foundation, Inc.\nCopyright (C) 2012 Free Software Foundation, Inc.\nCopyright (C) 2014 Free Software Foundation, Inc.\nCopyright (C) 1999, 2000, 2003, 2004, 2005 Free Software Foundation, Inc.\nCopyright (C) 1994, 1995, 1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009  Free Software Foundation, Inc.\nCopyright 2003-2022 The OpenLDAP Foundation.\nCopyright (C) 1994 X Consortium\nCopyright (C) 1992-1996, 1998-2012 Free Software Foundation, Inc.\nCopyright (c) 1998-1999 NeoSoft, Inc.\nAll Rights Reserved.\nCopyright 2011 PADL Software Pty Ltd.\nCopyright 2004-2022 The OpenLDAP Foundation.\nPortions Copyright (C) 2004 Virginia Tech, David Hawes.\nCopyright 2015 Howard Chu <hyc@symas.com>.\nCopyright 2007-2022 The OpenLDAP Foundation.\nPortions Copyright 2007 Michał Szulczyński.\nPortions Copyright 2009 Howard Chu.\nCopyright 2008-2022 The OpenLDAP Foundation.\nPortions Copyright 2008 Emmanuel Dreyfus\nCopyright 2004 Sang Seok Lim, IBM . All rights reserved.\nCopyright 1998-2022 The OpenLDAP Foundation.\nCopyright 2017 Ondřej Kuzník, Symas Corp. All Rights Reserved.\nCopyright 2016-2017 Symas Corp. All Rights Reserved.\nCopyright 2009 Jonathan Clarke <jonathan@phillipoux.net>.\nCopyright 2008-2022 The OpenLDAP Foundation.\nCopyright 2008 Emmanuel Dreyfus.\nCopyright 2008-2022 The OpenLDAP Foundation.\nPortions Copyright 2004-2022 by Howard Chu, Symas Corp.\nCopyright 2008-2022 The OpenLDAP Foundation.\nPortions Copyright 2008 by Howard Chu, Symas Corp.\nPortions Copyright 2013 by Ted C. Cheng, Symas Corp.\nCopyright (C) 2007, 2008, 2012 Arthur de Jong\nCopyright (C) 2006 West Consulting\nCopyright (C) 2006, 2007, 2009, 2010, 2011, 2012, 2013, 2014 Arthur de Jong\nCopyright 2015-2022 The OpenLDAP Foundation.\nPortions Copyright 2015 by Howard Chu, Symas Corp.\nCopyright 2009-2022 The OpenLDAP Foundation.\nCopyright (c) 2000-2001, Aaron D. Gifford\nCopyright 1998-2022 The OpenLDAP Foundation.\nCopyright (c) 1997, 1998, 1999 Kungliga Tekniska H\\xf6gskolan\n(Royal Institute of Technology, Stockholm, Sweden).\nCopyright (c) 1989 Regents of the University of California.\nCopyright 2011 Devin J. Pohly\nPortions Copyright 2011 Howard Chu\nPoul-Henning Kamp <phk@FreeBSD.ORG>\n(C) 2011 Devin J. Pohly\nCopyright 2005-2022 The OpenLDAP Foundation.\nPortions Copyright 2005 by Howard Chu, Symas Corp.\nCopyright 1999-2021 SYMAS Corporation All Rights Reserved.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2008 Pierangelo Masarati.\nCopyright 1998-2022 The OpenLDAP Foundation.\nCopyright 2004 Howard Chu, Symas Corp. All Rights Reserved.\nCopyright 2004-2022 The OpenLDAP Foundation.\nPortions Copyright 2004-2005 by Howard Chu, Symas Corp.\nCopyright 2016-2021 Symas Corporation.\nCopyright 1998-2022 The OpenLDAP Foundation.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2004 Hallvard B. Furuseth.\nCopyright 2003-2022 The OpenLDAP Foundation.\nCopyright 2003-2004 PADL Software Pty Ltd.\nCopyright 2004-2022 The OpenLDAP Foundation.\nPortions Copyright 2004-2017 Howard Chu, Symas Corporation.\nPortions Copyright 2017-2021 Ondřej Kuzník, Symas Corporation.\nPortions Copyright 2004 Hewlett-Packard Company\nCopyright 1998-2022 The OpenLDAP Foundation, All Rights Reserved.\nCopyright 2004, Pierangelo Masarati, All rights reserved. <ando@sys-net.it>\nCopyright 2016-2022 The OpenLDAP Foundation.\nPortions Copyright 2016 Symas Corporation.\nCopyright 2015-2022 The OpenLDAP Foundation.\nPortions Copyright 2015 by Howard Chu, Symas Corp. All rights reserved.\nPortions Copyright 2018 by Ondřej Kuzník, Symas Corp. All rights reserved.\nCopyright 1998-2022 The OpenLDAP Foundation, All Rights Reserved.\nCopyright 2001, Pierangelo Masarati, All rights reserved. <ando@sys-net.it>\nCopyright 2009-2022 The OpenLDAP Foundation All Rights Reserved.\nCopyright 2009-2018 Howard Chu All Rights Reserved.\nCopyright 2005-2006 Hewlett-Packard Company\nCopyright 2006-2022 The OpenLDAP Foundation All Rights Reserved.\nCopyright 2009-2022 The OpenLDAP Foundation All Rights Reserved.\nCopyright 2009 Symas Corporation All Rights Reserved.\nCopyright 2009 Peter Marschall\nCopyright 2001-2022 The OpenLDAP Foundation.\nCopyright (c) 1991, 1993 The Regents of the University of California.  All rights reserved.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1997,2002,2003 IBM Corporation.\nCopyright 2000-2022 The OpenLDAP Foundation.\nPortions Copyright 2000-2003 Pierangelo Masarati.\nCopyright 1998-2022 The OpenLDAP Foundation.\nCopyright (C) 2000 Novell, Inc. All Rights Reserved.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright (c) 1987 Regents of the University of California.\nCopyright (c) 2009 by Emily Backes, Symas Corp.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright (c) 1993 Regents of the University of Michigan.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1998-2003 Kurt D. Zeilenga.\nCopyright (c) 2009 by Emily Backes, Symas Corp.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1998-2003 Kurt D. Zeilenga.\nPortions Copyright 1995 IBM Corporation.\nCopyright (c) 1996, 1998 by Internet Software Consortium.\nCopyright 1998-2022 The OpenLDAP Foundation.\nCopyright (c) 1990, 1994 Regents of the University of Michigan.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1998-2003 Kurt D. Zeilenga.\nPortions Copyright 2009 Howard Chu.\nPortions Copyright (c) 1992, 1993  Regents of the University of Michigan.\nCopyright 2000-2022 The OpenLDAP Foundation.\nPortions Copyright 2000-2003 Kurt D. Zeilenga.\nCopyright 1998-2022 The OpenLDAP Foundation.\nCopyright 1997-2001 Computing Research Labs\nCopyright 1998-2022 The OpenLDAP Foundation.\nCopyright 2006 Hans Leidekker\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright (C) 1999, 2000 Novell, Inc. All Rights Reserved.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2008 Pierangelo Masarati.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright (c) 1990 Regents of the University of Michigan.\nCopyright 1999, Juan C. Gomez, All rights reserved.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright (c) 1995 Regents of the University of Michigan.\nPortions (C) Copyright PADL Software Pty Ltd. 1999\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2018 Howard Chu.\nCopyright 2005-2022 The OpenLDAP Foundation.\nPortions Copyright 2005-2006 SysNet s.n.c.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1999 Lars Uffmann.\nPortions Copyright (c) 1995 Regents of the University of Michigan.\nCopyright 2004-2022 The OpenLDAP Foundation.\nPortions Copyright 2004 Hewlett-Packard Company.\nPortions Copyright 2004 Howard Chu, Symas Corp.\nCopyright 2003-2022 The OpenLDAP Foundation.\nPortions Copyright 2003 IBM Corporation.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright (c) 1995 Regents of the University of Michigan.\nCopyright (C) 1999, 2000 Novell, Inc. All Rights Reserved.\nCopyright 2004-2022 The OpenLDAP Foundation.\nPortions Copyright 2004 Hewlett-Packard Company.\nPortions Copyright 2004 Howard Chu, Symas Corp.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1998 A. Hartgers.\nCopyright 2011-2021 Howard Chu, Symas Corp.\nCopyright (c) 2009, 2010 Martin Hedenfalk <martin@bzero.se>\nCopyright 2016-2022 The OpenLDAP Foundation.\nCopyright 2016 Symas Corporation.\nAll rights reserved.\nCopyright 2016-2022 The OpenLDAP Foundation.\nCopyright 2016 Symas Corporation.\nCopyright 1999, Howard Chu <hyc@highlandsun.com>\nAll rights reserved.\nCopyright 1998-2022 The OpenLDAP Foundation.\nCopyright 1998-2003 Kurt D. Zeilenga.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1999-2003 Howard Chu.\nPortions Copyright 2000-2003 Pierangelo Masarati.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1999-2003 Howard Chu.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2001-2003 Pierangelo Masarati.\nPortions Copyright 1999-2003 Howard Chu.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2001-2003 Pierangelo Masarati.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright (c) 1995 Regents of the University of Michigan.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1999 John C. Quillan.\nPortions Copyright 2002 myinternet Limited.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1999 John C. Quillan.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2004 Pierangelo Masarati.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1999 Dmitry Kovalev.\nPortions Copyright 2002 Pierangelo Masarati.\nPortions Copyright 2004 Mark Adamson.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2002 Pierangelo Masarati.\n1997-2022 The OpenLDAP Foundation.\n(c) Copyright 1996-1998, TimesTen Performance Software.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1999 Dmitry Kovalev.\nPortions Copyright 2002 Pierangelo Masarati.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright (c) 1995 Regents of the University of Michigan.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2007 by Howard Chu, Symas Corporation.\nPortions Copyright (c) 1995 Regents of the University of Michigan.\nCopyright 2003-2022 The OpenLDAP Foundation.\nPortions Copyright 2003 by IBM Corporation.\nPortions Copyright 2003-2008 by Howard Chu, Symas Corporation.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1999, Juan C. Gomez, All rights reserved.\nPortions Copyright (c) 1995 Regents of the University of Michigan.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2000 Mark Adamson, Carnegie Mellon.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1998-2003 Kurt D. Zeilenga.\nPortions Copyright 2003 IBM Corporation.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1998-2003 Kurt D. Zeilenga.\nCopyright 2004-2022 The OpenLDAP Foundation.\nPortions Copyright 2004 Pierangelo Masarati.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 1999 PM Lashley.\nCopyright 2003-2022 The OpenLDAP Foundation.\nPortions Copyright 2003 by IBM Corporation.\nCopyright (c) 1983, 1988, 1993 The Regents of the University of California.  All rights reserved.\nCopyright 2003-2022 The OpenLDAP Foundation.\nPortions Copyright 2004-2005 Pierangelo Masarati.\nPortions Copyright 2008 Emmanuel Dreyfus.\nCopyright 2004-2022 The OpenLDAP Foundation.\nPortions Copyright 2004,2006-2007 Symas Corporation.\nCopyright 1999-2022 The OpenLDAP Foundation.\nPortions Copyright 1999-2003 Howard Chu.\nPortions Copyright 2000-2003 Pierangelo Masarati.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2005-2008 Pierangelo Masarati.\nCopyright 2004-2022 The OpenLDAP Foundation.\nPortions Copyright 2017-2021 Ondřej Kuzník, Symas Corporation.\nPortions Copyright 2004-2017 Howard Chu, Symas Corporation.\nPortions Copyright 2004 Hewlett-Packard Company.\nCopyright 2003-2004 Hewlett-Packard Company\nCopyright 2007 Emmanuel Dreyfus\nCopyright 2003-2022 The OpenLDAP Foundation.\nCopyright 2003 IBM Corporation.\nCopyright 2003-2009 Symas Corporation.\nCopyright 2003-2022 The OpenLDAP Foundation.\nCopyright 2003-2018 by Howard Chu.\nCopyright 2015-2022 The OpenLDAP Foundation.\nPortions Copyright 2015 by Howard Chu, Symas Corp.\nPortions Copyright 2016-2017 by Michael Ströder <michael@stroeder.com>\nPortions Copyright 2018 by Ondřej Kuzník, Symas Corp.\nCopyright 2005-2022 The OpenLDAP Foundation.\nPortions Copyright 2005-2006 SysNet s.n.c.\nCopyright 2004-2022 The OpenLDAP Foundation.\nCopyright 2004-2005 Howard Chu, Symas Corporation.\nCopyright 2004 Hewlett-Packard Company.\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright IBM Corp. 1997,2002,2003\nCopyright 1998-2022 The OpenLDAP Foundation.\nPortions Copyright 2008 Red Hat, Inc.\nAll rights reserved.\nCopyright 1998-2022 The OpenLDAP Foundation.\nCopyright 2016-2021 Ondřej Kuzník, Symas Corp.\nAll rights reserved.\nBastian Blank <waldi@debian.org>\nBen Collins <bcollins@debian.org>\nGiuseppe Iuculano <iuculano@debian.org>\nHelmut Grohne <helmut@subdivi.de>\nJelmer Vernooij <jelmer@debian.org>\nMatthijs Möhlmann <matthijs@cacholong.nl>\nMichael Gilbert <mgilbert@debian.org>\nNico Golde <nion@debian.org>\nPetter Reinholdtsen <pere@debian.org>\nRoland Bauerschmidt <rb@debian.org>\nRuss Allbery <rra@debian.org>\nRyan Tandy <ryan@nardis.ca>\nSergio Durigan Junior <sergiodj@debian.org>\nStephen Frost <sfrost@debian.org>\nSteve Langasek <vorlon@debian.org>\nThijs Kinkhorst <thijs@debian.org>\nTimo Aaltonen <tjaalton@debian.org>\nTorsten Landschoff <torsten@debian.org>\nWichert Akkerman <wakkerma@debian.org>\nCanonical Ltd",
-      "licenseConcluded": "LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2.0-or-later-with-autoconf-exception AND LicenseRef-libldap2-amd64--gpl-3.0-or-later-with-autoconf-exception AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2.0-or-later-with-libtool-exception AND LicenseRef-libldap2-amd64--gpl-3.0-or-later-with-libtool-exception AND GPL-3.0-or-later AND LicenseRef-libldap2-amd64--gpl-2.0-or-later-with-autoconf-exception AND GPL-2.0-or-later AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--umich AND LicenseRef-libldap2-amd64--f5 AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--umich AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--jcg AND LicenseRef-libldap2-amd64--umich AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2.0-or-later-with-libtool-exception AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2.0-or-later-with-libtool-exception AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--mit-xc AND LicenseRef-libldap2-amd64--neosoft-permissive AND BSD-3-Clause AND LicenseRef-libldap2-amd64--openldap-2.8 AND BSD-3-Clause AND LicenseRef-libldap2-amd64--openldap-2.8 AND Beerware AND LicenseRef-libldap2-amd64--public-domain AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--bsd-4-clause-california AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--bsd-3-clause-variant AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--expat-isc AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--expat-unm AND LicenseRef-libldap2-amd64--openldap-2.8 AND MIT AND LicenseRef-libldap2-amd64--bsd-3-clause-california",
-      "licenseDeclared": "LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2.0-or-later-with-autoconf-exception AND LicenseRef-libldap2-amd64--gpl-3.0-or-later-with-autoconf-exception AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2.0-or-later-with-libtool-exception AND LicenseRef-libldap2-amd64--gpl-3.0-or-later-with-libtool-exception AND GPL-3.0-or-later AND LicenseRef-libldap2-amd64--gpl-2.0-or-later-with-autoconf-exception AND GPL-2.0-or-later AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--umich AND LicenseRef-libldap2-amd64--f5 AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--umich AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--jcg AND LicenseRef-libldap2-amd64--umich AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2.0-or-later-with-libtool-exception AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2.0-or-later-with-libtool-exception AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--mit-xc AND LicenseRef-libldap2-amd64--neosoft-permissive AND BSD-3-Clause AND LicenseRef-libldap2-amd64--openldap-2.8 AND BSD-3-Clause AND LicenseRef-libldap2-amd64--openldap-2.8 AND Beerware AND LicenseRef-libldap2-amd64--public-domain AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--bsd-4-clause-california AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--bsd-3-clause-variant AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--expat-isc AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--expat-unm AND LicenseRef-libldap2-amd64--openldap-2.8 AND MIT AND LicenseRef-libldap2-amd64--bsd-3-clause-california",
+      "licenseConcluded": "LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2--with-autoconf-exception AND LicenseRef-libldap2-amd64--gpl-3--with-autoconf-exception AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2--with-libtool-exception AND LicenseRef-libldap2-amd64--gpl-3--with-libtool-exception AND GPL-3.0-or-later AND LicenseRef-libldap2-amd64--gpl-2--with-autoconf-exception AND GPL-2.0-or-later AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--umich AND LicenseRef-libldap2-amd64--f5 AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--umich AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--jcg AND LicenseRef-libldap2-amd64--umich AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2--with-libtool-exception AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2--with-libtool-exception AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--mit-xc AND LicenseRef-libldap2-amd64--neosoft-permissive AND BSD-3-Clause AND LicenseRef-libldap2-amd64--openldap-2.8 AND BSD-3-Clause AND LicenseRef-libldap2-amd64--openldap-2.8 AND Beerware AND LicenseRef-libldap2-amd64--public-domain AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--bsd-4-clause-california AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--bsd-3-clause-variant AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--expat-isc AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--expat-unm AND LicenseRef-libldap2-amd64--openldap-2.8 AND MIT AND LicenseRef-libldap2-amd64--bsd-3-clause-california",
+      "licenseDeclared": "LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2--with-autoconf-exception AND LicenseRef-libldap2-amd64--gpl-3--with-autoconf-exception AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2--with-libtool-exception AND LicenseRef-libldap2-amd64--gpl-3--with-libtool-exception AND GPL-3.0-or-later AND LicenseRef-libldap2-amd64--gpl-2--with-autoconf-exception AND GPL-2.0-or-later AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--umich AND LicenseRef-libldap2-amd64--f5 AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--umich AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--jcg AND LicenseRef-libldap2-amd64--umich AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2--with-libtool-exception AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--gpl-2--with-libtool-exception AND LicenseRef-libldap2-amd64--fsf-unlimited AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--mit-xc AND LicenseRef-libldap2-amd64--neosoft-permissive AND BSD-3-Clause AND LicenseRef-libldap2-amd64--openldap-2.8 AND BSD-3-Clause AND LicenseRef-libldap2-amd64--openldap-2.8 AND Beerware AND LicenseRef-libldap2-amd64--public-domain AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--bsd-4-clause-california AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--bsd-3-clause-variant AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--expat-isc AND LicenseRef-libldap2-amd64--openldap-2.8 AND LicenseRef-libldap2-amd64--expat-unm AND LicenseRef-libldap2-amd64--openldap-2.8 AND MIT AND LicenseRef-libldap2-amd64--bsd-3-clause-california",
       "licenseComments": "Redistribution and use in source and binary forms, with or without\nmodification, are permitted only as authorized by the OpenLDAP\nPublic License.\n\nA copy of this license is available in the file LICENSE in the\ntop-level directory of the distribution or, alternatively, at\n<http://www.OpenLDAP.org/license.html>.\n\nOpenLDAP is a registered trademark of the OpenLDAP Foundation.\n\nIndividual files and/or contributed packages may be copyright by\nother parties and/or subject to additional restrictions.\n\nThis work is derived from the University of Michigan LDAP v3.3\ndistribution.  Information concerning this software is available\nat <http://www.umich.edu/~dirsvcs/ldap/ldap.html>.\n\nThis work also contains materials derived from public sources.\n\nAdditional information about OpenLDAP can be obtained at\n<http://www.openldap.org/>.\nNOTICE: Given that you include this file verbatim into your own\nsource tree, you are justified in saying that it remains separate\nfrom your package, and that this way you are simply just using GNU\nshtool. So, in this situation, there is no requirement that your\npackage itself is licensed under the GNU General Public License in\norder to take advantage of GNU shtool.\nFSF changes to this file are in the public domain.",
       "comment": "",
       "summary": "OpenLDAP libraries",
@@ -707,8 +707,8 @@
         }
       ],
       "copyrightText": "© 2001-2023 Niels Möller\nSome parts are Copyright © the Free Software Foundation and various\npeople. See below and source code comments for details.\n2001-2023 Niels Möller\n2013, Niels Möller\n2000-2002, Rafael R. Sevilla, Niels Möller\n2001, 2002, 2005 Rafael R. Sevilla, Niels Möller\n2008, 2013 Niels Möller\n2003 Nikos Mavroyanopoulos\n2004 Simon Josefsson\n2004 Free Software Foundation, Inc.\n2002, 2004, 2014 Niels Möller\n2012-2014 Niels Möller\n2004, 2012 Simon Josefsson\n2004, 2012 Simon Josefsson\n2001, 2002, 2004, 2014 Niels Möller\n2020 Niels Möller and Torbjörn Granlund\n2022 Mamone Tarsha\n2020, 2021 Mamone Tarsha\n2020 Niels Möller and Mamone Tarsha\n2021 Michael Weiser\n2002 Dan Egnor, Niels Möller\n2022, Zoltan Fridrich, Red Hat, Inc.\n2015 Amos Jeffries, Niels Möller\n2019 Dmitry Eremin-Solenikov\n2018 Red Hat, Inc.\n2011 Katholieke Universiteit Leuven\n2011, 2013, 2018 Niels Möller\n1998, 2001, 2002, 2003 Free Software Foundation, Inc.\n2010 Simon Josefsson\n1998, 2001 Free Software Foundation, Inc.\n1998, 2001 Ray Dassen\n1998, 2001 Niels Möller\n2006, 2007 NTT (Nippon Telegraph and Telephone Corporation)\n2014 Owen Kirby\n2014 Exegin Technologies Limited\n2015, 2017 Dmitry Eremin-Solenikov\n2001, 2011, 2013, 2014 Niels Möller\n2012 Simon Josefsson\n2013 Joachim Strömbergson\n2012, 2014 Niels Möller\n2017, 2018 Red Hat, Inc.\n2020 Dmitry Baryshkov\n2016-2020 Dmitry Eremin-Solenikov\n2012 Stefan Metzmacher, Michael Adam, Jeremy Allison\n2017 Red Hat Inc.\n2019 Dmitry Eremin-Solenikov\n2015, 2017, 2018 Red Hat, Inc.\n2001, 2002, 2005-2018 Niels Möller\n2017 Red Hat, Inc.\n2017 Daiki Ueno\n2005, 2009, 2014 Niels Möller\n2009 Magnus Holmgren\n© 2002 Dana L. How\n1992 Dana L. How\n1997, 2001 Niels Möller\n2002, 2009, 2014 Niels Möller\n2009 Magnus Holmgren\n2017 Red Hat, Inc.\n2017 Daiki Ueno\n2013, 2014, 2017, 2019 Niels Möller\n2013, 2014, 2019, 2021 Niels Möller\n2019 Wim Lewis\n2006, 2012, Jeronimo Pellegrini, Niels Möller\n2015, 2017, 2018, Red Hat, Inc.\n2001, 2002, 2005-2018, Niels Möller\n2011 Katholieke Universiteit Leuven\n2011, 2013, 2018, 2022 Niels Möller\n2018 Red Hat, Inc.\n2013 Red Hat, Niels Möller\n2019 Dmitry Eremin-Solenikov <dbaryshkov@gmail.com>\n2009-2012 Aleksey Kravchenko <rhash.admin@gmail.com>\n2015, Dmity Eremin-Solenikov\n2013, Niels Möller\n2012, Nikos Mavrogiannopoulos, Niels Möller\n2012, Nikos Mavrogiannopoulos, Niels Möller\n2017, 2020 Daiki Ueno\n2021 Tianjia Zhang\n? Andrew Kuchling\n2003 Andreas Sigfridsson\n2003 Niels Möller\n2003 Marcus Comstedt\n2003 Niels Möller\nColin Plumb, Andrew Kuchling\n2001 Niels Möller\n1991,1993, 1995 Free Software Foundation, Inc.\n2010 Niels Möller\n2011 Daniel Kahn Gillmor\n2021 Nicolas Mora\n2021 Niels Möller\n2012, Simon Josefsson\n2012 Simon Josefsson\n2021 Nicolas Mora\n2014 Niels Möller\n2013 Nikos Mavrogiannopoulos\n2013, Nikos Mavrogiannopoulos\n2013 Niels Möller\n2012, 2013 Andrew M. (floodyberry)\n2013, Nikos Mavrogiannopoulos\n2013, 2014, Niels Möller\n2021 Martin Schwenke & Alastair D´Silva, IBM Corporation\n2021 Amitay Isaacs, IBM Corporation\n2021 Amitay Isaacs & Martin Schwenke, IBM Corporation\n2021 Martin Schwenke, Amitay Isaacs & Alastair D´Silva, IBM Corporation\n1998, 2001, 2002, 2003 Free Software Foundation, Inc.\n2011 Andres Mejia\n2001, 2012, Niels Möller, Nikos Mavrogiannopoulos\n2012, 2013, 2017, 2018, Nikos Mavrogiannopoulos\n2018 Red Hat, Inc\n2018 Niels Möller\n2018, Red Hat, Inc.\n2001, 2012, Niels Möller, Nikos Mavrogiannopoulos\n2018, Red Hat Inc.\n2012, Nikos Mavrogiannopoulos\n2001, 2015, Niels Möller\n2012 Niels Möller\n2021 Mamone Tarsha\n1998 Ross Anderson, Eli Biham, Lars Knudsen\n2003, 2004, 2005 Free Software Foundation, Inc.\n2010, 2011 Simon Josefsson\n2011, 2014 Niels Möller\n2001, 2004 Peter Gutmann, Andrew Kuchling, Niels Möller\n2013, 2014 Joachim Strömbergson\n2001, 2010, 2012, 2014 Niels Möller\n2017 Jia Zhang\n2021 Tianjia Zhang\n2004, 2012 Simon Josefsson\n2001, 2002, 2004, 2014 Niels Möller\n2014 Owen Kirby\n2014 Exegin Technologies Limited\n2013, 2014 Joachim Strömbergson\n2001, 2010, 2012, 2014 Niels Möller\n2017, Red Hat, Inc.\n2017, Daiki Ueno\n2012, 2013, 2017, 2018 Nikos Mavrogiannopoulos\n2022, Red Hat, Inc.\n1999 Ruud de Rooij <ruud@debian.org>\n1999 J.H.M. Dassen (Ray) <jdassen@wi.LeidenUniv.nl>\n2001 Niels Möller\n2005, 2009, 2014 Niels Möller\n2009 Magnus Holmgren\n1987-2001 Free Software Foundation, Inc.\n© 1992-2020 Free Software Foundation, Inc.\nnone\n2002 Timshel Knoll <timshel@debian.org>\n2007 Magnus Holmgren\n2007 Magnus Holmgren",
-      "licenseConcluded": "(LGPL-3.0-or-later OR GPL-2.0-or-later) AND LGPL-2.0-or-later AND MIT AND GPL-2.0-or-later AND LicenseRef-libnettle8t64-amd64--gpl-3.0-or-later-with-autoconf-exception AND LicenseRef-libnettle8t64-amd64--public-domain AND GPL-2.0-only AND LicenseRef-libnettle8t64-amd64--gap",
-      "licenseDeclared": "(LGPL-3.0-or-later OR GPL-2.0-or-later) AND LGPL-2.0-or-later AND MIT AND GPL-2.0-or-later AND LicenseRef-libnettle8t64-amd64--gpl-3.0-or-later-with-autoconf-exception AND LicenseRef-libnettle8t64-amd64--public-domain AND GPL-2.0-only AND LicenseRef-libnettle8t64-amd64--gap",
+      "licenseConcluded": "(LGPL-3.0-or-later OR GPL-2.0-or-later) AND LGPL-2.0-or-later AND MIT AND GPL-2.0-or-later AND LicenseRef-libnettle8t64-amd64--gpl-3--with-autoconf-exception AND LicenseRef-libnettle8t64-amd64--public-domain AND GPL-2.0-only AND LicenseRef-libnettle8t64-amd64--gap",
+      "licenseDeclared": "(LGPL-3.0-or-later OR GPL-2.0-or-later) AND LGPL-2.0-or-later AND MIT AND GPL-2.0-or-later AND LicenseRef-libnettle8t64-amd64--gpl-3--with-autoconf-exception AND LicenseRef-libnettle8t64-amd64--public-domain AND GPL-2.0-only AND LicenseRef-libnettle8t64-amd64--gap",
       "licenseComments": "Nettle is dual licenced under the GNU General Public License version\n2 or later, and the GNU Lesser General Public License version 3 or\nlater.  When using Nettle, you must comply fully with all conditions\nof at least one of these licenses. A few of the individual files are\nlicensed under more permissive terms, or in the public domain. To\nfind the current status of particular files, you have to read the\ncopyright notices at the top of the files.\n\n8X--------- AUTHORS file -----------------------------------------\nAuthors of GNU Nettle\n\nThe oldest code in Nettle was copied into precursors of the Nettle\nlibrary from other public domain or LGPLv2 sources.\n\nSteve Reid\t\tOriginal CAST128 implementation\nDana L. How\t\tOriginal DES implementation,\nColin Plumb\t\tOriginal MD5 implementation\nPeter Gutmann\t\tOriginal SHA1 implementation\nAndrew Kuchling\t\tOriginal MD2 implementation\n\nFree Software Foundation\nHolds copyrights on code ported from\nlibgcrypt, written by Werner Koch and others.\n\nJ.H.M. Dassen\t\tOriginal port of blowfish to GNU lsh, later\nsplit off into Nettle. (This blowfish\nimplementation was replaced later).\nTwofish tests.\n\nRuud de Rooij\t\tTwofish implementation for GNU lsh, later split off into Nettle.\n\nRafael Sevilla\t\tAES C and x86 implementation, original port of\nSerpent, for GNU lsh, later split off into Nettle.\n\nAuthors of Nettle (in roughly chronological order of initial contribution)\n\nNiels Möller\t\tMain author.\n\nDan Egnor\t\tBase64 conversion.\n\nAndreas Sigfridsson\tPort of MD2, from Andrew Kuchling's python\ncryptography toolkit.\n\nMarcus Comstedt\t\tImplemented MD4.\n\nD. J. Bernstein\t\tSalsa20 public domain reference implementation.\n\nSimon Josefsson\t\tPort of Arctwo, from GnuTLS and libgcrypt. New\nports of LGPL Serpent and Blowfish code, from\nlibgcrypt. Port of Salsa20, based on djb's\nreference. Implementation of PBKDF2 (RFC\n2898).\n\nHenrik Grubbström\tAES assembly for Sparc64.\n\nMagnus Holmgren\t\tConversion of DSA keys from DER format to SEXP\nformat.\n\nDaniel Kahn Gillmor\tAdded the lists for nettle_get_ciphers,\nnettle_get_hashes and nettle_get_armors. Test\nvectors for hashes and hmac.\n\nNippon Telegraph and Telephone Corporation\nLGPL:ed reference implementation of the\nCamellia cipher.\n\nAndrew M. (floodyberry)\nThe poly1305 code nettle's C implementation is\nderived from.\n\nAleksey Kravchenko\tThe gosthash94 implementation in rhash library.\n\nStefan Metzmacher, Jeremy Allison, Michael Adam\nContributed to the CMAC code, which was added\nto Nettle by Nikos Mavroyanopoulos.\n\nNikos Mavroyanopoulos\tGCM implementation, RSA blinding code,\ninterface for general rsa-pkcs1 signatures.\nPort of gosthash94 implementation from rhash. Port of\npoly1305. Salsa20r12 variant. HKDF (RFC 5869)\nimplementation. CMAC and SIV-CMAV\nimplementation. CTR and GCM optimizations.\nImplementation of versioned symbols. Setup of\n.gitlab-ci.yml. Large number of smaller fixes.\n\nAndres Mejia\t\tPorted Ripemd160 from libgcrypt.\n\nMartin Storsjö\t\tImplemented m4 macrology to make x86_64\nassembly files work with the windows ABI.\nSeveral other portability improvements.\n\nJeronimo Pellegrini\tDocumentation for base16 and base64 functions.\n\nTim Ruehsen\t\tSeveral smaller cleanups and bugfixes.\n\nFredrik Thulin\t\tTest vectors for pbkdf2-hmac-sha512.\n\nJoachim Strömbergson\tChacha implementation. Support for sha512_224\nand sha512_256.\n\nOwen Kirby\t\tImplementation of CCM mode.\n\nAmos Jeffries\t\tImplementation of base64url encoding.\n\nDaiki Ueno\t\tImplementation of RSA-PSS signatures,\ncurve448, shake256, ed448-shake256 signatures,\nchacha functions for 32-bit nonce, struct\nnettle_mac interface, siv-gcm.\n\nDmitry Baryshkov\tCFB and CFB8 modes, CMAC64. gosthash94cp and\nStreebog hash functions, GOST DSA signatures\nand curves GC256B and GC512A. Various bug\nfixes and cleanups.\n\nSimo Sorce\t\tSide-channel silent RSA functions. XTS\nimplementation.\n\nH.J. Lu\t\t\tAssembly annotations for Intel \"Control-flow\nEnforcement Technology\".\n\nStephen R. van den Berg\nPort of bcrypt.\n\nMamone Tarsha Kurdi\tPowerpc64 assembly and fat build setup,\nincluding AES and GCM. Arm64 assembly and fat\nbuild setup, including AES, Chacha, GCM, SHA1,\nSHA256. S390x assembly and fat build setup,\nincluding AES, Chacha, memxor, memxor3, SHA1,\nSHA256, SHA512, SHA3.\n\nNicolas Mora\t\tRFC 3394 keywrap.\n\nTianjia Zhang\t\tSM3 hash function, SM4 block cipher..\n\nAmitay Isaacs\t\tPowerpc64 assembly for secp192r1, secp224r1\nand secp256r1.\n\nMartin Schwenke\t\tPowerpc64 assembly for secp384r1, secp521r1,\ncurve25519 and curve448.\n\nZoltan Fridrich\t\tBallon password hashing.\n8X--------- end of AUTHORS file ------------------------------------\nThis manpage was copied from the lsh-utils package. Timshel didn't\nexplicitly select a license for his packaging work, but I think that\nit can be considered released under the same license as LSH itself.",
       "comment": "",
       "summary": "low level cryptographic library (symmetric and one-way cryptos)",
@@ -716,10 +716,10 @@
     },
     {
       "name": "libnghttp2-14",
-      "SPDXID": "SPDXRef-Package--18ef1dbd9ed2730651035a70da5172bfc5a72713",
-      "versionInfo": "1.59.0-1ubuntu0.1",
-      "packageFileName": "libnghttp2-14_1.59.0-1ubuntu0.1_amd64.deb",
-      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/n/nghttp2/libnghttp2-14_1.59.0-1ubuntu0.1_amd64.deb",
+      "SPDXID": "SPDXRef-Package--3de13545bf7e290dffa031666ffc3ead963dcfdb",
+      "versionInfo": "1.59.0-1ubuntu0.2",
+      "packageFileName": "libnghttp2-14_1.59.0-1ubuntu0.2_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/n/nghttp2/libnghttp2-14_1.59.0-1ubuntu0.2_amd64.deb",
       "filesAnalyzed": false,
       "homepage": "https://nghttp2.org/",
       "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
@@ -727,31 +727,31 @@
       "checksums": [
         {
           "algorithm": "MD5",
-          "checksumValue": "cb857d8003af83c7a0620659de9528fe"
+          "checksumValue": "6fdabe3c8d9c766aa5f48700c4ce2a2c"
         },
         {
           "algorithm": "SHA1",
-          "checksumValue": "18ef1dbd9ed2730651035a70da5172bfc5a72713"
+          "checksumValue": "3de13545bf7e290dffa031666ffc3ead963dcfdb"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "a1d37624f413a2285b565d627dc2f7ffc52cadde1028242b96632c777af30579"
+          "checksumValue": "2f8a90953ba5c5671249fb3e414582ede4a7111872eaaa08119a560a29c65a1f"
         },
         {
           "algorithm": "SHA512",
-          "checksumValue": "5d3f8fc0af76376476a8f4c44acdad1c8448e520cefaeeed7e1961cb8308603aa4f16c561696e84c02a283c74b16c57952263814e6aea7cefeac8834641ca29d"
+          "checksumValue": "9f868dfe5a02214e9df673971fbf16f1104acd92881ff753d973cc0caa9d36217f83b1109dd0a8a10e8d186ba4a0eaf0f4337e0fe29b682921052691b8b5d7d0"
         }
       ],
       "externalRefs": [
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:deb/ubuntu/libnghttp2-14@1.59.0-1ubuntu0.1?arch=amd64?distro=noble"
+          "referenceLocator": "pkg:deb/ubuntu/libnghttp2-14@1.59.0-1ubuntu0.2?arch=amd64?distro=noble"
         }
       ],
       "copyrightText": "2012, 2013, 2014 Tatsuhiro Tsujikawa\n2012, Twist Inc.\n2008, Benjamin Kosnik <bkoz@redhat.com>,\n2012, Zack Weinberg <zackw@panix.com>,\n2013, Roy Stogner <roystgnr@ices.utexas.edu>\n2009 Sebastian Huber <sebastian-huber@web.de>,\n2009 Alan W. Irwin,\n2009 Rafael Laboissiere <rafael@laboissiere.net>,\n2009 Andrew Collier,\n2009 Matteo Settenvini <matteo@member.fsf.org>,\n2009 Horst Knorr <hk_classes@knoda.org>,\n2013 Daniel Mullner <muellner@math.stanford.edu>\n2013 Dave Snider\n2007-2013 by the Sphinx team",
-      "licenseConcluded": "MIT AND LicenseRef-libnghttp2-14-amd64--all-permissive AND LicenseRef-libnghttp2-14-amd64--gpl-3.0-or-later-with-autoconf-exception AND BSD-2-Clause",
-      "licenseDeclared": "MIT AND LicenseRef-libnghttp2-14-amd64--all-permissive AND LicenseRef-libnghttp2-14-amd64--gpl-3.0-or-later-with-autoconf-exception AND BSD-2-Clause",
+      "licenseConcluded": "MIT AND LicenseRef-libnghttp2-14-amd64--all-permissive AND LicenseRef-libnghttp2-14-amd64--gpl-3--with-autoconf-exception AND BSD-2-Clause",
+      "licenseDeclared": "MIT AND LicenseRef-libnghttp2-14-amd64--all-permissive AND LicenseRef-libnghttp2-14-amd64--gpl-3--with-autoconf-exception AND BSD-2-Clause",
       "licenseComments": "License details from https://bitbucket.org/birkenfeld/sphinx/src file LICENSE",
       "comment": "",
       "summary": "library implementing HTTP/2 protocol (shared library)",
@@ -793,8 +793,8 @@
         }
       ],
       "copyrightText": "2012-2023, Red Hat Inc.\n1996-2022, Free Software Foundation, Inc.\n1996-2021, Free Software Foundation, Inc.\n1992-2022, Free Software Foundation, Inc.\n1996-2022, Free Software Foundation, Inc.\n1994, X Consortium\n1995-2022, Free Software Foundation, Inc.\n2000-2002, 2004, 2007-2022, Free Software Foundation\n1996-2001, 2003-2019, 2021, 2022, Free Software Foundation, Inc.\n2004, 2005, 2007-2009, 2011-2019, 2021, 2022, Free Software Foundation, Inc.\n1995-2003, 2005, 2006, 2008-2014, 2016, 2019-2022, Free Software Foundation, Inc.\n2011, Collabora Ltd.\n2012, Redhat Inc.\n2011, Collabora Ltd.\n1996, 1998, Internet Software Consortium.\n2013, Red Hat Inc.\n2007, 2012, Stefan Walter\n2012-2023, Red Hat Inc.\n2007, 2008, 2012, Stefan Walter\n2013, Redhat Inc.\n2011, Collabora Ltd.\n2004, 2005, Stefan Walter\n2004, 2005, 2007, 2011, Internet Systems Consortium, Inc. (\"ISC\")\n2000, 2001, 2003, Internet Software Consortium.\n2013, 2018, 2019, 2023, Red Hat Inc.\n2011, Collabora Ltd.\n2012, Stef Walter\n2011, Collabora Ltd\n2013, 2021-2023, Red Hat Inc.\n2011, Collabora Ltd.\n2005, 2008, Stefan Walter\n2011, Collabora Ltd\n2021-2023, Red Hat, Inc.\n2011, Collabora Ltd.\n2017, 2021-2023, Red Hat, Inc.\n2006, Andreas Jellinghaus\n2006, 2007, g10 Code GmbH\n2000-2002, 2007, 2010, Todd C. Miller <Todd.Miller@courtesan.com>\n2012-2023, Red Hat Inc\n2013, Nikos Mavrogiannopoulos\n2020, Amazon.com, Inc. or its affiliates.\n2011-2023, Andreas Metzler <ametzler@debian.org>\n2011, Chris Coulson <chris.coulson@canonical.com>\n2016, Google Inc.\n2017, Nikos Mavrogiannopoulos\n2011, Collabora Ltd.\n2012-2023, Red Hat Inc.\n2012, Stef Walter\n2011, Collabora Ltd\n2011, Collabora Ltd.\n2004, 2005, Stefan Walter\n2012-2023, Red Hat Inc\n2012, 2013, 2016, Red Hat, Inc\n2023, Red Hat, Inc.\n2012-2023, Red Hat Inc.\n2007, 2008, 2012, Stefan Walter\n2012, 2013, Stefan Walter\n2018-2023, Red Hat, Inc.\n2012, Stefan Walter\n2017-2023, Red Hat, Inc.\n2011, Collabora Ltd.\n2008, Stefan Walter\n2013, 2021-2023, Red Hat Inc.\n2011, Collabora Ltd.\n2005, 2008, Stefan Walter\n2012, Red Hat Inc\n2011, Collabora Ltd.\n2001-2017, Free Software Foundation, Inc.\n2012, 2014, 2022\n2002, Free Software Foundation, Inc.\n2012-2023, Red Hat Inc\n2004, 2005, 2007, 2011, Internet Systems Consortium, Inc. (\"ISC\")\n2000, 2001, 2003, Internet Software Consortium.\n2011, Collabora Ltd.\n2013, 2018, 2019, 2023, Red Hat Inc.\n2011, Collabora Ltd.",
-      "licenseConcluded": "BSD-3-Clause AND FSFULLR AND LicenseRef-libp11-kit0-amd64--gpl-2.0-or-later-with-autoconf-data-exception AND LicenseRef-libp11-kit0-amd64--gpl-3.0-or-later-with-autoconf-data-exception AND X11 AND ISC AND LicenseRef-libp11-kit0-amd64--customfsfullrwd AND Apache-2.0 AND LGPL-2.1-or-later AND LicenseRef-libp11-kit0-amd64--customfsful AND FSFAP",
-      "licenseDeclared": "BSD-3-Clause AND FSFULLR AND LicenseRef-libp11-kit0-amd64--gpl-2.0-or-later-with-autoconf-data-exception AND LicenseRef-libp11-kit0-amd64--gpl-3.0-or-later-with-autoconf-data-exception AND X11 AND ISC AND LicenseRef-libp11-kit0-amd64--customfsfullrwd AND Apache-2.0 AND LGPL-2.1-or-later AND LicenseRef-libp11-kit0-amd64--customfsful AND FSFAP",
+      "licenseConcluded": "BSD-3-Clause AND FSFULLR AND LicenseRef-libp11-kit0-amd64--gpl-2--with-autoconf-data-exception AND LicenseRef-libp11-kit0-amd64--gpl-3--with-autoconf-data-exception AND X11 AND ISC AND LicenseRef-libp11-kit0-amd64--customfsfullrwd AND Apache-2.0 AND LGPL-2.1-or-later AND LicenseRef-libp11-kit0-amd64--customfsful AND FSFAP",
+      "licenseDeclared": "BSD-3-Clause AND FSFULLR AND LicenseRef-libp11-kit0-amd64--gpl-2--with-autoconf-data-exception AND LicenseRef-libp11-kit0-amd64--gpl-3--with-autoconf-data-exception AND X11 AND ISC AND LicenseRef-libp11-kit0-amd64--customfsfullrwd AND Apache-2.0 AND LGPL-2.1-or-later AND LicenseRef-libp11-kit0-amd64--customfsful AND FSFAP",
       "licenseComments": "",
       "comment": "",
       "summary": "library for loading and coordinating access to PKCS#11 modules - runtime",
@@ -974,10 +974,10 @@
     },
     {
       "name": "libssl3t64",
-      "SPDXID": "SPDXRef-Package--af6b1bc382457b3033d6286de33afaa86d6abf09",
-      "versionInfo": "3.0.13-0ubuntu3.4",
-      "packageFileName": "libssl3t64_3.0.13-0ubuntu3.4_amd64.deb",
-      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/o/openssl/libssl3t64_3.0.13-0ubuntu3.4_amd64.deb",
+      "SPDXID": "SPDXRef-Package--3062b4278ef20e3c65dce5386756d172df2ceb47",
+      "versionInfo": "3.0.13-0ubuntu3.5",
+      "packageFileName": "libssl3t64_3.0.13-0ubuntu3.5_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/o/openssl/libssl3t64_3.0.13-0ubuntu3.5_amd64.deb",
       "filesAnalyzed": false,
       "homepage": "https://www.openssl.org/",
       "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
@@ -985,26 +985,26 @@
       "checksums": [
         {
           "algorithm": "MD5",
-          "checksumValue": "3117130af68b84c124a7461e9b4209d3"
+          "checksumValue": "fa332705584a53f5e95fa6b91ed6c2e1"
         },
         {
           "algorithm": "SHA1",
-          "checksumValue": "af6b1bc382457b3033d6286de33afaa86d6abf09"
+          "checksumValue": "3062b4278ef20e3c65dce5386756d172df2ceb47"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "460131a068304561137c0447b6710438a80945202336f86f28ffab6891b1d1f1"
+          "checksumValue": "31df0a4d957c404c01b1898a84beca1190fd71cf2d2ac47ce5036705a24d96fc"
         },
         {
           "algorithm": "SHA512",
-          "checksumValue": "42bff6df63229985c1a3f3ffda35d57fde14f64f5187b254f71aa16a83f5288e55e8bfb173ae5f021b6fece786be9c1974569a7921c5adf34e24882c786c5b58"
+          "checksumValue": "91cfc4848eda873d5336c145594475025403f1bfc732fb6912a6c253cb090c28e1cee62bfc27b2a2524afc00e051b05141d565e021f39b2b372a091aad745811"
         }
       ],
       "externalRefs": [
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:deb/ubuntu/libssl3t64@3.0.13-0ubuntu3.4?arch=amd64?distro=noble"
+          "referenceLocator": "pkg:deb/ubuntu/libssl3t64@3.0.13-0ubuntu3.5?arch=amd64?distro=noble"
         }
       ],
       "copyrightText": "1995-2020, The OpenSSL Project Authors\nChristoph Martin, Kurt Roeckx, Sebastian Andrzej Siewior\n2013, Mark Jason Dominus <mjd@cpan.org>.",
@@ -1017,10 +1017,10 @@
     },
     {
       "name": "libtasn1-6",
-      "SPDXID": "SPDXRef-Package--9ba4a97e0342467f318e8836480389c147e4e8c0",
-      "versionInfo": "4.19.0-3build1",
-      "packageFileName": "libtasn1-6_4.19.0-3build1_amd64.deb",
-      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/libt/libtasn1-6/libtasn1-6_4.19.0-3build1_amd64.deb",
+      "SPDXID": "SPDXRef-Package--9833601a19a335940a6e0491aab6f902ae2071c1",
+      "versionInfo": "4.19.0-3ubuntu0.24.04.1",
+      "packageFileName": "libtasn1-6_4.19.0-3ubuntu0.24.04.1_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/libt/libtasn1-6/libtasn1-6_4.19.0-3ubuntu0.24.04.1_amd64.deb",
       "filesAnalyzed": false,
       "homepage": "https://www.gnu.org/software/libtasn1/",
       "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
@@ -1028,26 +1028,26 @@
       "checksums": [
         {
           "algorithm": "MD5",
-          "checksumValue": "f32b5a38350fd9850336197662113060"
+          "checksumValue": "bcdbebd2798bab354632a4ddda30d18e"
         },
         {
           "algorithm": "SHA1",
-          "checksumValue": "9ba4a97e0342467f318e8836480389c147e4e8c0"
+          "checksumValue": "9833601a19a335940a6e0491aab6f902ae2071c1"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "e30d8b4b7769966185b5acb40ac81205467022c96d7b1688bf06a3eaded2b98c"
+          "checksumValue": "e16e809c6bc957ef94585e47e94fb4f0959adf844abdf3cafa28edf1fbaf34ed"
         },
         {
           "algorithm": "SHA512",
-          "checksumValue": "5f9ccb7215af380a8bf10f5443b3f0b72e8c71b21af7aec8f5cb9482c067328861f1cbd5d93615f884fc77607819d2915a91170fcefe26ad9a8436dbc7e22f36"
+          "checksumValue": "c0b44c8e40da713a0c7dccae82ba4fb9288102e1096f9c96f8a4732bc0c3ea11e3dea6914a7b42923c9d6ec542cea0d3323c3ab8b6e968d60718f7ee769a9fd7"
         }
       ],
       "externalRefs": [
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:deb/ubuntu/libtasn1-6@4.19.0-3build1?arch=amd64?distro=noble"
+          "referenceLocator": "pkg:deb/ubuntu/libtasn1-6@4.19.0-3ubuntu0.24.04.1?arch=amd64?distro=noble"
         }
       ],
       "copyrightText": "NOASSERTION",
@@ -1060,10 +1060,10 @@
     },
     {
       "name": "libunistring5",
-      "SPDXID": "SPDXRef-Package--c2a0189a69d940bfee5c6125d7428013eb6de818",
-      "versionInfo": "1.1-2build1",
-      "packageFileName": "libunistring5_1.1-2build1_amd64.deb",
-      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/libu/libunistring/libunistring5_1.1-2build1_amd64.deb",
+      "SPDXID": "SPDXRef-Package--b7888fbced18c2a5084edd5dad1288b934c88449",
+      "versionInfo": "1.1-2build1.1",
+      "packageFileName": "libunistring5_1.1-2build1.1_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/libu/libunistring/libunistring5_1.1-2build1.1_amd64.deb",
       "filesAnalyzed": false,
       "homepage": "https://www.gnu.org/software/libunistring/",
       "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
@@ -1071,31 +1071,31 @@
       "checksums": [
         {
           "algorithm": "MD5",
-          "checksumValue": "f2cf9ac571b9661a5645b231a2c68e79"
+          "checksumValue": "0681eef1039a281a9fb54a0bf6b6fd86"
         },
         {
           "algorithm": "SHA1",
-          "checksumValue": "c2a0189a69d940bfee5c6125d7428013eb6de818"
+          "checksumValue": "b7888fbced18c2a5084edd5dad1288b934c88449"
         },
         {
           "algorithm": "SHA256",
-          "checksumValue": "78acc4c141a499e0c1e4cc47ca8e9082996f3972662c4d92337669ecc9b0a519"
+          "checksumValue": "203d7657b5f54633fba1a9c9b784d556ef83c9f6787b3185ba55a88e07b865a3"
         },
         {
           "algorithm": "SHA512",
-          "checksumValue": "daa0eeff9c8f84dcc133a27d753d977b84358804b2ab00a71c3ac50e892fe8f48ae4b82f73483762ceb3405e33d577d50774579135fba8b261f9a01e65b2c605"
+          "checksumValue": "2603e90eeab6d0bc31b0ef0b6a93611f5cb2f488285d6a3141b6db866c0a26d2c4a130af3ac8492b400b647c0516c96e44c8b0d9c83e27af731ca85eff61f939"
         }
       ],
       "externalRefs": [
         {
           "referenceCategory": "PACKAGE-MANAGER",
           "referenceType": "purl",
-          "referenceLocator": "pkg:deb/ubuntu/libunistring5@1.1-2build1?arch=amd64?distro=noble"
+          "referenceLocator": "pkg:deb/ubuntu/libunistring5@1.1-2build1.1?arch=amd64?distro=noble"
         }
       ],
       "copyrightText": "1995-2022 Free Software Foundation, Inc.\n1995-2022 Free Software Foundation, Inc.\n2001-2022 Free Software Foundation, Inc.\n1990-2022 Free Software Foundation, Inc.\n1995-2017 Free Software Foundation, Inc.\n1992-2021, Free Software Foundation, Inc.\n1999-2005 Patrice Dumas <dumas@centre-cired.fr>,\n1999-2005 Derek Price <derek@ximbiot.com>,\n1999-2005 Adrian Aichner <adrian@xemacs.org>\n1996-2021 Free Software Foundation, Inc.\n2004-2019, 2021 Bootstrap Authors\n1994, X Consortium\n2009-2011 Andreas Rottmann <rotty@debian.org>\n2017-2023 Jörg Frings-Fürst <debian@jff.email>",
-      "licenseConcluded": "(LGPL-3.0-or-later OR GPL-2.0-or-later) AND LicenseRef-libunistring5-amd64--freesoftware AND (GPL-3.0-or-later OR GFDL-1.2-no-invariants-or-later) AND GPL-3.0-or-later AND GPL-2.0-or-later AND LicenseRef-libunistring5-amd64--gpl-2.0-or-later-with-distribution-exception AND LicenseRef-libunistring5-amd64--gpl-2.0-or-later-with-distribution-exception AND MIT AND GPL-2.0-or-later AND X11",
-      "licenseDeclared": "(LGPL-3.0-or-later OR GPL-2.0-or-later) AND LicenseRef-libunistring5-amd64--freesoftware AND (GPL-3.0-or-later OR GFDL-1.2-no-invariants-or-later) AND GPL-3.0-or-later AND GPL-2.0-or-later AND LicenseRef-libunistring5-amd64--gpl-2.0-or-later-with-distribution-exception AND LicenseRef-libunistring5-amd64--gpl-2.0-or-later-with-distribution-exception AND MIT AND GPL-2.0-or-later AND X11",
+      "licenseConcluded": "(LGPL-3.0-or-later OR GPL-2.0-or-later) AND LicenseRef-libunistring5-amd64--freesoftware AND (GPL-3.0-or-later OR GFDL-1.2-no-invariants-or-later) AND GPL-3.0-or-later AND GPL-2.0-or-later AND LicenseRef-libunistring5-amd64--gpl-2--with-distribution-exception AND LicenseRef-libunistring5-amd64--gpl-2--with-distribution-exception AND MIT AND GPL-2.0-or-later AND X11",
+      "licenseDeclared": "(LGPL-3.0-or-later OR GPL-2.0-or-later) AND LicenseRef-libunistring5-amd64--freesoftware AND (GPL-3.0-or-later OR GFDL-1.2-no-invariants-or-later) AND GPL-3.0-or-later AND GPL-2.0-or-later AND LicenseRef-libunistring5-amd64--gpl-2--with-distribution-exception AND LicenseRef-libunistring5-amd64--gpl-2--with-distribution-exception AND MIT AND GPL-2.0-or-later AND X11",
       "licenseComments": "",
       "comment": "",
       "summary": "Unicode string library for C",
@@ -1202,26 +1202,26 @@
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libcom-err2-amd64--gpl-2.0-or-later-with-texinfo-exception",
-      "name": "GPL-2.0-or-later with Texinfo exception",
+      "licenseId": "LicenseRef-libcom-err2-amd64--gpl-2--with-texinfo-exception",
+      "name": "GPL-2+ with Texinfo exception",
       "extractedText": "This texinfo.tex file is free software; you can redistribute it and/or\nmodify it under the terms of the GNU General Public License as\npublished by the Free Software Foundation; either version 2, or (at\nyour option) any later version.\n\nThis texinfo.tex file is distributed in the hope that it will be\nuseful, but WITHOUT ANY WARRANTY; without even the implied warranty\nof MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nGeneral Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this texinfo.tex file; see the file COPYING.  If not, write\nto the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,\nBoston, MA 02110-1301, USA.\n\nAs a special exception, when this file is read by TeX when processing\na Texinfo source document, you may use the result without\nrestriction.  (This has been our intent since Texinfo was invented.)",
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libcurl4t64-amd64--gpl-2.0-or-later-with-autoconf-data-exception",
-      "name": "GPL-2.0-or-later with Autoconf-data exception",
+      "licenseId": "LicenseRef-libcurl4t64-amd64--gpl-2--with-autoconf-data-exception",
+      "name": "GPL-2+ with Autoconf-data exception",
       "extractedText": "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.\nAs a special exception to the GNU General Public License, if you\ndistribute this file as part of a program that contains a\nconfiguration script generated by Autoconf, you may include it under\nthe same distribution terms that you use for the rest of that program.",
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libcurl4t64-amd64--gpl-3.0-or-later-with-autoconf-data-exception",
-      "name": "GPL-3.0-or-later with Autoconf-data exception",
+      "licenseId": "LicenseRef-libcurl4t64-amd64--gpl-3--with-autoconf-data-exception",
+      "name": "GPL-3+ with Autoconf-data exception",
       "extractedText": "This program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU General Public License as published by the\nFree Software Foundation, either version 3 of the License, or (at your\noption) any later version.\n\nThis program is distributed in the hope that it will be useful, but\nWITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General\nPublic License for more details.\n\nYou should have received a copy of the GNU General Public License along\nwith this program. If not, see <https://www.gnu.org/licenses/>.\n\nAs a special exception, the respective Autoconf Macro's copyright owner\ngives unlimited permission to copy, distribute and modify the configure\nscripts that are the output of Autoconf when processing the Macro. You\nneed not follow the terms of the GNU General Public License when using\nor distributing such scripts, even though portions of the text of the\nMacro appear in them. The GNU General Public License (GPL) does govern\nall other use of the material that constitutes the Autoconf Macro.\n\nThis special exception to the GPL applies to versions of the Autoconf\nMacro released by the Autoconf Archive. When you make and distribute a\nmodified version of the Autoconf Macro, you may extend this special\nexception to the GPL to apply to your modified version as well.",
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libcurl4t64-amd64--gpl-2.0-or-later-with-libtool-exception",
-      "name": "GPL-2.0-or-later with Libtool exception",
+      "licenseId": "LicenseRef-libcurl4t64-amd64--gpl-2--with-libtool-exception",
+      "name": "GPL-2+ with Libtool exception",
       "extractedText": "GNU Libtool is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nAs a special exception to the GNU General Public License,\nif you distribute this file as part of a program or library that\nis built using GNU Libtool, you may include this file under the\nsame distribution terms that you use for the rest of that program.\n\nGNU Libtool is distributed in the hope that it will be useful, but\nWITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nGeneral Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with GNU Libtool; see the file COPYING.  If not, a copy\ncan be downloaded from http://www.gnu.org/licenses/gpl.html,\nor obtained by writing to the Free Software Foundation, Inc.,\n51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n\nOn Debian systems, the full text of the GNU General Public\nLicense version 2 can be found in the file\n`/usr/share/common-licenses/GPL-2'.",
       "comment": ""
     },
@@ -1232,8 +1232,8 @@
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libgmp10-amd64--gpl-3.0-or-later-with-bison-exception",
-      "name": "GPL-3.0-or-later with Bison exception",
+      "licenseId": "LicenseRef-libgmp10-amd64--gpl-3--with-bison-exception",
+      "name": "GPL-3+ with Bison exception",
       "extractedText": "This program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n\nAs a special exception, you may create a larger work that contains\npart or all of the Bison parser skeleton and distribute that work\nunder terms of your choice, so long as that work isn't itself a\nparser generator using the skeleton or a modified version thereof\nas a parser skeleton.  Alternatively, if you modify or redistribute\nthe parser skeleton itself, you may (at your option) remove this\nspecial exception, which will cause the skeleton and the resulting\nBison output files to be licensed under the GNU General Public\nLicense without this special exception.",
       "comment": ""
     },
@@ -1250,8 +1250,8 @@
       "comment": "Including the content of '/usr/share/doc/libgssapi-krb5-2/copyright' as-is, because: Unknown copyright format."
     },
     {
-      "licenseId": "LicenseRef-libhogweed6t64-amd64--gpl-3.0-or-later-with-autoconf-exception",
-      "name": "GPL-3.0-or-later with Autoconf exception",
+      "licenseId": "LicenseRef-libhogweed6t64-amd64--gpl-3--with-autoconf-exception",
+      "name": "GPL-3+ with Autoconf exception",
       "extractedText": "As a special exception to the GNU General Public License, if you\ndistribute this file as part of a program that contains a\nconfiguration script generated by Autoconf, you may include it under\nthe same distribution terms that you use for the rest of that program.",
       "comment": ""
     },
@@ -1304,26 +1304,26 @@
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libldap2-amd64--gpl-2.0-or-later-with-autoconf-exception",
-      "name": "GPL-2.0-or-later with Autoconf exception",
+      "licenseId": "LicenseRef-libldap2-amd64--gpl-2--with-autoconf-exception",
+      "name": "GPL-2+ with Autoconf exception",
       "extractedText": "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\n\nAs a special exception to the GNU General Public License, if you\ndistribute this file as part of a program that contains a\nconfiguration script generated by Autoconf, you may include it under\nthe same distribution terms that you use for the rest of that program.\n\nOn Debian systems, the complete text of the GNU General Public License\nversion 2 can be found in the file `/usr/share/common-licenses/GPL-2'.",
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libldap2-amd64--gpl-3.0-or-later-with-autoconf-exception",
-      "name": "GPL-3.0-or-later with Autoconf exception",
+      "licenseId": "LicenseRef-libldap2-amd64--gpl-3--with-autoconf-exception",
+      "name": "GPL-3+ with Autoconf exception",
       "extractedText": "This file is free software; you can redistribute it and/or modify it\nunder the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful, but\nWITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nGeneral Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, see <https://www.gnu.org/licenses/>.\n\nAs a special exception to the GNU General Public License, if you\ndistribute this file as part of a program that contains a\nconfiguration script generated by Autoconf, you may include it under\nthe same distribution terms that you use for the rest of that\nprogram.  This Exception is an additional permission under section\nof the GNU General Public License, version 3 (\"GPLv3\").\n\nOn Debian systems, the complete text of the GNU General Public License\nversion 3 can be found in the file `/usr/share/common-licenses/GPL-3'.",
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libldap2-amd64--gpl-2.0-or-later-with-libtool-exception",
-      "name": "GPL-2.0-or-later with Libtool exception",
+      "licenseId": "LicenseRef-libldap2-amd64--gpl-2--with-libtool-exception",
+      "name": "GPL-2+ with Libtool exception",
       "extractedText": "GNU Libtool is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2 of the License, or\n(at your option) any later version.\n\nAs a special exception to the GNU General Public License,\nif you distribute this file as part of a program or library that\nis built using GNU Libtool, you may include this file under the\nsame distribution terms that you use for the rest of that program.\n\nGNU Libtool is distributed in the hope that it will be useful, but\nWITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nGeneral Public License for more details.\n\nOn Debian systems, the complete text of the GNU General Public License\nversion 2 can be found in the file `/usr/share/common-licenses/GPL-2'.",
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libldap2-amd64--gpl-3.0-or-later-with-libtool-exception",
-      "name": "GPL-3.0-or-later with Libtool exception",
+      "licenseId": "LicenseRef-libldap2-amd64--gpl-3--with-libtool-exception",
+      "name": "GPL-3+ with Libtool exception",
       "extractedText": "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 3 of the License, or\n(at your option) any later version.\n\nAs a special exception to the GNU General Public License, if you distribute\nthis file as part of a program or library that is built using GNU Libtool,\nyou may include this file under the same distribution terms that you use\nfor the rest of that program.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNES FOR A PARTICULAR PURPOSE. See the GNU\nGeneral Public License for more details.\n\nOn Debian systems, the complete text of the GNU General Public License\nversion 3 can be found in the file `/usr/share/common-licenses/GPL-3'.",
       "comment": ""
     },
@@ -1394,8 +1394,8 @@
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libnettle8t64-amd64--gpl-3.0-or-later-with-autoconf-exception",
-      "name": "GPL-3.0-or-later with Autoconf exception",
+      "licenseId": "LicenseRef-libnettle8t64-amd64--gpl-3--with-autoconf-exception",
+      "name": "GPL-3+ with Autoconf exception",
       "extractedText": "As a special exception to the GNU General Public License, if you\ndistribute this file as part of a program that contains a\nconfiguration script generated by Autoconf, you may include it under\nthe same distribution terms that you use for the rest of that program.",
       "comment": ""
     },
@@ -1418,20 +1418,20 @@
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libnghttp2-14-amd64--gpl-3.0-or-later-with-autoconf-exception",
-      "name": "GPL-3.0-or-later with autoconf exception",
+      "licenseId": "LicenseRef-libnghttp2-14-amd64--gpl-3--with-autoconf-exception",
+      "name": "GPL-3+ with autoconf exception",
       "extractedText": "This program is free software: you can redistribute it and/or modify it\nunder the terms of the GNU General Public License as published by the\nFree Software Foundation, either version 3 of the License, or (at your\noption) any later version.\n\nThis program is distributed in the hope that it will be useful, but\nWITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General\nPublic License for more details.\n\nYou should have received a copy of the GNU General Public License along\nwith this program. If not, see <http://www.gnu.org/licenses/>.\n\nAs a special exception, the respective Autoconf Macro's copyright owner\ngives unlimited permission to copy, distribute and modify the configure\nscripts that are the output of Autoconf when processing the Macro. You\nneed not follow the terms of the GNU General Public License when using\nor distributing such scripts, even though portions of the text of the\nMacro appear in them. The GNU General Public License (GPL) does govern\nall other use of the material that constitutes the Autoconf Macro.\n\nThis special exception to the GPL applies to versions of the Autoconf\nMacro released by the Autoconf Archive. When you make and distribute a\nmodified version of the Autoconf Macro, you may extend this special\nexception to the GPL to apply to your modified version as well.\n\nOn Debian systems, the full text of the GNU General Public\nLicense version 3 can be found in the file\n`/usr/share/common-licenses/GPL-3'.",
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libp11-kit0-amd64--gpl-2.0-or-later-with-autoconf-data-exception",
-      "name": "GPL-2.0-or-later with Autoconf-data exception",
+      "licenseId": "LicenseRef-libp11-kit0-amd64--gpl-2--with-autoconf-data-exception",
+      "name": "GPL-2+ with Autoconf-data exception",
       "extractedText": "This program is free software; you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation; either version 2, or (at your option)\nany later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.\n\nAs a special exception to the GNU General Public License, if you\ndistribute this file as part of a program that contains a\nconfiguration script generated by Autoconf, you may include it under\nthe same distribution terms that you use for the rest of that program.",
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libp11-kit0-amd64--gpl-3.0-or-later-with-autoconf-data-exception",
-      "name": "GPL-3.0-or-later with Autoconf-data exception",
+      "licenseId": "LicenseRef-libp11-kit0-amd64--gpl-3--with-autoconf-data-exception",
+      "name": "GPL-3+ with Autoconf-data exception",
       "extractedText": "This file is free software; you can redistribute it and/or modify it\nunder the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful, but\nWITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\nGeneral Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program; if not, see <https://www.gnu.org/licenses/>.\n\nAs a special exception to the GNU General Public License, if you\ndistribute this file as part of a program that contains a\nconfiguration script generated by Autoconf, you may include it under\nthe same distribution terms that you use for the rest of that\nprogram.  This Exception is an additional permission under section 7\nof the GNU General Public License, version 3 (\"GPLv3\").",
       "comment": ""
     },
@@ -1532,8 +1532,8 @@
       "comment": ""
     },
     {
-      "licenseId": "LicenseRef-libunistring5-amd64--gpl-2.0-or-later-with-distribution-exception",
-      "name": "GPL-2.0-or-later with distribution exception",
+      "licenseId": "LicenseRef-libunistring5-amd64--gpl-2--with-distribution-exception",
+      "name": "GPL-2+ with distribution exception",
       "extractedText": "This file is free software, distributed under the terms of the GNU\nGeneral Public License.  As a special exception to the GNU General\nPublic License, this file may be distributed as part of a program\nthat contains a configuration script generated by Autoconf, under\nthe same distribution terms as the rest of that program.\nThis file is free software, distributed under the terms of the GNU\nGeneral Public License.  As a special exception to the GNU General\nPublic License, this file may be distributed as part of a program\nthat contains a configuration script generated by Autoconf, under\nthe same distribution terms as the rest of that program.",
       "comment": ""
     }
@@ -1551,7 +1551,7 @@
     },
     {
       "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package--80519fa121e75a6d39e842802f16979246146909",
+      "relatedSpdxElement": "SPDXRef-Package--9b1a8353f8d2cd65a204060f13d14aefa3162830",
       "spdxElementId": "SPDXRef-RootPackage"
     },
     {
@@ -1571,17 +1571,17 @@
     },
     {
       "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package--77f33810ef6127276dc6307d17b51cbca5cf3af1",
+      "relatedSpdxElement": "SPDXRef-Package--8a35c566dac020b0791e693e37ebbd363537fdba",
       "spdxElementId": "SPDXRef-RootPackage"
     },
     {
       "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package--3349a37e6c6aca423000967d15b4b48f9c7f68d2",
+      "relatedSpdxElement": "SPDXRef-Package--d1aa0f801145e431d85916e947edff5c1ad9c8d3",
       "spdxElementId": "SPDXRef-RootPackage"
     },
     {
       "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package--a6f2d857fbeaa2f1c263d867ca60b471bd2e74c8",
+      "relatedSpdxElement": "SPDXRef-Package--e915a2ac88f33635c27448bc17101b7239e75cf5",
       "spdxElementId": "SPDXRef-RootPackage"
     },
     {
@@ -1591,12 +1591,12 @@
     },
     {
       "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package--776b7876fa5c0f053ff151af349f16c14b839273",
+      "relatedSpdxElement": "SPDXRef-Package--347e9cc902fd4d65fb15e436ab26e39240ed2c11",
       "spdxElementId": "SPDXRef-RootPackage"
     },
     {
       "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package--2848c93edb93e8409fbb95e3645b1977b1399516",
+      "relatedSpdxElement": "SPDXRef-Package--890f81916914be3056db899391c736d9a3d673e7",
       "spdxElementId": "SPDXRef-RootPackage"
     },
     {
@@ -1606,17 +1606,17 @@
     },
     {
       "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package--1bb2dd270922cf47c449a6d468b865e196d20f68",
+      "relatedSpdxElement": "SPDXRef-Package--528d151e1df12aba8a04f5a826996e89c98ac9db",
       "spdxElementId": "SPDXRef-RootPackage"
     },
     {
       "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package--5a7484e116fa8dfa2daf62a8848a32181f66e037",
+      "relatedSpdxElement": "SPDXRef-Package--3e55dd34d7f4b09897c9bf772c9b703acfd8ae84",
       "spdxElementId": "SPDXRef-RootPackage"
     },
     {
       "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package--095ed992b240a7b5c4ec5655e4de635cf029c223",
+      "relatedSpdxElement": "SPDXRef-Package--d5c4bee5cbd17aa75ea991c526c522a6673e9d71",
       "spdxElementId": "SPDXRef-RootPackage"
     },
     {
@@ -1626,7 +1626,7 @@
     },
     {
       "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package--18ef1dbd9ed2730651035a70da5172bfc5a72713",
+      "relatedSpdxElement": "SPDXRef-Package--3de13545bf7e290dffa031666ffc3ead963dcfdb",
       "spdxElementId": "SPDXRef-RootPackage"
     },
     {
@@ -1656,17 +1656,17 @@
     },
     {
       "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package--af6b1bc382457b3033d6286de33afaa86d6abf09",
+      "relatedSpdxElement": "SPDXRef-Package--3062b4278ef20e3c65dce5386756d172df2ceb47",
       "spdxElementId": "SPDXRef-RootPackage"
     },
     {
       "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package--9ba4a97e0342467f318e8836480389c147e4e8c0",
+      "relatedSpdxElement": "SPDXRef-Package--9833601a19a335940a6e0491aab6f902ae2071c1",
       "spdxElementId": "SPDXRef-RootPackage"
     },
     {
       "relationshipType": "DEPENDS_ON",
-      "relatedSpdxElement": "SPDXRef-Package--c2a0189a69d940bfee5c6125d7428013eb6de818",
+      "relatedSpdxElement": "SPDXRef-Package--b7888fbced18c2a5084edd5dad1288b934c88449",
       "spdxElementId": "SPDXRef-RootPackage"
     },
     {
