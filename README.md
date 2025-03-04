@@ -10,9 +10,9 @@ This is an experimental, proof-of-concept version of C2SBOM to automatically gen
 `gen_build.py` needs output that is made with
 
 - `-H` option enabled for `gcc`/`g++`, and
-  - Header file dependencies will be excluded without this option
+  - Header file dependencies will not be included if you omit this option
 - `-t` option enabled for `ld` (or `-Wl,-t` option enabled for `gcc`/`g++`).
-  - Library file dependencies will be excluded without this option
+  - Library file dependencies will not be included if you omit this option
 
 Make sure to include not only stdout but also stderr output.
 
@@ -31,7 +31,7 @@ This PoC doesn't have any external dependencies and uses only standard libraries
 $ ./gen_build.py -h
 usage: gen_build.py [-h] [-i INPUT] [-o OUTPUT] -p PROJECT -d DEVELOPER [-l LICENSE] -v VERSION [-c COPYRIGHT] [-u [USER ...]] [-s SOURCE_TREE] [--no-license-heuristic] [--verbose-input] [--include-individual-licenses] [--include-files-section] [-q]
 
-This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a build process. This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This project is still in the early development stage, and we are not in any way liable for the output or other behaviors of this program.
+This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a build process. This is a part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This is an experimental proof-of-concept release, and we are not in any way liable for the output or any other behaviors of this program.
 
 options:
   -h, --help            show this help message and exit
@@ -67,7 +67,7 @@ options:
 $ ./gen_analyzed.py -h
 usage: gen_analyzed.py [-h] [-i INPUT [INPUT ...]] [-o OUTPUT] -p PROJECT -d DEVELOPER [-l LICENSE] -v VERSION [-c COPYRIGHT] [-u [USER ...]] [--no-license-heuristic] [--include-individual-licenses] [--include-files-section] [-q]
 
-This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a executable binaries. This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This project is still in the early development stage, and we are not in any way liable for the output or other behaviors of this program.
+This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) of a C/C++ project through analyzing a executable binaries. This is a part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. This is an experimental proof-of-concept release, and we are not in any way liable for the output or any other behaviors of this program.
 
 options:
   -h, --help            show this help message and exit
@@ -102,9 +102,15 @@ Following sample SBOMs are generated on Ubuntu 24.04 LTS AMD64.
 - Build SBOMs
   - [curl 8.12.1](samples/curl-build.spdx.json)
   - [Apache HTTP Server 2.4.63](samples/apache-build.spdx.json)
+  - [nginx 1.27.4](samples/nginx-build.spdx.json)
+  - [PHP 8.4.4](samples/php-build.spdx.json)
+  - [Python 3.13.2](samples/python-build.spdx.json)
 - Analyzed SBOMs
   - [curl 8.12.1](samples/curl-analyzed.spdx.json)
   - [Apache HTTP Server 2.4.63](samples/apache-analyzed.spdx.json)
+  - [nginx 1.27.4](samples/nginx-analyzed.spdx.json)
+  - [PHP 8.4.4](samples/php-analyzed.spdx.json)
+  - [Python 3.13.2](samples/python-analyzed.spdx.json)
 
 ## SPDX License List
 
@@ -112,6 +118,6 @@ This PoC uses SPDX License List JSON to map Debian license notation to SPDX Lice
 
 ## License
 
-Currently not determined. Be patient until we decide the licensing terms. You are at least allowed to just download this PoC, make it create some SBOMs for you, and inspect the implementation.
+This project is licensed under the [MIT License](LICENSE).
 
-**This project is still in the early development stage, and we are not in any way liable for the output or any other behaviors of this program.**
+**This is an experimental proof-of-concept release, and we are not in any way liable for the output or any other behaviors of this program.**

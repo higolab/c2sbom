@@ -46,9 +46,9 @@ def validate_name(name: str) -> str:
 parser = argparse.ArgumentParser(
     description="This script constructs an NTIA Minimum Elements conforming SPDX 2.3 document (SBOM) "
     "of a C/C++ project through analyzing a executable binaries. "
-    "This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. "
-    "This project is still in the early development stage, "
-    "and we are not in any way liable for the output or other behaviors of this program."
+    "This is a part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. "
+    "This is an experimental proof-of-concept release, "
+    "and we are not in any way liable for the output or any other behaviors of this program."
 )
 parser.add_argument("-i", "--input", nargs="+", help="Input files.")
 parser.add_argument(

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 # Standard modules
-import argparse, os, sys, subprocess
+import argparse, sys, subprocess
 
 # Internal modules
 import make_spdx
@@ -21,9 +21,9 @@ def validate_name(name: str) -> str:
 parser = argparse.ArgumentParser(
     description="This is a test script for evaluation. "
     "Just searches for all installed packages and collects metadata. "
-    "This is part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. "
-    "This project is still in the early development stage, "
-    "and we are not in any way liable for the output or other behaviors of this program."
+    "This is a part of C2SBOM (Preview) from Software Engineering Laboratory, Osaka University. "
+    "This is an experimental proof-of-concept release, "
+    "and we are not in any way liable for the output or any other behaviors of this program."
 )
 parser.add_argument(
     "-o",
@@ -63,7 +63,8 @@ parser.add_argument(
     help="Include 'licenseInfoFromFiles' field (makes the SPDX document not standard conformant).",
 )
 parser.add_argument(
-    "-q", "--quiet",
+    "-q",
+    "--quiet",
     action="store_true",
     help="Suppress unimportant console output.",
 )
