@@ -1,0 +1,303 @@
+{
+  "spdxVersion": "SPDX-2.3",
+  "dataLicense": "CC0-1.0",
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "name": "nginx",
+  "documentNamespace": "https://spdx.org/spdxdocs/c2sbom-nginx-313c7b2a-6451-4abd-acd8-896614e7b9c6",
+  "creationInfo": {
+    "created": "2025-03-04T00:23:27Z",
+    "creators": [
+      "Organization: Software Engineering Laboratory, Osaka University",
+      "Tool: C2SBOM Preview"
+    ]
+  },
+  "documentDescribes": [
+    "SPDXRef-RootPackage"
+  ],
+  "packages": [
+    {
+      "name": "nginx",
+      "SPDXID": "SPDXRef-RootPackage",
+      "filesAnalyzed": false,
+      "downloadLocation": "NOASSERTION",
+      "licenseConcluded": "BSD-2-Clause",
+      "licenseDeclared": "BSD-2-Clause",
+      "copyrightText": "NOASSERTION",
+      "versionInfo": "1.27.4",
+      "supplier": "Organization: Nginx, Inc."
+    },
+    {
+      "name": "libc6",
+      "SPDXID": "SPDXRef-Package--9b1a8353f8d2cd65a204060f13d14aefa3162830",
+      "versionInfo": "2.39-0ubuntu8.4",
+      "packageFileName": "libc6_2.39-0ubuntu8.4_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/g/glibc/libc6_2.39-0ubuntu8.4_amd64.deb",
+      "filesAnalyzed": false,
+      "homepage": "https://www.gnu.org/software/libc/libc.html",
+      "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
+      "originator": "Organization: GNU Libc Maintainers (debian-glibc@lists.debian.org)",
+      "checksums": [
+        {
+          "algorithm": "MD5",
+          "checksumValue": "4241c3a26c7fef25ef668cf1820ce778"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "9b1a8353f8d2cd65a204060f13d14aefa3162830"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "b2e8d573f5b9275720640e59276dbbfc31f15400398906fb7b47c461d0b4cef7"
+        },
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "76fdd9480c5522558792beaab1a817563c9754ec6e873354433409a9c8acfd7cdab14252fe566a7ce700e0f867a9067203e00aa10d0cf24758ea73e568c0aba0"
+        }
+      ],
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:deb/ubuntu/libc6@2.39-0ubuntu8.4?arch=amd64?distro=noble"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "licenseConcluded": "LicenseRef-libc6-amd64--copyright",
+      "licenseDeclared": "LicenseRef-libc6-amd64--copyright",
+      "licenseComments": "",
+      "comment": "",
+      "summary": "GNU C Library: Shared libraries",
+      "description": "Contains the standard libraries that are used by nearly all programs on\nthe system. This package includes shared versions of the standard C library\nand the standard math library, as well as many others."
+    },
+    {
+      "name": "libcrypt1",
+      "SPDXID": "SPDXRef-Package--ec70431903cb9befadd44bcb17a427fe595b7146",
+      "versionInfo": "1:4.4.36-4build1",
+      "packageFileName": "libcrypt1_1%3a4.4.36-4build1_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/libx/libxcrypt/libcrypt1_4.4.36-4build1_amd64.deb",
+      "filesAnalyzed": false,
+      "homepage": "NOASSERTION",
+      "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
+      "originator": "Organization: Marco d'Itri (md@linux.it)",
+      "checksums": [
+        {
+          "algorithm": "MD5",
+          "checksumValue": "db6ddb49a773d3afd70912922fcf18d6"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "ec70431903cb9befadd44bcb17a427fe595b7146"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "9474785cd6f398512bf8c305c3901dbb111569dccb6f5832002373c0a8ac5832"
+        },
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "a544d7c8945f6f7f4721b55f83f4278cb481170403c9cb73e1fe2fe1a5bb723ef83780bb29d497e2b7deba79a164be353cbb1dea96f6d90b18d097e2540e9033"
+        }
+      ],
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:deb/ubuntu/libcrypt1@1%3A4.4.36-4build1?arch=amd64?distro=noble"
+        }
+      ],
+      "copyrightText": "NOASSERTION",
+      "licenseConcluded": "LicenseRef-libcrypt1-amd64--copyright",
+      "licenseDeclared": "LicenseRef-libcrypt1-amd64--copyright",
+      "licenseComments": "",
+      "comment": "",
+      "summary": "libcrypt shared library",
+      "description": "libxcrypt is a modern library for one-way hashing of passwords.\nIt supports DES, MD5, NTHASH, SUNMD5, SHA-2-256, SHA-2-512, and\nbcrypt-based password hashes\nIt provides the traditional Unix 'crypt' and 'crypt_r' interfaces,\nas well as a set of extended interfaces like 'crypt_gensalt'."
+    },
+    {
+      "name": "libpcre2-8-0",
+      "SPDXID": "SPDXRef-Package--3daeedd8beb3754e001280bf0cde95f84b0b694c",
+      "versionInfo": "10.42-4ubuntu2.1",
+      "packageFileName": "libpcre2-8-0_10.42-4ubuntu2.1_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/p/pcre2/libpcre2-8-0_10.42-4ubuntu2.1_amd64.deb",
+      "filesAnalyzed": false,
+      "homepage": "https://pcre.org/",
+      "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
+      "originator": "Organization: Matthew Vernon (matthew@debian.org)",
+      "checksums": [
+        {
+          "algorithm": "MD5",
+          "checksumValue": "0df7aefb0d61f62eeb977918bc30f461"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "3daeedd8beb3754e001280bf0cde95f84b0b694c"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "110a797a57673d3ee497a141cf988199258058c57525799c63194d81822529a0"
+        },
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "9f788a5c388fa04d0b661e64542d14b0322edff933b4969076f14072dcc65ea6ba681c539cf626f1d6ea13019e3fb010f0c4976a64a7fd18cd91cd1e9eb3384c"
+        }
+      ],
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:deb/ubuntu/libpcre2-8-0@10.42-4ubuntu2.1?arch=amd64?distro=noble"
+        }
+      ],
+      "copyrightText": "1997-2022 University of Cambridge.\nKDE Community\n(C) 1994 X Consortium\nZoltan Herczeg (hzmester@freemail.hu). All rights reserved.\nNone (public-domain)",
+      "licenseConcluded": "LicenseRef-libpcre2-8-0-amd64--bsd-3-clause-cambridge-with-binary-library-like-packages-exception AND BSD-3-Clause AND X11 AND BSD-2-Clause AND LicenseRef-libpcre2-8-0-amd64--public-domain",
+      "licenseDeclared": "LicenseRef-libpcre2-8-0-amd64--bsd-3-clause-cambridge-with-binary-library-like-packages-exception AND BSD-3-Clause AND X11 AND BSD-2-Clause AND LicenseRef-libpcre2-8-0-amd64--public-domain",
+      "licenseComments": "This package was debianized by Matthew Vernon <matthew@debian.org>\nFSF changes to this file are in the public domain.",
+      "comment": "",
+      "summary": "New Perl Compatible Regular Expression Library- 8 bit runtime files",
+      "description": "This is PCRE2, the new implementation of PCRE, a library of functions\nto support regular expressions whose syntax and semantics are as\nclose as possible to those of the Perl 5 language. New projects\nshould use this library in preference to the older library,\nconfusingly called pcre3 in Debian.\n\nThis package contains the 8 bit runtime library, which operates on\nASCII and UTF-8 input."
+    },
+    {
+      "name": "libssl3t64",
+      "SPDXID": "SPDXRef-Package--3062b4278ef20e3c65dce5386756d172df2ceb47",
+      "versionInfo": "3.0.13-0ubuntu3.5",
+      "packageFileName": "libssl3t64_3.0.13-0ubuntu3.5_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/o/openssl/libssl3t64_3.0.13-0ubuntu3.5_amd64.deb",
+      "filesAnalyzed": false,
+      "homepage": "https://www.openssl.org/",
+      "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
+      "originator": "Organization: Debian OpenSSL Team (pkg-openssl-devel@alioth-lists.debian.net)",
+      "checksums": [
+        {
+          "algorithm": "MD5",
+          "checksumValue": "fa332705584a53f5e95fa6b91ed6c2e1"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "3062b4278ef20e3c65dce5386756d172df2ceb47"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "31df0a4d957c404c01b1898a84beca1190fd71cf2d2ac47ce5036705a24d96fc"
+        },
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "91cfc4848eda873d5336c145594475025403f1bfc732fb6912a6c253cb090c28e1cee62bfc27b2a2524afc00e051b05141d565e021f39b2b372a091aad745811"
+        }
+      ],
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:deb/ubuntu/libssl3t64@3.0.13-0ubuntu3.5?arch=amd64?distro=noble"
+        }
+      ],
+      "copyrightText": "1995-2020, The OpenSSL Project Authors\nChristoph Martin, Kurt Roeckx, Sebastian Andrzej Siewior\n2013, Mark Jason Dominus <mjd@cpan.org>.",
+      "licenseConcluded": "Apache-2.0 AND (Artistic-1.0 OR GPL-1.0-or-later)",
+      "licenseDeclared": "Apache-2.0 AND (Artistic-1.0 OR GPL-1.0-or-later)",
+      "licenseComments": "",
+      "comment": "",
+      "summary": "Secure Sockets Layer toolkit - shared libraries",
+      "description": "This package is part of the OpenSSL project's implementation of the SSL\nand TLS cryptographic protocols for secure communication over the\nInternet.\n\nIt provides the libssl and libcrypto shared libraries."
+    },
+    {
+      "name": "zlib1g",
+      "SPDXID": "SPDXRef-Package--a0d07b57fa62ee5f33b2a601fb864be4f17cd556",
+      "versionInfo": "1:1.3.dfsg-3.1ubuntu2.1",
+      "packageFileName": "zlib1g_1%3a1.3.dfsg-3.1ubuntu2.1_amd64.deb",
+      "downloadLocation": "http://ftp.jaist.ac.jp/pub/Linux/ubuntu/pool/main/z/zlib/zlib1g_1.3.dfsg-3.1ubuntu2.1_amd64.deb",
+      "filesAnalyzed": false,
+      "homepage": "http://zlib.net/",
+      "supplier": "Organization: Ubuntu Developers (ubuntu-devel-discuss@lists.ubuntu.com)",
+      "originator": "Organization: Mark Brown (broonie@debian.org)",
+      "checksums": [
+        {
+          "algorithm": "MD5",
+          "checksumValue": "f9ff61d19ff9fe0659be27a1c52f8909"
+        },
+        {
+          "algorithm": "SHA1",
+          "checksumValue": "a0d07b57fa62ee5f33b2a601fb864be4f17cd556"
+        },
+        {
+          "algorithm": "SHA256",
+          "checksumValue": "7074b6a2f6367a10d280c00a1cb02e74277709180bab4f2491a2f355ab2d6c20"
+        },
+        {
+          "algorithm": "SHA512",
+          "checksumValue": "7205bd51e6b2c1b379905c1948272cae21a254fe2d5607b1800a62bcc5256a9df0cd6794605b74ed5d00c1cc15469fb593caaa51402370021dd435a1c680a679"
+        }
+      ],
+      "externalRefs": [
+        {
+          "referenceCategory": "PACKAGE-MANAGER",
+          "referenceType": "purl",
+          "referenceLocator": "pkg:deb/ubuntu/zlib1g@1%3A1.3.dfsg-3.1ubuntu2.1?arch=amd64?distro=noble"
+        }
+      ],
+      "copyrightText": "1995-2013 Jean-loup Gailly and Mark Adler\n1998 by Andreas R. Kleinert\n1998-2010 Gilles Vollant\n2007-2008 Even Rouault\n2009-2010 Mathias Svensson\n2000-2017 Mark Brown",
+      "licenseConcluded": "Zlib",
+      "licenseDeclared": "Zlib",
+      "licenseComments": "This is the pre-packaged Debian Linux version of the zlib compression\nlibrary.  It was packaged by Michael Alan Dorman <mdorman@debian.org>\nfrom sources originally retrieved from ftp.uu.net in the directory\n/pub/archiving/zip/zlib as the file zlib-1.0.4.tar.gz.\n\nThe deflate format used by zlib was defined by Phil Katz. The deflate\nand zlib specifications were written by Peter Deutsch. Thanks to all the\npeople who reported problems and suggested various improvements in zlib;\nthey are too numerous to cite here.",
+      "comment": "",
+      "summary": "compression library - runtime",
+      "description": "zlib is a library implementing the deflate compression method found\nin gzip and PKZIP.  This package includes the shared library."
+    }
+  ],
+  "hasExtractedLicensingInfos": [
+    {
+      "licenseId": "LicenseRef-libc6-amd64--copyright",
+      "name": "NOASSERTION",
+      "extractedText": "This is the Debian prepackaged version of the GNU C Library version 2.23.\n\nIt was put together by the GNU Libc Maintainers <debian-glibc@lists.debian.org>\nfrom <https://sourceware.org/git/glibc.git>\n\n* Most of the GNU C library is under the following copyright:\n\n    Copyright (C) 1991-2015 Free Software Foundation, Inc.\n\n    The GNU C Library is free software; you can redistribute it and/or\n    modify it under the terms of the GNU Lesser General Public\n    License as published by the Free Software Foundation; either\n    version 2.1 of the License, or (at your option) any later version.\n\n    The GNU C Library is distributed in the hope that it will be useful,\n    but WITHOUT ANY WARRANTY; without even the implied warranty of\n    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n    Lesser General Public License for more details.\n\n    You should have received a copy of the GNU Lesser General Public\n    License along with the GNU C Library; if not, write to the Free\n    Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA\n    02110-1301 USA\n\n  On Debian systems, the complete text of the GNU Library\n  General Public License can be found in `/usr/share/common-licenses/LGPL-2.1'.\n\n* The utilities associated with GNU C library is under the following\n  copyright:\n\n    Copyright (C) 1991-2015 Free Software Foundation, Inc.\n\n    This program is free software; you can redistribute it and/or modify\n    it under the terms of the GNU General Public License as published\n    by the Free Software Foundation; version 2 of the License, or\n    (at your option) any later version.\n\n    This program is distributed in the hope that it will be useful,\n    but WITHOUT ANY WARRANTY; without even the implied warranty of\n    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n    GNU General Public License for more details.\n\n    You should have received a copy of the GNU General Public License\n    along with this program; if not, write to the Free Software Foundation,\n    Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.\n\n  On Debian systems, the complete text of the GNU Library\n  General Public License can be found in `/usr/share/common-licenses/GPL-2'.\n\n* All code incorporated from 4.4 BSD is distributed under the following\n  license:\n\n   Copyright (C) 1991 Regents of the University of California.\n   All rights reserved.\n\n   Redistribution and use in source and binary forms, with or without\n   modification, are permitted provided that the following conditions\n   are met:\n\n   1. Redistributions of source code must retain the above copyright\n      notice, this list of conditions and the following disclaimer.\n   2. Redistributions in binary form must reproduce the above copyright\n      notice, this list of conditions and the following disclaimer in the\n      documentation and/or other materials provided with the distribution.\n   3. [This condition was removed.]\n   4. Neither the name of the University nor the names of its contributors\n      may be used to endorse or promote products derived from this software\n      without specific prior written permission.\n\n   THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND\n   ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n   IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\n   ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE\n   FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n   DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS\n   OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)\n   HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\n   LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY\n   OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF\n   SUCH DAMAGE.\n\n* The DNS resolver code, taken from BIND 4.9.5, is copyrighted both by\n  UC Berkeley and by Digital Equipment Corporation.  The DEC portions\n  are under the following license:\n\n    Portions Copyright (C) 1993 by Digital Equipment Corporation.\n\n    Permission to use, copy, modify, and distribute this software for any\n    purpose with or without fee is hereby granted, provided that the above\n    copyright notice and this permission notice appear in all copies, and\n    that the name of Digital Equipment Corporation not be used in\n    advertising or publicity pertaining to distribution of the document or\n    software without specific, written prior permission.\n\n    THE SOFTWARE IS PROVIDED ``AS IS'' AND DIGITAL EQUIPMENT CORP.\n    DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE, INCLUDING ALL\n    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS.  IN NO EVENT SHALL\n    DIGITAL EQUIPMENT CORPORATION BE LIABLE FOR ANY SPECIAL, DIRECT,\n    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING\n    FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT,\n    NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION\n    WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.\n\n* The ISC portions are under the following license:\n\n    Portions Copyright (c) 1996-1999 by Internet Software Consortium.\n\n    Permission to use, copy, modify, and distribute this software for any\n    purpose with or without fee is hereby granted, provided that the above\n    copyright notice and this permission notice appear in all copies.\n\n    THE SOFTWARE IS PROVIDED \"AS IS\" AND INTERNET SOFTWARE CONSORTIUM DISCLAIMS\n    ALL WARRANTIES WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES\n    OF MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL INTERNET SOFTWARE\n    CONSORTIUM BE LIABLE FOR ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL\n    DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR\n    PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS\n    ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS\n    SOFTWARE.\n\n* The Sun RPC support (from rpcsrc-4.0) is covered by the following\n  license:\n\n    Copyright (c) 2010, Oracle America, Inc. \n\n    Redistribution and use in source and binary forms, with or without\n    modification, are permitted provided that the following conditions are\n    met:\n\n        * Redistributions of source code must retain the above copyright\n          notice, this list of conditions and the following disclaimer.\n        * Redistributions in binary form must reproduce the above\n          copyright notice, this list of conditions and the following\n          disclaimer in the documentation and/or other materials\n          provided with the distribution.\n        * Neither the name of the \"Oracle America, Inc.\" nor the names of its\n          contributors may be used to endorse or promote products derived\n          from this software without specific prior written permission.\n\n      THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n      \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n      LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS\n      FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE\n      COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,\n      INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n      DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE\n      GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\n      INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,\n      WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\n      NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE\n      OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\n* The following CMU license covers some of the support code for Mach,\n  derived from Mach 3.0:\n\n    Mach Operating System\n    Copyright (C) 1991,1990,1989 Carnegie Mellon University\n    All Rights Reserved.\n\n    Permission to use, copy, modify and distribute this software and its\n    documentation is hereby granted, provided that both the copyright\n    notice and this permission notice appear in all copies of the\n    software, derivative works or modified versions, and any portions\n    thereof, and that both notices appear in supporting documentation.\n\n    CARNEGIE MELLON ALLOWS FREE USE OF THIS SOFTWARE IN ITS ``AS IS''\n    CONDITION.  CARNEGIE MELLON DISCLAIMS ANY LIABILITY OF ANY KIND FOR\n    ANY DAMAGES WHATSOEVER RESULTING FROM THE USE OF THIS SOFTWARE.\n\n    Carnegie Mellon requests users of this software to return to\n\n     Software Distribution Coordinator\n     School of Computer Science\n     Carnegie Mellon University\n     Pittsburgh PA 15213-3890\n\n    or Software.Distribution@CS.CMU.EDU any improvements or\n    extensions that they make and grant Carnegie Mellon the rights to\n    redistribute these changes.\n\n* The file if_ppp.h is under the following CMU license:\n\n     Redistribution and use in source and binary forms, with or without\n     modification, are permitted provided that the following conditions\n     are met:\n     1. Redistributions of source code must retain the above copyright\n        notice, this list of conditions and the following disclaimer.\n     2. Redistributions in binary form must reproduce the above copyright\n        notice, this list of conditions and the following disclaimer in the\n        documentation and/or other materials provided with the distribution.\n     3. Neither the name of the University nor the names of its contributors\n        may be used to endorse or promote products derived from this software\n        without specific prior written permission.\n\n     THIS SOFTWARE IS PROVIDED BY CARNEGIE MELLON UNIVERSITY AND\n     CONTRIBUTORS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES,\n     INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF\n     MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.\n     IN NO EVENT SHALL THE UNIVERSITY OR CONTRIBUTORS BE LIABLE FOR ANY\n     DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n     DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE\n     GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\n     INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER\n     IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR\n     OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN\n     IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\n* The following license covers the files from Intel's \"Highly Optimized\n  Mathematical Functions for Itanium\" collection:\n\n    Intel License Agreement\n\n    Copyright (c) 2000, Intel Corporation\n\n    All rights reserved.\n\n    Redistribution and use in source and binary forms, with or without\n    modification, are permitted provided that the following conditions are\n    met:\n\n    * Redistributions of source code must retain the above copyright\n    notice, this list of conditions and the following disclaimer.\n\n    * Redistributions in binary form must reproduce the above copyright\n    notice, this list of conditions and the following disclaimer in the\n    documentation and/or other materials provided with the distribution.\n\n    * The name of Intel Corporation may not be used to endorse or promote\n    products derived from this software without specific prior written\n    permission.\n\n    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n    \"AS IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n    A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL INTEL OR\n    CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,\n    EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,\n    PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR\n    PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF\n    LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\n    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\n    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\n* The files inet/getnameinfo.c and sysdeps/posix/getaddrinfo.c are copyright\n  (C) by Craig Metz and are distributed under the following license:\n\n    /* The Inner Net License, Version 2.00\n\n      The author(s) grant permission for redistribution and use in source and\n    binary forms, with or without modification, of the software and documentation\n    provided that the following conditions are met:\n\n    0. If you receive a version of the software that is specifically labelled\n       as not being for redistribution (check the version message and/or README),\n       you are not permitted to redistribute that version of the software in any\n       way or form.\n    1. All terms of the all other applicable copyrights and licenses must be\n       followed.\n    2. Redistributions of source code must retain the authors' copyright\n       notice(s), this list of conditions, and the following disclaimer.\n    3. Redistributions in binary form must reproduce the authors' copyright\n       notice(s), this list of conditions, and the following disclaimer in the\n       documentation and/or other materials provided with the distribution.\n    4. [The copyright holder has authorized the removal of this clause.]\n    5. Neither the name(s) of the author(s) nor the names of its contributors\n       may be used to endorse or promote products derived from this software\n       without specific prior written permission.\n\n    THIS SOFTWARE IS PROVIDED BY ITS AUTHORS AND CONTRIBUTORS ``AS IS'' AND ANY\n    EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED\n    WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE\n    DISCLAIMED. IN NO EVENT SHALL THE AUTHORS OR CONTRIBUTORS BE LIABLE FOR ANY\n    DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES\n    (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;\n    LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON\n    ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\n    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n\n      If these license terms cause you a real problem, contact the author.  */\n\n* The file sunrpc/des_impl.c is copyright Eric Young:\n\n    Copyright (C) 1992 Eric Young\n    Collected from libdes and modified for SECURE RPC by Martin Kuck 1994\n    This file is distributed under the terms of the GNU Lesser General\n    Public License, version 2.1 or later - see the file COPYING.LIB for details.\n    If you did not receive a copy of the license with this program, please\n    see <http://www.gnu.org/licenses/> to obtain a copy.\n\n* The libidn code is copyright Simon Josefsson, with portions copyright\n  The Internet Society, Tom Tromey and Red Hat, Inc.:\n\n    Copyright (C) 2002, 2003, 2004, 2011  Simon Josefsson\n\n    This file is part of GNU Libidn.\n\n    GNU Libidn is free software; you can redistribute it and/or\n    modify it under the terms of the GNU Lesser General Public\n    License as published by the Free Software Foundation; either\n    version 2.1 of the License, or (at your option) any later version.\n\n    GNU Libidn is distributed in the hope that it will be useful,\n    but WITHOUT ANY WARRANTY; without even the implied warranty of\n    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n    Lesser General Public License for more details.\n\n    You should have received a copy of the GNU Lesser General Public\n    License along with GNU Libidn; if not, see <http://www.gnu.org/licenses/>.\n\n* The following notice applies to portions of libidn/nfkc.c:\n\n    This file contains functions from GLIB, including gutf8.c and\n    gunidecomp.c, all licensed under LGPL and copyright hold by:\n\n    Copyright (C) 1999, 2000 Tom Tromey\n    Copyright 2000 Red Hat, Inc.\n\n* The following applies to portions of libidn/punycode.c and\n  libidn/punycode.h:\n\n    This file is derived from RFC 3492bis written by Adam M. Costello.\n\n    Disclaimer and license: Regarding this entire document or any\n    portion of it (including the pseudocode and C code), the author\n    makes no guarantees and is not responsible for any damage resulting\n    from its use.  The author grants irrevocable permission to anyone\n    to use, modify, and distribute it in any way that does not diminish\n    the rights of anyone else to use, modify, and distribute it,\n    provided that redistributed derivative works do not contain\n    misleading author or version information.  Derivative works need\n    not be licensed under similar terms.\n\n    Copyright (C) The Internet Society (2003).  All Rights Reserved.\n\n    This document and translations of it may be copied and furnished to\n    others, and derivative works that comment on or otherwise explain it\n    or assist in its implementation may be prepared, copied, published\n    and distributed, in whole or in part, without restriction of any\n    kind, provided that the above copyright notice and this paragraph are\n    included on all such copies and derivative works.  However, this\n    document itself may not be modified in any way, such as by removing\n    the copyright notice or references to the Internet Society or other\n    Internet organizations, except as needed for the purpose of\n    developing Internet standards in which case the procedures for\n    copyrights defined in the Internet Standards process must be\n    followed, or as required to translate it into languages other than\n    English.\n\n    The limited permissions granted above are perpetual and will not be\n    revoked by the Internet Society or its successors or assigns.\n\n    This document and the information contained herein is provided on an\n    \"AS IS\" basis and THE INTERNET SOCIETY AND THE INTERNET ENGINEERING\n    TASK FORCE DISCLAIMS ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING\n    BUT NOT LIMITED TO ANY WARRANTY THAT THE USE OF THE INFORMATION\n    HEREIN WILL NOT INFRINGE ANY RIGHTS OR ANY IMPLIED WARRANTIES OF\n    MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.\n\n* The file inet/rcmd.c is under a UCB copyright and the following:\n\n    Copyright (C) 1998 WIDE Project.\n    All rights reserved.\n\n    Redistribution and use in source and binary forms, with or without\n    modification, are permitted provided that the following conditions\n    are met:\n    1. Redistributions of source code must retain the above copyright\n       notice, this list of conditions and the following disclaimer.\n    2. Redistributions in binary form must reproduce the above copyright\n       notice, this list of conditions and the following disclaimer in the\n       documentation and/or other materials provided with the distribution.\n    3. Neither the name of the project nor the names of its contributors\n       may be used to endorse or promote products derived from this software\n       without specific prior written permission.\n\n    THIS SOFTWARE IS PROVIDED BY THE PROJECT AND CONTRIBUTORS ``AS IS'' AND\n    ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\n    IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\n    ARE DISCLAIMED.  IN NO EVENT SHALL THE PROJECT OR CONTRIBUTORS BE LIABLE\n    FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL\n    DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS\n    OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)\n    HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT\n    LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY\n    OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF\n    SUCH DAMAGE.\n\n    * The file posix/runtests.c is copyright Tom Lord:\n\n    Copyright 1995 by Tom Lord\n\n                            All Rights Reserved\n\n    Permission to use, copy, modify, and distribute this software and its\n    documentation for any purpose and without fee is hereby granted,\n    provided that the above copyright notice appear in all copies and that\n    both that copyright notice and this permission notice appear in\n    supporting documentation, and that the name of the copyright holder not be\n    used in advertising or publicity pertaining to distribution of the\n    software without specific, written prior permission.\n\n    Tom Lord DISCLAIMS ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,\n    INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO\n    EVENT SHALL TOM LORD BE LIABLE FOR ANY SPECIAL, INDIRECT OR\n    CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF\n    USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR\n    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR\n    PERFORMANCE OF THIS SOFTWARE.\n\n* The posix/rxspencer tests are copyright Henry Spencer:\n\n    Copyright 1992, 1993, 1994, 1997 Henry Spencer.  All rights reserved.\n    This software is not subject to any license of the American Telephone\n    and Telegraph Company or of the Regents of the University of California.\n\n    Permission is granted to anyone to use this software for any purpose on\n    any computer system, and to alter it and redistribute it, subject\n    to the following restrictions:\n\n    1. The author is not responsible for the consequences of use of this\n       software, no matter how awful, even if they arise from flaws in it.\n\n    2. The origin of this software must not be misrepresented, either by\n       explicit claim or by omission.  Since few users ever read sources,\n       credits must appear in the documentation.\n\n    3. Altered versions must be plainly marked as such, and must not be\n       misrepresented as being the original software.  Since few users\n       ever read sources, credits must appear in the documentation.\n\n    4. This notice may not be removed or altered.\n\n* The file posix/PCRE.tests is copyright University of Cambridge:\n\n    Copyright (c) 1997-2003 University of Cambridge\n\n    Permission is granted to anyone to use this software for any purpose on any\n    computer system, and to redistribute it freely, subject to the following\n    restrictions:\n\n    1. This software is distributed in the hope that it will be useful,\n       but WITHOUT ANY WARRANTY; without even the implied warranty of\n       MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n    2. The origin of this software must not be misrepresented, either by\n       explicit claim or by omission. In practice, this means that if you use\n       PCRE in software that you distribute to others, commercially or\n       otherwise, you must put a sentence like this\n\n         Regular expression support is provided by the PCRE library package,\n         which is open source software, written by Philip Hazel, and copyright\n         by the University of Cambridge, England.\n\n       somewhere reasonably visible in your documentation and in any relevant\n       files or online help data or similar. A reference to the ftp site for\n       the source, that is, to\n\n         ftp://ftp.csx.cam.ac.uk/pub/software/programming/pcre/\n\n       should also be given in the documentation. However, this condition is not\n       intended to apply to whole chains of software. If package A includes PCRE,\n       it must acknowledge it, but if package B is software that includes package\n       A, the condition is not imposed on package B (unless it uses PCRE\n       independently).\n\n    3. Altered versions must be plainly marked as such, and must not be\n       misrepresented as being the original software.\n\n    4. If PCRE is embedded in any software that is released under the GNU\n      General Purpose Licence (GPL), or Lesser General Purpose Licence (LGPL),\n      then the terms of that licence shall supersede any condition above with\n      which it is incompatible.\n\n* Files from Sun fdlibm are copyright Sun Microsystems, Inc.:\n\n    Copyright (C) 1993 by Sun Microsystems, Inc. All rights reserved.\n\n    Developed at SunPro, a Sun Microsystems, Inc. business.\n    Permission to use, copy, modify, and distribute this\n    software is freely granted, provided that this notice\n    is preserved.\n\n* Part of stdio-common/tst-printf.c is copyright C E Chew:\n\n    (C) Copyright C E Chew\n\n    Feel free to copy, use and distribute this software provided:\n\n         1. you do not pretend that you wrote it\n         2. you leave this copyright notice intact.\n\n* Various long double libm functions are copyright Stephen L. Moshier:\n\n    Copyright 2001 by Stephen L. Moshier <moshier@na-net.ornl.gov>\n\n     This library is free software; you can redistribute it and/or\n     modify it under the terms of the GNU Lesser General Public\n     License as published by the Free Software Foundation; either\n     version 2.1 of the License, or (at your option) any later version.\n\n     This library is distributed in the hope that it will be useful,\n     but WITHOUT ANY WARRANTY; without even the implied warranty of\n     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU\n     Lesser General Public License for more details.\n\n     You should have received a copy of the GNU Lesser General Public\n     License along with this library; if not, see\n     <http://www.gnu.org/licenses/>.  */\n\nThe following applies to the GNU C Library Reference Manual (libc.info):\n\n   Copyright (C) 1993-2017 Free Software Foundation, Inc.\n\n   Permission is granted to copy, distribute and/or modify this document\n   under the terms of the GNU Free Documentation License, Version 1.3 or\n   any later version published by the Free Software Foundation; with the\n   Invariant Sections being \"Free Software Needs Free Documentation\" and\n   \"GNU Lesser General Public License\", the Front-Cover texts being \"A\n   GNU Manual\", and with the Back-Cover Texts as in (a) below. A copy of\n   the license is included in the section entitled \"GNU Free\n   Documentation License\".\n\n   (a) The FSF’s Back-Cover Text is: \"You have the freedom to copy and\n   modify this GNU manual. Buying copies from the FSF supports it in\n   developing GNU and promoting software freedom.\"\n\nOn Debian systems, the complete text of the GNU Free Documentation\nLicense Version 1.3 can be found in `/usr/share/common-licenses/GFDL-1.3'.",
+      "comment": "Including the content of '/usr/share/doc/libc6/copyright' as-is, because: Unknown copyright format."
+    },
+    {
+      "licenseId": "LicenseRef-libcrypt1-amd64--copyright",
+      "name": "NOASSERTION",
+      "extractedText": "This is the Debian GNU/Linux prepackaged version of libxcrypt.\n\nIt has been packaged by Marco d'Itri <md@linux.it>.\n\nOriginal sources were obtained from:\nhttps://github.com/besser82/libxcrypt\n\nOn Debian systems the complete text of the licenses can be found in\n/usr/share/common-licenses/ .\n\n\n# Detailed copyright and licensing information for libxcrypt\n\nThe overall license for libxcrypt is the GNU Lesser General Public\nLicense, version 2.1 (or, at your option, any later version); see\nthe file COPYING.LIB for the full terms of this license.\n\nMany individual files are under other licenses.  This file provides an\ninventory of the copyright holders and licenses of all files in the\nsource tree.  For specific licensing terms consult the files themselves.\n\n * Copyright Thorsten Kukuk, Björn Esser, Zack Weinberg; LGPL (v2.1 or later):\n   crypt.c, crypt-static.c, crypt-gensalt-static.c, crypt-port.h\n\n * Copyright Free Software Foundation, Inc.; LGPL (v2.1 or later):\n   crypt.h, crypt-obsolete.h, crypt-md5.c,\n   test-badsalt.c, test-crypt-nonnull.c, test-explicit-bzero.c\n\n * Copyright David Burren et al.; 3-clause BSD:\n   alg-des.h, alg-des.c, alg-des-tables.c,\n   crypt-des.c, crypt-des-obsolete.c, gen-des-tables.c\n\n * Public domain, written by Ulrich Drepper et al.:\n   crypt-sha256.c, crypt-sha512.c\n\n * Public domain, written by Solar Designer et al.:\n   alg-md4.h, alg-md4.c, alg-md5.h, alg-md5.c,\n   crypt-bcrypt.c, crypt-gensalt.c, test-crypt-bcrypt.c\n\n * Copyright Solar Designer, Colin Percival; 0-clause BSD:\n   alg-yescrypt-common.c, alg-yescrypt-platform.c\n\n * Copyright Solar Designer, Colin Percival; 2-clause BSD:\n   alg-sha256.c, alg-sha256.h, alg-yescrypt.h, alg-yescrypt-opt.c\n\n * Copyright Colin Percival; 2-clause BSD:\n   alg-sha512.h, alg-sha512.c\n\n * Copyright Alexey Degtyarev; 2-clause BSD:\n   alg-gost3411-2012-const.h, alg-gost3411-2012-core.c,\n   alg-gost3411-2012-core.h, alg-gost3411-2012-precalc.h,\n   alg-gost3411-2012-ref.h\n\n * Copyright Vitaly Chikunov, Björn Esser; 0-clause BSD:\n   alg-gost3411-2012-hmac.c, alg-gost3411-2012-hmac.h,\n   crypt-gost-yescrypt.c, test-alg-gost3411-2012.c,\n   test-alg-gost3411-2012-hmac.c, test-crypt-gost-yescrypt.c,\n   test-crypt-scrypt.c\n\n * Copyright Alexander Peslyak; 0-clause BSD:\n   test-alg-yescrypt.c\n\n * Copyright Alexander Peslyak, Björn Esser; 0-clause BSD:\n   crypt-scrypt.c\n\n * Copyright Björn Esser; 0-clause BSD:\n   crypt-common.c, test-checksalt.c, test-compile-strong-alias.c,\n   test-gensalt-nthash.c, test-short-outbuf.c, test-special-char-salt.c\n\n * Copyright Michael Bretterklieber, Björn Esser et al.; 2-clause BSD:\n   crypt-nthash.c\n\n * Copyright Zack Weinberg; 2-clause BSD:\n   crypt-sunmd5.c\n\n * Public domain, written by Steve Reid et al.:\n   alg-sha1.c, alg-sha1.h, test-alg-sha1.c\n\n * Copyright Juniper Networks, Inc.; 3-clause BSD:\n   crypt-pbkdf1-sha1.c, crypt-pbkdf1-sha1.c\n\n * Copyright Björn Esser; 2-clause BSD:\n   alg-hmac-sha1.c, alg-hmac-sha1.h, test-alg-hmac-sha1.c\n\n * Public domain, written by Zack Weinberg et al.:\n   byteorder.h, randombytes.c, test-byteorder.c\n   test-alg-pbkdf-hmac-sha256.c\n   test-badsetting.c, test-crypt-badargs.c, test-getrandom-fallbacks.c,\n   test-getrandom-interface.c, test-symbols-compat.sh,\n   test-symbols-renames.sh, test-symbols-static.sh,\n   build-aux/scripts/gen-crypt-h,\n   build-aux/scripts/gen-crypt-symbol-vers-h,\n   build-aux/scripts/gen-libcrypt-map,\n   build-aux/scripts/skip-if-exec-format-error,\n   build-aux/m4/zw_alignment.m4, build-aux/m4/zw_static_assert.m4,\n   build-aux/m4/zw_endianness.m4, build-aux/m4/zw_ld_wrap.m4\n\n * Copyright Zack Weinberg and Free Software Foundation, Inc;\n   GPL (v3 or later), with Autoconf exception:\n   build-aux/m4/zw_automodern.m4, build-aux/m4/zw_simple_warnings.m4\n\n * Copyright <vt at altlinux.org>; 0-clause BSD:\n   crypt-yescrypt.c, test-crypt-yescrypt.c\n\n * Copyright Kevin Cernekee; FSF All Permissive License:\n   build-aux/m4/ax_check_vscript.m4\n\n * Copyright Maarten Bosmans; FSF All Permissive License:\n   build-aux/m4/ax_append_compile_flags.m4\n\n * Copyright Guido U. Draheim, Maarten Bosmans;\n   FSF All Permissive License:\n   build-aux/m4/ax_append_flag.m4, build-aux/m4/ax_check_compile_flag.m4\n\n * Copyright Mike Frysinger; FSF All Permissive License:\n   build-aux/m4/ax_require_defined.m4\n\n * Copyright Gabriele Svelto; FSF All Permissive License:\n   build-aux/m4/ax_gcc_func_attribute.m4\n\n * Copyright Scott James Remnant, Dan Nicholson;\n   GPL (v2 or later), with Autoconf exception:\n   build-aux/m4/pkg_installdir_compat.m4\n\n * Copyright Tim Toolan; FSF All Permissive License:\n   build-aux/m4/ax_compare_version.m4\n\n * Copyright Philip Withnall; FSF All Permissive License:\n   build-aux/m4/ax_valgrind_check.m4\n\n * Copyright Steven G. Johnson, Daniel Richard G.;\n   GPL (v3 or later), with Autoconf exception:\n   build-aux/m4/ax_pthread.m4\n\n * Copyright Francesco Salvestrini; FSF All Permissive License:\n   build-aux/m4/ax_prog_python_version.m4\n\n * Copyright Andrew Collier; FSF All Permissive License:\n   build-aux/m4/ax_python_module.m4\n\n * Copyright holders unknown, no statement of license (all of these\n   files are part of the testsuite and do not contribute to the\n   installed library or its headers):\n   test-alg-des.c, test-alg-md4.c (adaption of test-alg-md5.c),\n   test-alg-md5.c, test-alg-sha256.c, test-alg-sha512.c, test-crypt-des.c,\n   test-crypt-md5.c, test-crypt-sha256.c, test-crypt-sha512.c,\n   test-des-cases.h, test-des-obsolete{,_r}.c, test-gensalt.c,\n   test-crypt-nthash.c (adaption of test-crypt-des.c),\n   test-crypt-sunmd5.c (adaption of test-crypt-des.c),\n   test-crypt-pbkdf1-sha1.c (adaption of test-crypt-des.c)\n\n * The NEWS file formerly contained the following copyright assertions:\n\n     Copyright 2002, 2003, 2004 SuSE Linux AG, Germany\n     Copyright 2005, 2008, 2009 2011 SUSE LINUX Products GmbH, Germany\n     Copyright 2015 Björn Esser\n\n   These were meant to apply to the library as a whole rather than\n   specific files or portions of files.",
+      "comment": "Including the content of '/usr/share/doc/libcrypt1/copyright' as-is, because: Unknown copyright format."
+    },
+    {
+      "licenseId": "LicenseRef-libpcre2-8-0-amd64--bsd-3-clause-cambridge-with-binary-library-like-packages-exception",
+      "name": "BSD-3-clause-Cambridge with BINARY LIBRARY-LIKE PACKAGES exception",
+      "extractedText": "Redistribution and use in source and binary forms, with or without\nmodification, are permitted provided that the following conditions are met:\n\n* Redistributions of source code must retain the above copyright notice,\nthis list of conditions and the following disclaimer.\n\n* Redistributions in binary form must reproduce the above copyright\nnotice, this list of conditions and the following disclaimer in the\ndocumentation and/or other materials provided with the distribution.\n\n* Neither the name of the University of Cambridge nor the names of any\ncontributors may be used to endorse or promote products derived from this\nsoftware without specific prior written permission.\n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\"\nAND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE\nIMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE\nARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE\nLIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR\nCONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF\nSUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS\nINTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN\nCONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)\nARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE\nPOSSIBILITY OF SUCH DAMAGE.\n\n\nEXEMPTION FOR BINARY LIBRARY-LIKE PACKAGES\n------------------------------------------\n\nThe second condition in the BSD licence (covering binary redistributions) does\nnot apply all the way down a chain of software. If binary package A includes\nPCRE2, it must respect the condition, but if package B is software that\nincludes package A, the condition is not imposed on package B unless it uses\nPCRE2 independently.",
+      "comment": ""
+    },
+    {
+      "licenseId": "LicenseRef-libpcre2-8-0-amd64--public-domain",
+      "name": "public-domain",
+      "extractedText": "The data in the testdata directory is not copyrighted and is in the public domain.",
+      "comment": ""
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-RootPackage",
+      "spdxElementId": "SPDXRef-DOCUMENT"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package--9b1a8353f8d2cd65a204060f13d14aefa3162830",
+      "spdxElementId": "SPDXRef-RootPackage"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package--ec70431903cb9befadd44bcb17a427fe595b7146",
+      "spdxElementId": "SPDXRef-RootPackage"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package--3daeedd8beb3754e001280bf0cde95f84b0b694c",
+      "spdxElementId": "SPDXRef-RootPackage"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package--3062b4278ef20e3c65dce5386756d172df2ceb47",
+      "spdxElementId": "SPDXRef-RootPackage"
+    },
+    {
+      "relationshipType": "DEPENDS_ON",
+      "relatedSpdxElement": "SPDXRef-Package--a0d07b57fa62ee5f33b2a601fb864be4f17cd556",
+      "spdxElementId": "SPDXRef-RootPackage"
+    }
+  ]
+}
