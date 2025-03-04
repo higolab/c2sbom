@@ -19,12 +19,13 @@ def run_ldd(file: str) -> set[str]:
 
     files: set[str] = set()
     for line in ldd.stdout.splitlines():
-        if "linux-vdso" in line or "ld-linux" in line:
+        if "linux-vdso" in line or "ld-linux" in line or "statically linked" in line or line.endswith(":"):
             continue
 
         line_splitted = line.split()
         if len(line_splitted) < 3:
             print("Not resolved:", line_splitted[0], file=sys.stderr)
+            continue
 
         files.add(line_splitted[2])
 
@@ -93,7 +94,8 @@ parser.add_argument(
     help="Include incomplete 'files' section (makes the SPDX document not standard conformant).",
 )
 parser.add_argument(
-    "-q", "--quiet",
+    "-q",
+    "--quiet",
     action="store_true",
     help="Suppress unimportant console output.",
 )
